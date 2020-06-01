@@ -45,11 +45,28 @@ scandinavia_unite_sweden = {
 
         highlight = {
 			scope:province = {
-				is_in_area = herulia_area
+				AND = {
+					is_in_area = herulia_area
+					NOT = {
+						province_id = 6009 #Eowia
+						province_id = 6004 #Burgundarholm
+					}
+				}
 			}
 		}
 
-        allow = { owns_or_subject_owns_area = herulia_area}
+        allow = { 
+			owns_or_subject_owns = 6000 #Uppakra
+            owns_or_subject_owns = 6001 #Svimraros
+            owns_or_subject_owns = 6002 #Guthisbo
+            owns_or_subject_owns = 6003 #Bergio
+            owns_or_subject_owns = 6005 #Vang
+            owns_or_subject_owns = 6006 #Borgamo
+            owns_or_subject_owns = 6007 #Meore
+            owns_or_subject_owns = 6014 #Finnaithae
+            owns_or_subject_owns = 6015 #Warinia
+            owns_or_subject_owns = 6017 #Vitala
+		}
 
         on_completion = {
         	area:herulia_area = {
@@ -69,7 +86,8 @@ scandinavia_unite_sweden = {
 							limit = {
 								NOT = {
 									pop_culture = prev.owner.culture
-								}								}
+								}								
+							}
 							order_by = pop_hapiness
 							max = 14
 							check_range_bounds = no
@@ -228,7 +246,8 @@ scandinavia_unite_sweden = {
 							limit = {
 								NOT = {
 									pop_culture = prev.owner.culture
-								}								}
+								}								
+							}
 							order_by = pop_hapiness
 							max = 14
 							check_range_bounds = no
@@ -305,7 +324,8 @@ scandinavia_unite_sweden = {
 							limit = {
 								NOT = {
 									pop_culture = prev.owner.culture
-								}								}
+								}								
+							}
 							order_by = pop_hapiness
 							max = 14
 							check_range_bounds = no
@@ -459,7 +479,8 @@ scandinavia_unite_sweden = {
 							limit = {
 								NOT = {
 									pop_culture = prev.owner.culture
-								}								}
+								}								
+							}
 							order_by = pop_hapiness
 							max = 14
 							check_range_bounds = no
@@ -493,7 +514,8 @@ scandinavia_unite_sweden = {
 							limit = {
 								NOT = {
 									pop_culture = prev.owner.culture
-								}								}
+								}								
+							}
 							order_by = pop_hapiness
 							max = 14
 							check_range_bounds = no
@@ -527,6 +549,7 @@ scandinavia_unite_sweden = {
         potential = {}
 
         allow = {
+			custom_tooltip = formed_scandinavia_tt
         	tag = SKA
         }
 

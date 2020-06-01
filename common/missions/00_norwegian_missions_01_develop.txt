@@ -7,17 +7,13 @@ norway_develop = {
     chance = {}
 
     potential = { 
-    	OR = {
-            owns_area = ultima_thule_area
-            AND = {
-                owns_area = ultima_thule_area
-                NOR = {
-                    owns = 6035 #Vinovilothia
-                    owns = 6034 #Tanum
-                }
-            }
-        }
-        
+        owns = 6037 #Raumariki
+        owns = 6038 #Lingum
+        owns = 6039 #Grannia
+        owns = 6040 #Augandzia
+		owns = 6041 #Aetelrugia
+		owns = 6042 #Eunixia
+		owns = 6043 #Arothia        
     }
 
     abort = {}

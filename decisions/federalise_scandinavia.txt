@@ -12,6 +12,11 @@
 				country_culture = cimbrian
 				country_culture = teutonian
 			}
+			OR = {
+				government = tribal_chiefdom
+				government = tribal_federation
+				government = tribal_kingdom
+			}
 		}
 		allow = {
 			treasury >= 300
@@ -27,7 +32,7 @@
 		}
 		effect = {
 			add_treasury = -300
-			custom_tooltip = scandinavian_reform
+			custom_tooltip = scandinavian_reform_tt
 			trigger_event = {
 				id = federalise_scandinavia.1
 				days = 0

@@ -133,18 +133,13 @@ sweden_unite = {
 		}
 
         allow = { 
-        	OR = {
-				AND = {
-					owns_or_subject_owns_area = west_gothia_area
-					NOR = {
-						owns_or_subject_owns = 6024 #Rane
-						owns_or_subject_owns = 6027 #Tivedia
-						owns_or_subject_owns = 6033 #Vrine
-						owns_or_subject_owns = 6036 #Rania
-					}
-				}
-				owns_or_subject_owns_area = west_gothia_area
-			}
+			owns_or_subject_owns = 6011 #Feruira
+			owns_or_subject_owns = 6012 #Konghelle
+        	owns_or_subject_owns = 6013 #Gautigothia
+			owns_or_subject_owns = 6016 #Thwetum
+			owns_or_subject_owns = 6022 #Hio
+			owns_or_subject_owns = 6023 #Gothalia
+			owns_or_subject_owns = 6025 #Ragnaricia
         }
 
         on_completion = { 
@@ -165,7 +160,8 @@ sweden_unite = {
 							limit = {
 								NOT = {
 									pop_culture = prev.owner.culture
-								}								}
+								}								
+							}
 							order_by = pop_hapiness
 							max = 14
 							check_range_bounds = no
@@ -204,15 +200,17 @@ sweden_unite = {
 		}
 
         allow = { 
-        	OR = {
-				AND = {
-					owns_or_subject_owns_area = east_gothia_area
-					NOT = {
-						owns_or_subject_owns = 6010 #Vineta
-					}
-				}
-				owns_or_subject_owns_area = east_gothia_area
-			}
+			owns_or_subject_owns = 6008 #Theustia
+			owns_or_subject_owns = 6018 #Vist
+			owns_or_subject_owns = 6019 #Vikbo
+			owns_or_subject_owns = 6020 #Kinda
+			owns_or_subject_owns = 6021 #Aska
+			owns_or_subject_owns = 6026 #Miriquidui
+			owns_or_subject_owns = 6028 #Arbugae
+			owns_or_subject_owns = 6029 #Rekarne
+			owns_or_subject_owns = 6030 #Birka
+			owns_or_subject_owns = 6031 #Arosia
+			owns_or_subject_owns = 6032 #Broborg
         }
 
         on_completion = {
@@ -233,7 +231,8 @@ sweden_unite = {
 							limit = {
 								NOT = {
 									pop_culture = prev.owner.culture
-								}								}
+								}								
+							}
 							order_by = pop_hapiness
 							max = 14
 							check_range_bounds = no
@@ -262,11 +261,28 @@ sweden_unite = {
 
         highlight = {
 			scope:province = {
-				is_in_area = herulia_area
+				AND = {
+					is_in_area = herulia_area
+					NOT = {
+						province_id = 6009 #Eowia
+						province_id = 6004 #Burgundarholm
+					}
+				}
 			}
 		}
 
-        allow = { owns_or_subject_owns_area = herulia_area}
+        allow = { 
+			owns_or_subject_owns = 6000 #Uppakra
+            owns_or_subject_owns = 6001 #Svimraros
+            owns_or_subject_owns = 6002 #Guthisbo
+            owns_or_subject_owns = 6003 #Bergio
+            owns_or_subject_owns = 6005 #Vang
+            owns_or_subject_owns = 6006 #Borgamo
+            owns_or_subject_owns = 6007 #Meore
+            owns_or_subject_owns = 6014 #Finnaithae
+            owns_or_subject_owns = 6015 #Warinia
+            owns_or_subject_owns = 6017 #Vitala
+		}
 
         on_completion = {
         	area:herulia_area = {
@@ -286,7 +302,8 @@ sweden_unite = {
 							limit = {
 								NOT = {
 									pop_culture = prev.owner.culture
-								}								}
+								}								
+							}
 							order_by = pop_hapiness
 							max = 14
 							check_range_bounds = no

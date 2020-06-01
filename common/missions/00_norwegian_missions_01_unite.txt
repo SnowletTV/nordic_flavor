@@ -184,11 +184,11 @@ norway_unite = {
 		}
 
         allow = {
-        	treasury >= 100
+        	treasury >= 80
 		} 
 
         on_completion = { 
-        	add_treasury = -100
+        	add_treasury = -80
         	p:5381 = {
 				remove_province_modifier = minor_barbarian_spawn_place
 			}	

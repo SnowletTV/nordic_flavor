@@ -60,18 +60,13 @@ scandinavia_unite_gothia = {
 		}
 
         allow = { 
-        	OR = {
-				AND = {
-					owns_or_subject_owns_area = west_gothia_area
-					NOR = {
-						owns_or_subject_owns = 6024 #Rane
-						owns_or_subject_owns = 6027 #Tivedia
-						owns_or_subject_owns = 6033 #Vrine
-						owns_or_subject_owns = 6036 #Rania
-					}
-				}
-				owns_or_subject_owns_area = west_gothia_area
-			}
+        	owns_or_subject_owns = 6011 #Feruira
+			owns_or_subject_owns = 6012 #Konghelle
+        	owns_or_subject_owns = 6013 #Gautigothia
+			owns_or_subject_owns = 6016 #Thwetum
+			owns_or_subject_owns = 6022 #Hio
+			owns_or_subject_owns = 6023 #Gothalia
+			owns_or_subject_owns = 6025 #Ragnaricia
         }
 
         on_completion = { 
@@ -92,7 +87,8 @@ scandinavia_unite_gothia = {
 							limit = {
 								NOT = {
 									pop_culture = prev.owner.culture
-								}								}
+								}								
+							}
 							order_by = pop_hapiness
 							max = 14
 							check_range_bounds = no
@@ -164,15 +160,17 @@ scandinavia_unite_gothia = {
 		}
 
         allow = { 
-        	OR = {
-				AND = {
-					owns_or_subject_owns_area = east_gothia_area
-					NOT = {
-						owns_or_subject_owns = 6010
-					}
-				}
-				owns_or_subject_owns_area = east_gothia_area
-			}
+        	owns_or_subject_owns = 6008 #Theustia
+			owns_or_subject_owns = 6018 #Vist
+			owns_or_subject_owns = 6019 #Vikbo
+			owns_or_subject_owns = 6020 #Kinda
+			owns_or_subject_owns = 6021 #Aska
+			owns_or_subject_owns = 6026 #Miriquidui
+			owns_or_subject_owns = 6028 #Arbugae
+			owns_or_subject_owns = 6029 #Rekarne
+			owns_or_subject_owns = 6030 #Birka
+			owns_or_subject_owns = 6031 #Arosia
+			owns_or_subject_owns = 6032 #Broborg
         }
 
         on_completion = {
@@ -193,7 +191,8 @@ scandinavia_unite_gothia = {
 							limit = {
 								NOT = {
 									pop_culture = prev.owner.culture
-								}								}
+								}								
+							}
 							order_by = pop_hapiness
 							max = 14
 							check_range_bounds = no
@@ -326,7 +325,8 @@ scandinavia_unite_gothia = {
 							limit = {
 								NOT = {
 									pop_culture = prev.owner.culture
-								}								}
+								}								
+							}
 							order_by = pop_hapiness
 							max = 14
 							check_range_bounds = no
@@ -399,7 +399,8 @@ scandinavia_unite_gothia = {
 							limit = {
 								NOT = {
 									pop_culture = prev.owner.culture
-								}								}
+								}								
+							}
 							order_by = pop_hapiness
 							max = 14
 							check_range_bounds = no
@@ -553,7 +554,8 @@ scandinavia_unite_gothia = {
 							limit = {
 								NOT = {
 									pop_culture = prev.owner.culture
-								}								}
+								}								
+							}
 							order_by = pop_hapiness
 							max = 14
 							check_range_bounds = no
@@ -587,7 +589,8 @@ scandinavia_unite_gothia = {
 							limit = {
 								NOT = {
 									pop_culture = prev.owner.culture
-								}								}
+								}								
+							}
 							order_by = pop_hapiness
 							max = 14
 							check_range_bounds = no
@@ -641,6 +644,7 @@ scandinavia_unite_gothia = {
         potential = {}
 
         allow = {
+			custom_tooltip = formed_scandinavia_tt
         	tag = SKA
         }
 

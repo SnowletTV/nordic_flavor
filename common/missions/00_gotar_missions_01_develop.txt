@@ -8,13 +8,18 @@ gothia_develop = {
 
     potential = { 
     	OR = {
-            owns_area = herulia_area
+            tag = GOT
             AND = {
-                owns_area = herulia_area
-                NOR = {
-                    owns = 6004 #Burgundarholm
-                    owns = 6009 #Eowia
-                }
+                owns_or_subject_owns = 6000 #Uppakra
+                owns_or_subject_owns = 6001 #Svimraros
+                owns_or_subject_owns = 6002 #Guthisbo
+                owns_or_subject_owns = 6003 #Bergio
+                owns_or_subject_owns = 6005 #Vang
+                owns_or_subject_owns = 6006 #Borgamo
+                owns_or_subject_owns = 6007 #Meore
+                owns_or_subject_owns = 6014 #Finnaithae
+                owns_or_subject_owns = 6015 #Warinia
+                owns_or_subject_owns = 6017 #Vitala
             }
         }
         
