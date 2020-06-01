@@ -1,0 +1,134 @@
+country_decisions = {
+	
+	# Form Denmark
+	form_scandinavia = {
+		
+		potential = {
+			num_of_cities >= 1
+			OR = {
+				tag = AVO
+				country_culture = suiones
+				country_culture = raumarician
+				country_culture = rugian
+				country_culture = gutones
+				country_culture = teutonian
+				country_culture = herulian
+				country_culture = cimbrian
+				country_culture = teutonian
+			}
+
+			NOT = {
+				tag = SKA
+			}
+			OR = {
+				is_ai = no
+				num_of_cities >= 30
+			}
+			NOR = {
+				is_endgame_tag_trigger = yes
+				is_norse_endgame_tag_trigger = yes
+			}
+		}
+		
+		highlight = {
+			scope:province = {
+				OR = {
+					province_id = 3887 #Herulio Orientalis
+					province_id = 3876 #Teutonia Centralis
+					province_id = 3879 #Cimbria Borealis
+					province_id = 3871 #Eudosia Cimbricaris
+					province_id = 3864 #Avionia Maiores
+					province_id = 3881 #Anglia Insula
+					province_id = 6038 #Lingum
+					province_id = 6042 #Eunixia
+					province_id = 6037 #Raumaricia
+					province_id = 6008 #Theustia
+					province_id = 6030 #Birka
+					province_id = 6016 #Thwetum
+					province_id = 6006 #Borgamo
+					province_id = 6000 #Uppakra
+					province_id = 6015 #Warinia
+					province_id = 6012 #Konghelle
+				}
+			}
+		}
+		
+		allow = {
+			custom_tooltip = {
+				text = formable_not_brettonia_exists
+				NOT = {
+					any_country = {
+						tag = SKA
+					}
+				}
+			}
+			num_of_cities >= 24
+			can_form_nation_trigger = yes
+			owns = 3887 #Herulio Orientalis
+			owns = 3876 #Teutonia Centralis
+			owns = 3879 #Cimbria Borealis
+			owns = 3871 #Eudosia Cimbricaris
+			owns = 3864 #Avionia Maiores
+			owns = 3881 #Anglia Insula
+			owns = 6038 #Lingum
+			owns = 6042 #Eunixia
+			owns = 6037 #Raumaricia
+			owns = 6008 #Theustia
+			owns = 6030 #Birka
+			owns = 6016 #Thwetum
+			owns = 6006 #Borgamo
+			owns = 6000 #Uppakra
+			owns = 6015 #Warinia
+			owns = 6012 #Konghelle
+		}
+		
+		effect = {
+			custom_tooltip = "tier_3_formable_tooltip"
+			change_country_name = "SCANDINAVIA_NAME"
+			hidden_effect = {
+				change_country_adjective = "SCANDINAVIA_ADJECTIVE"
+				change_country_color =  "pan_hellenic_blue"
+				change_country_flag = SCANDINAVIAN_TRIBAL_FLAG
+				change_country_tag = SKA
+			}
+			if = {
+				limit = {
+					p:3887 = { is_capital = no }
+				}
+				set_capital = 3887
+				hidden_effect = {
+					p:3887.state = {
+						set_state_capital = 3887
+					}
+				}
+			}
+			capital_scope = {
+				establish_city_effect = yes
+				if = {
+					limit = {
+						root = {
+						is_tribal = yes
+						}
+					}
+					capital_formable_tribal_large_effect = yes
+					tribal_formable_government_change_effect = yes
+					}
+				else = {
+					capital_formable_large_effect = yes
+					monarchy_formable_government_change_effect = yes
+					}
+			}
+			hidden_effect = {
+				region:scandia_region = { formable_region_province_effect = yes }
+			}
+			monarchy_republic_into_imperium_formable_effect = yes
+			add_4_free_province_investments = yes
+		}
+		
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+} 
+

@@ -1,0 +1,14 @@
+is_norse_tier_2_formable_trigger = {
+	OR = {
+		tag = DEN #Denmark
+		tag = NOR #Norway
+		tag = SWD #Sweden
+		tag = GOT #Gothland
+	}
+}
+
+is_norse_endgame_tag_trigger = {
+	OR = {
+		tag = SKA #Scandinavia
+	}
+}

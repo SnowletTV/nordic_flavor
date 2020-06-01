@@ -1,0 +1,339 @@
+namespace = federalise_scandinavia
+
+	federalise_scandinavia.1 = {
+    	type = country_event
+    	title = federalise_scandinavia.1.t
+    	desc = federalise_scandinavia.1.desc
+    	picture = throneroom
+
+    	immediate = {
+
+    	}
+
+	    option = {      
+        	name = federalise_scandinavia.1.a
+        	trigger_event = {
+				id = federalise_scandinavia.2
+				days = 0
+			}
+    	}
+	}
+
+	federalise_scandinavia.2 = {
+    	type = country_event
+    	title = federalise_scandinavia.2.t
+    	desc = federalise_scandinavia.2.desc
+    	picture = throneroom
+
+    	immediate = {
+
+    	}
+
+	    option = {      
+        	name = federalise_scandinavia.2.a
+        	trigger_event = {
+				id = federalise_scandinavia.3
+				days = 0
+			}
+    	}
+	}
+
+	federalise_scandinavia.3 = {
+    	type = country_event
+    	title = federalise_scandinavia.3.t
+    	desc = federalise_scandinavia.3.desc
+    	picture = throneroom
+
+    	immediate = {
+
+    	}
+
+	    option = {      
+        	name = federalise_scandinavia.3.a
+        	trigger_event = {
+				id = federalise_scandinavia.4
+				days = 0
+			}
+    	}
+	}
+
+	federalise_scandinavia.4 = {
+    	type = country_event
+    	title = federalise_scandinavia.4.t
+    	desc = federalise_scandinavia.4.desc
+    	picture = throneroom
+
+    	immediate = {
+
+    	}
+
+	    option = {      
+        	name = federalise_scandinavia.4.a
+        	trigger_event = {
+				id = federalise_scandinavia.5
+				days = 0
+			}
+    	}
+	}
+
+	federalise_scandinavia.5 = {
+    	type = country_event
+    	title = federalise_scandinavia.5.t
+    	desc = federalise_scandinavia.5.desc
+    	picture = throneroom
+
+    	immediate = {
+
+    	}
+
+	    option = {      
+        	name = federalise_scandinavia.5.a
+        	trigger_event = {
+				id = federalise_scandinavia.6
+				days = 0
+			}
+    	}
+	}
+
+	federalise_scandinavia.6 = {
+    	type = country_event
+    	title = federalise_scandinavia.6.t
+    	desc = federalise_scandinavia.6.desc
+    	picture = throneroom
+
+    	immediate = {
+
+    	}
+
+	    option = {      
+        	name = federalise_scandinavia.6.a
+        	trigger_event = {
+				id = federalise_scandinavia.7
+				days = 0
+			}
+    	}
+	}
+
+	federalise_scandinavia.7 = {
+    	type = country_event
+    	title = federalise_scandinavia.7.t
+    	desc = federalise_scandinavia.7.desc
+    	picture = throneroom
+
+    	immediate = {
+
+    	}
+
+	    option = {      
+        	name = federalise_scandinavia.7.a
+        	trigger_event = {
+				id = federalise_scandinavia.8
+				days = 0
+			}
+    	}
+	}
+
+	federalise_scandinavia.8 = {
+    	type = country_event
+    	title = federalise_scandinavia.8.t
+    	desc = federalise_scandinavia.8.desc
+    	picture = throneroom
+
+    	immediate = {
+
+    	}
+
+	    option = {      
+        	name = federalise_scandinavia.8.a
+        	trigger_event = {
+				id = federalise_scandinavia.9
+				days = 0
+			}
+    	}
+	}
+
+	federalise_scandinavia.9 = {
+    	type = country_event
+    	title = federalise_scandinavia.9.t
+    	desc = federalise_scandinavia.9.desc
+    	picture = throneroom
+
+    	immediate = {
+
+    	}
+
+	    option = {      
+        	name = federalise_scandinavia.9.a
+        	trigger_event = {
+				id = federalise_scandinavia.10
+				days = 0
+			}
+    	}
+	}
+
+	federalise_scandinavia.10 = {
+    	type = country_event
+    	title = federalise_scandinavia.10.t
+    	desc = federalise_scandinavia.10.desc
+    	picture = throneroom
+
+    	immediate = {
+
+    	}
+
+	    option = {      
+        	name = federalise_scandinavia.10.a
+        	trigger_event = {
+				id = federalise_scandinavia.11
+				days = 0
+			}
+    	}
+	}
+
+	federalise_scandinavia.11 = {
+    	type = country_event
+    	title = federalise_scandinavia.11.t
+    	desc = federalise_scandinavia.11.desc
+    	picture = throneroom
+
+    	immediate = {
+
+    	}
+
+	    option = {      
+        	name = federalise_scandinavia.11.a
+        	trigger_event = {
+				id = federalise_scandinavia.12
+				days = 0
+			}
+    	}
+	}
+
+	federalise_scandinavia.12 = {
+    	type = country_event
+    	title = federalise_scandinavia.12.t
+    	desc = federalise_scandinavia.12.desc
+    	picture = throneroom
+
+    	immediate = {
+
+    	}
+
+	    option = {      
+        	name = federalise_scandinavia.12.a
+        	trigger_event = {
+				id = federalise_scandinavia.13
+				days = 0
+			}
+    	}
+	}
+
+	federalise_scandinavia.13 = {
+    	type = country_event
+    	title = federalise_scandinavia.13.t
+    	desc = federalise_scandinavia.13.desc
+    	picture = throneroom
+
+    	immediate = {
+
+    	}
+
+	    option = {      
+        	name = federalise_scandinavia.13.a
+        	trigger_event = {
+				id = federalise_scandinavia.14
+				days = 0
+			}
+    	}
+	}
+
+	federalise_scandinavia.14 = {
+    	type = country_event
+    	title = federalise_scandinavia.14.t
+    	desc = federalise_scandinavia.14.desc
+    	picture = throneroom
+
+    	immediate = {
+
+    	}
+
+	    option = {      
+        	name = federalise_scandinavia.14.a
+        	trigger_event = {
+				id = federalise_scandinavia.15
+				days = 0
+			}
+    	}
+	}
+
+	federalise_scandinavia.15 = {
+    	type = country_event
+    	title = federalise_scandinavia.15.t
+    	desc = federalise_scandinavia.15.desc
+    	picture = throneroom
+
+    	immediate = {
+
+    	}
+
+	    option = {      
+        	name = federalise_scandinavia.15.a
+        		trigger_event = {
+				id = federalise_scandinavia.16
+				days = 0
+			}
+    	}
+    	option = {      
+        	name = federalise_scandinavia.15.b
+        	trigger_event = {
+				id = federalise_scandinavia.17
+				days = 0
+			}
+    	}
+	}
+
+	federalise_scandinavia.16 = {
+    	type = country_event
+    	title = federalise_scandinavia.16.t
+    	desc = federalise_scandinavia.16.desc
+    	picture = throneroom
+
+    	immediate = {
+    		add_country_modifier = {
+        		name = norse_rebellion_modifier
+        		duration = 1460
+        	}
+    	}
+
+	    option = {      
+        	name = federalise_scandinavia.16.a
+        		add_stability = -30
+        		change_government = democratic_republic
+        		change_country_flag = SCANDINAVIAN_FLAG
+				switch_government_type_event_clearup_effect = yes
+		}
+    }
+
+	federalise_scandinavia.17 = {
+    	type = country_event
+    	title = federalise_scandinavia.17.t
+    	desc = federalise_scandinavia.17.desc
+    	picture = throneroom
+
+    	immediate = {
+    		add_country_modifier = {
+        		name = norse_big_rebellion_modifier
+        		duration = 1460
+        	}
+    	}
+
+	    option = {      
+        	name = federalise_scandinavia.17.a
+        	add_stability = -30
+        	change_government = despotic_monarchy
+        	change_country_flag = SCANDINAVIAN_FLAG
+			switch_government_type_event_clearup_effect = yes
+		}
+    }
+
+	

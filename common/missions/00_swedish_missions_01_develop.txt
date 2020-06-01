@@ -1,0 +1,444 @@
+sweden_develop = {
+    header = "mission_image_general"
+    icon = "general_1"
+
+    repeatable = no
+
+    chance = {}
+
+    potential = { 
+        AND = {
+            OR = {
+                AND = {
+                    owns_or_subject_owns_area = west_gothia_area
+                    NOR = {
+                        owns_or_subject_owns = 6024 #Rane
+                        owns_or_subject_owns = 6027 #Tivedia
+                        owns_or_subject_owns = 6033 #Vrine
+                        owns_or_subject_owns = 6036 #Rania
+                    }
+                }
+            owns_or_subject_owns_area = west_gothia_area
+            }
+            OR = {
+                AND = {
+                    owns_or_subject_owns_area = east_gothia_area
+                    NOT = {
+                        owns_or_subject_owns = 6010 #Vineta
+                    }
+                }
+                owns_or_subject_owns_area = east_gothia_area
+            }
+        }	
+    }
+
+    abort = {}
+
+    on_potential = {}
+
+    on_start = {}
+
+    on_abort = {}
+
+    sweden_develop_tivedia_copper = {
+        icon = "task_political"
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                province_id = 6027 #Tivedia
+            }
+        }
+
+        allow = {
+        	treasury >= 50
+        }
+
+        on_start = {}
+
+        on_completion = {
+        	add_treasury = -50
+            p:6027 = {
+                set_trade_goods = base_metals
+            }
+        }
+    }
+
+    sweden_develop_tivedia_copper_2 = {
+        icon = "task_political"
+
+        requires = { sweden_develop_tivedia_copper }
+
+        duration = 120
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                province_id = 6027 #Tivedia
+            }
+        }
+
+        allow = {
+            treasury >= 60
+        }
+
+        on_start = {}
+
+        on_completion = {
+            add_treasury = -60
+            p:6027 = {
+                add_province_modifier = {
+                    name = norse_mine_modifier
+                    duration = -1
+                }
+            }
+        }
+    }
+
+    sweden_develop_thwetum = {
+        icon = "task_political"
+
+        requires = {
+            sweden_develop_tivedia_copper
+        }
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                province_id = 6016 #Thwetum
+            }
+        }
+
+        allow = {
+            p:6016 = {
+                has_city_status = yes
+            }
+        }
+
+        on_start = {}
+
+        on_completion = {
+            p:6016 = {
+                set_trade_goods = cloth
+            }
+        }
+    }
+
+    sweden_develop_birka_port = {
+        icon = "task_expansion"
+
+        requires = { 
+            sweden_develop_wood
+        }
+
+        bypass = {}
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                province_id = 6030 #Birka
+            }
+        }
+
+        allow = {
+            p:6030 = {
+                num_of_foundry_building >= 2
+            }
+        }
+
+        on_completion = {
+        	p:6038 = { 
+                add_province_modifier = {
+                    name = norse_homeport_modifier
+                    duration = -1
+                }
+            }
+        }
+    }
+
+    sweden_develop_fleet = {
+        icon = "task_expansion"
+
+        requires = { 
+            sweden_develop_birka_port 
+        }
+
+        duration = 365
+
+        bypass = {}
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                province_id = 6038 #Lingum
+            }
+        }
+
+        allow = {
+            treasury >= 150
+        }
+
+        on_completion = {
+            add_treasury = -150
+            add_country_modifier = {
+                name = norse_fleet_modifier
+                duration = -1
+            }
+            create_unit = {
+                location = p:6038
+                navy = yes
+                sub_unit = hexere
+                add_subunit = hexere
+                add_subunit = hexere
+                add_subunit = hexere
+                add_subunit = hexere
+                add_subunit = hexere
+                add_subunit = hexere
+                add_subunit = hexere
+                add_subunit = hexere
+                add_subunit = hexere
+            }
+        }
+    }
+
+    sweden_develop_wood = {
+        icon = "task_political"
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                province_id = 6013 #Gautigothia
+            }
+        }
+
+        allow = {
+            treasury >= 50
+        }
+
+        on_start = {}
+
+        on_completion = {
+            add_treasury = -50
+            p:6013 = { 
+                add_province_modifier = {
+                    name = norse_woodery_modifier
+                    duration = -1
+                }
+            }
+        }
+    }
+
+    sweden_develop_vineta_food = {
+        icon = "task_political"
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                province_id = 6010 #Vineta
+            }
+        }
+
+        allow = {
+            treasury >= 30
+        }
+
+        on_start = {}
+
+        on_completion = {
+            add_treasury = -30
+            p:6010 = {
+                add_province_modifier = {
+                    name = norse_food_supply_modifier
+                    duration = -1
+                }
+            }
+        }
+    }
+
+    sweden_develop_ragnaricia_food = {
+        icon = "task_political"
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                province_id = 6025 #Ragnaricia
+            }
+        }
+
+        allow = {
+            treasury >= 30
+        }
+
+        on_start = {}
+
+        on_completion = {
+            add_treasury = -30
+            p:6025 = {
+                add_province_modifier = {
+                    name = norse_food_supply_modifier
+                    duration = -1
+                }
+            }
+        }
+    }
+
+    sweden_develop_food_capacity = {
+        icon = "task_political"
+
+        requires = { 
+            sweden_develop_ragnaricia_food
+            sweden_develop_vineta_food
+            sweden_develop_thwetum
+        }
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                province_id = 6038 #Lingum
+                province_id = 6037 #Raumariki
+            }
+        }
+
+        allow = {
+            AND = {
+                p:6016 = {
+                    num_of_population_building >= 1
+                }
+                p:6030 = {
+                    num_of_population_building >= 1
+                }
+            }
+        }
+
+        on_start = {}
+
+        on_completion = {
+            p:6016.state = {
+                add_state_modifier = {
+                    name = norse_food_capacity_modifier
+                    duration = -1
+                }
+            }
+            p:6030.state = {
+                add_state_modifier = {
+                    name = norse_food_capacity_modifier
+                    duration = -1
+                }
+            }
+        }
+    }
+
+    sweden_develop_horses = {
+        icon = "task_political"
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                province_id = 6024 #Rane
+            }
+        }
+
+        allow = {
+            treasury >= 50
+        }
+
+        on_start = {}
+
+        on_completion = {
+            add_treasury = -50
+            p:6024 = {
+                add_province_modifier = {
+                    name = norse_horses
+                    duration = -1
+                }
+            }
+        }
+    }
+
+    sweden_develop_rane_fortify = {
+        icon = "task_economical"
+
+        requires = {
+            sweden_develop_tivedia_copper_2
+            sweden_develop_horses
+        }
+
+        potential = {}
+        
+        highlight = {
+            scope:province = {
+                province_id = 6024 #Rane
+            }
+        }
+
+        allow = {
+            treasury >= 50
+            p:6034 = {
+                fort_level >= 1
+            }
+        } 
+
+        on_completion = { 
+            add_treasury = -50
+            p:6034 = {
+                add_province_modifier = {
+                    name = norse_fortification_modifier
+                    duration = -1
+                }
+            }   
+        }
+    }
+
+    sweden_develop_city = {
+        icon = "task_political"
+
+        requires = {
+            sweden_develop_birka_port
+            sweden_develop_rane_fortify
+            sweden_develop_food_capacity
+        }
+
+        final = yes
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                is_in_area = west_gothia_area
+                is_in_area = east_gothia_area
+            }
+        }
+
+        allow = {}
+
+        on_start = {}
+
+        on_completion = {
+            p:6028.state = {
+                add_state_modifier = {
+                    name = "norse_prosperous_modifier"
+                    duration = -1
+                }
+            }
+            p:6016.state = {
+                add_state_modifier = {
+                    name = "norse_prosperous_modifier"
+                    duration = -1
+                }
+            }
+            set_variable = {
+                name = developped_sweden
+            }
+        }
+    }
+}

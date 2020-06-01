@@ -1,0 +1,449 @@
+gothia_unite = {
+    header = "mission_image_general"
+    icon = "general_1"
+
+    repeatable = no
+
+    chance = {}
+
+    potential = {
+    	OR = {
+			tag = BUR
+			country_culture = gutones
+			country_culture = teutonian
+		}
+		NOR = {
+			is_endgame_tag_trigger = yes
+			is_tier_2_formable_trigger = yes
+			is_norse_tier_2_formable_trigger = yes
+			is_norse_endgame_tag_trigger = yes
+		}
+    }
+
+    abort = {}
+
+    on_potential = {}
+
+    on_start = {}
+
+    on_abort = {}
+
+    gothia_unite_preparation = {
+        icon = "task_political"
+
+        duration = 365
+
+        potential = {}
+
+        allow = {
+        	treasury >= 75
+        }
+
+        on_start = {
+        	add_treasury = -75
+        }
+
+        on_completion = {
+        	add_country_modifier = {
+        		name = gotar_light_infantry_modifier
+        		duration = -1
+        	}
+        }
+    }
+
+    gothia_unite_south = {
+        icon = "task_expansion"
+
+        requires = { gothia_unite_preparation }
+
+        duration = 120
+
+        bypass = {
+			owns_or_subject_owns_area = herulia_area
+		}
+
+        potential = {}
+
+        allow = {}
+
+        on_completion = {
+        	area:herulia_area = { add_provincial_claim_effect = yes }
+        }
+    }
+
+    gothia_unite_north = {
+        icon = "task_expansion"
+
+        requires = { gothia_unite_south }
+
+        duration = 240
+
+        bypass = {
+			owns_or_subject_owns_area = west_gothia_area
+			owns_or_subject_owns_area = east_gothia_area
+		}
+
+        potential = {}
+
+        allow = {}
+
+        on_completion = { 
+        	area:west_gothia_area = { add_provincial_claim_effect = yes } 
+        	area:east_gothia_area = { add_provincial_claim_effect = yes }
+        }
+    }
+
+    gothia_unite_west_pacify = {
+        icon = "task_political"
+
+        requires = { gothia_unite_north }  
+
+        potential = {}
+		
+		highlight = {
+			scope:province = {
+				AND = {
+					is_in_area = west_gothia_area
+					NOT = {
+						province_id = 6024 #Rane
+						province_id = 6027 #Tivedia
+						province_id = 6033 #Vrine
+						province_id = 6036 #Rania
+					}
+				}
+			}
+		}
+
+        allow = { 
+        	OR = {
+				AND = {
+					owns_or_subject_owns_area = west_gothia_area
+					NOR = {
+						owns_or_subject_owns = 6024 #Rane
+						owns_or_subject_owns = 6027 #Tivedia
+						owns_or_subject_owns = 6033 #Vrine
+						owns_or_subject_owns = 6036 #Rania
+					}
+				}
+				owns_or_subject_owns_area = west_gothia_area
+			}
+        }
+
+        on_completion = { 
+        	area:west_gothia_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 1
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								}
+							order_by = pop_hapiness
+							max = 14
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
+			}	
+        }
+    }
+
+    gothia_unite_east_pacify = {
+        icon = "task_political"
+
+        requires = { gothia_unite_north } 
+
+        potential = {}
+
+        highlight = {
+			scope:province = {
+				AND = {
+					is_in_area = east_gothia_area
+					NOT = {
+						province_id = 6010
+					}
+				}
+			}
+		}
+
+        allow = { 
+        	OR = {
+				AND = {
+					owns_or_subject_owns_area = east_gothia_area
+					NOT = {
+						owns_or_subject_owns = 6010
+					}
+				}
+				owns_or_subject_owns_area = east_gothia_area
+			}
+        }
+
+        on_completion = {
+        	area:east_gothia_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 1
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								}
+							order_by = pop_hapiness
+							max = 14
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
+			}
+        }
+    }
+
+	gothia_unite_south_pacify = {
+        icon = "task_political"
+
+        requires = { gothia_unite_south } 
+
+        potential = {}
+
+        highlight = {
+			scope:province = {
+				is_in_area = herulia_area
+			}
+		}
+
+        allow = { owns_or_subject_owns_area = herulia_area}
+
+        on_completion = {
+        	area:herulia_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 1
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								}
+							order_by = pop_hapiness
+							max = 14
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
+			}
+		}
+    }
+
+    gothia_unite_island_expedition = {
+        icon = "task_economical"
+
+        requires = { gothia_unite_east_pacify }
+
+        duration = 120
+
+        bypass = {
+			owns = 6010 #Vineta
+		}
+
+        potential = { 
+        	NOT = { 
+        		owns = 6010 #Vineta 
+        	} 
+        }
+
+        allow = {
+        	treasury >= 80
+        }
+
+        on_start = {
+        	add_treasury = -80
+        }
+
+        on_completion = { 
+        	p:6010 = { set_conquered_by = root } 
+        }
+    }
+
+    gothia_unite_greater_gothia = {
+        icon = "task_political"
+
+        requires = { 
+        	gothia_unite_island_expedition
+        	gothia_unite_colonization
+        } 
+
+        potential = {}
+
+        allow = {}
+
+        on_completion = {
+        	add_country_modifier = {
+    		name = greater_gothia_united_modifier
+    		duration = -1
+    		}
+		}
+    }
+
+    gothia_unite_colonization = {
+        icon = "task_economical"
+
+        requires = { gothia_unite_west_pacify }
+
+        duration = 120
+
+        bypass = {
+			owns = 6027 #Tivedia
+			owns = 6024 #Rane
+		}
+
+        potential = { 
+        	NOT = { 
+        		owns = 6027 #Tivedia
+				owns = 6024 #Rane 
+        	} 
+        }
+
+        allow = {
+        	treasury >= 50
+        }
+
+        on_start = {
+        	add_treasury = -50
+        }
+
+        on_completion = { 
+        	p:6027 = { set_conquered_by = root } 
+        	p:6024 = { set_conquered_by = root } 
+        }
+    }
+
+    gothia_unite_straits_fortify = {
+        icon = "task_economical"
+
+        requires = { gothia_unite_south }  
+
+        potential = {}
+		
+		highlight = {
+			scope:province = {
+				province_id = 6003
+			}
+		}
+
+        allow = {
+        	treasury >= 100
+			p:6003 = {
+				fort_level >= 1
+			}
+		}
+
+		on_completion = { 
+        	add_treasury = -100
+        	p:6003 = {
+				add_province_modifier = {
+					name = gotar_strait_fortification_modifier
+					duration = -1
+				}
+			}	
+        }
+    }
+
+    gothia_unite_united = {
+        icon = "task_political"
+
+        requires = { 
+        	gothia_unite_south_pacify
+        } 
+
+        final = yes
+
+        potential = {}
+
+        allow = {}
+
+        on_completion = {
+        	if = {
+				limit = {
+					p:6000 = { is_capital = no }
+				}
+				set_capital = 6000
+				hidden_effect = {
+					p:6000.state = {
+						set_state_capital = 6000
+					}
+				}
+			}
+        	capital_scope = {
+        		if = {
+					limit = {
+						has_city_status = no
+					}
+					show_as_tooltip = {
+						set_city_status = city
+					}
+					trigger_event = {
+						id = state_improvement.6
+					}
+				}
+				add_province_modifier = {
+					name = nordic_capital_modifier
+					duration = -1
+				}
+			}
+        }
+    }
+}

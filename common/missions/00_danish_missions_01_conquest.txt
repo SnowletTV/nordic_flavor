@@ -1,0 +1,489 @@
+scandinavia_unite_denmark = {
+    header = "mission_image_general"
+    icon = "general_1"
+
+    repeatable = no
+
+    chance = {}
+
+    potential = { 
+		tag = DEN
+    }
+
+    abort = {}
+
+    on_potential = {}
+
+    on_start = {}
+
+    on_abort = {}
+
+    scandinavia_unite_denmark_preparation = {
+        icon = "task_political"
+
+        duration = 120
+
+        potential = {}
+
+        allow = {
+        	treasury >= 75
+        }
+
+        on_start = {
+        	add_treasury = -75
+        }
+
+        on_completion = {
+        	add_country_modifier = {
+        		name = danish_liberation_modifier
+        		duration = 1000
+        	}
+        	area:herulia_area = { add_provincial_claim_effect = yes }
+        }
+    }
+
+    scandinavia_unite_denmark_straits_fortify = {
+        icon = "task_economical"
+
+        requires = { scandinavia_unite_denmark_preparation }  
+
+        potential = {}
+		
+		highlight = {
+			scope:province = {
+				province_id = 6003
+			}
+		}
+
+        allow = {
+        	treasury >= 100
+			p:6003 = {
+				fort_level >= 1
+			}
+		}
+
+		on_completion = { 
+        	add_treasury = -100
+        	p:6003 = {
+				add_province_modifier = {
+					name = gotar_strait_fortification_modifier
+					duration = -1
+				}
+			}	
+        }
+    }
+
+    scandinavia_unite_denmark_south_pacify = {
+        icon = "task_political"
+
+        duration = 120
+
+        requires = { scandinavia_unite_denmark_preparation } 
+
+        potential = {}
+
+        highlight = {
+			scope:province = {
+				is_in_area = herulia_area
+			}
+		}
+
+        allow = { owns_or_subject_owns_area = herulia_area}
+
+        on_completion = {
+        	area:herulia_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 1
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								}
+							order_by = pop_hapiness
+							max = 14
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
+			}
+		}
+    }
+
+    scandinavia_unite_denmark_sweden = {
+        icon = "task_political"
+
+        requires = { 
+        	scandinavia_unite_denmark_south_pacify
+        	scandinavia_unite_denmark_straits_fortify
+        } 
+
+        duration = 120
+
+        potential = {}
+
+        allow = {}
+
+        on_start = {}
+
+        on_completion = {
+        	area:west_gothia_area = { add_provincial_claim_effect = yes } 
+        	area:east_gothia_area = { add_provincial_claim_effect = yes }
+        }
+    }
+
+    scandinavia_unite_denmark_island_expedition = {
+        icon = "task_economical"
+
+        requires = { 
+        	scandinavia_unite_denmark_east_pacify
+        }
+
+        duration = 120
+
+        bypass = {
+			owns = 6010 #Vineta
+		}
+
+        potential = { 
+        	NOT = { 
+        		owns = 6010 #Vineta 
+        	} 
+        }
+
+        allow = {
+        	treasury >= 80
+        }
+
+        on_start = {
+        	treasury = -80
+        }
+
+        on_completion = { 
+        	p:6010 = { set_conquered_by = root } 
+        }
+    }
+
+    scandinavia_unite_denmark_west_pacify = {
+        icon = "task_political"
+
+        requires = { scandinavia_unite_denmark_sweden }  
+
+        potential = {}
+		
+		highlight = {
+			scope:province = {
+				AND = {
+					is_in_area = west_gothia_area
+					NOT = {
+						province_id = 6024 #Rane
+						province_id = 6027 #Tivedia
+						province_id = 6033 #Vrine
+						province_id = 6036 #Rania
+					}
+				}
+			}
+		}
+
+        allow = { 
+        	OR = {
+				AND = {
+					owns_or_subject_owns_area = west_gothia_area
+					NOR = {
+						owns_or_subject_owns = 6024 #Rane
+						owns_or_subject_owns = 6027 #Tivedia
+						owns_or_subject_owns = 6033 #Vrine
+						owns_or_subject_owns = 6036 #Rania
+					}
+				}
+				owns_or_subject_owns_area = west_gothia_area
+			}
+        }
+
+        on_completion = { 
+        	area:west_gothia_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 1
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								}
+							order_by = pop_hapiness
+							max = 14
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
+			}	
+        }
+    }
+
+    scandinavia_unite_denmark_colonization = {
+        icon = "task_economical"
+
+        requires = { scandinavia_unite_denmark_west_pacify }
+
+        duration = 120
+
+        bypass = {
+			owns = 6027 #Tivedia
+			owns = 6024 #Rane
+		}
+
+        potential = { 
+        	NOT = { 
+        		owns = 6027 #Tivedia
+				owns = 6024 #Rane 
+        	} 
+        }
+
+        allow = {
+        	treasury >= 50
+        }
+
+        on_start = {
+        	add_treasury = -50
+        }
+
+        on_completion = { 
+        	p:6027 = { set_conquered_by = root } 
+        	p:6024 = { set_conquered_by = root } 
+        }
+    }
+
+    scandinavia_unite_denmark_east_pacify = {
+        icon = "task_political"
+
+        requires = { scandinavia_unite_denmark_sweden } 
+
+        potential = {}
+
+        highlight = {
+			scope:province = {
+				AND = {
+					is_in_area = east_gothia_area
+					NOT = {
+						province_id = 6010
+					}
+				}
+			}
+		}
+
+        allow = { 
+        	OR = {
+				AND = {
+					owns_or_subject_owns_area = east_gothia_area
+					NOT = {
+						owns_or_subject_owns = 6010
+					}
+				}
+				owns_or_subject_owns_area = east_gothia_area
+			}
+        }
+
+        on_completion = {
+        	area:east_gothia_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 1
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								}
+							order_by = pop_hapiness
+							max = 14
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
+			}
+        }
+    }
+
+    scandinavia_unite_denmark_sweden_military = {
+        icon = "task_political"
+
+        requires = { 
+        	scandinavia_unite_denmark_west_pacify 
+        	scandinavia_unite_denmark_east_pacify
+        } 
+
+        duration = 120
+
+        potential = {}
+
+        allow = {}
+
+        on_start = {}
+
+        on_completion = {
+        	add_country_modifier = {
+        		name = swedish_army_modifier
+        		duration = -1
+        	}
+        }
+    }
+
+    scandinavia_unite_denmark_north = {
+        icon = "task_political"
+
+        requires = { scandinavia_unite_denmark_west_pacify } 
+
+        duration = 120
+
+        potential = {}
+
+        allow = {}
+
+        on_start = {}
+
+        on_completion = {
+        	add_country_modifier = {
+        		name = norwegian_army_modifier
+        		duration = -1
+        	}
+        	area:ultima_thule_area = { add_provincial_claim_effect = yes }
+        }
+    }
+
+    scandinavia_unite_denmark_north_pacify = {
+        icon = "task_political"
+
+        requires = { 
+        	scandinavia_unite_denmark_north 
+        } 
+
+        potential = {}
+
+        highlight = {
+			scope:province = {
+				is_in_area = ultima_thule_area
+			}
+		}
+
+        allow = { 
+        	owns_or_subject_owns_area = ultima_thule_area
+        }
+
+        on_completion = {
+        	area:ultima_thule_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 1
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								}
+							order_by = pop_hapiness
+							max = 14
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
+			}
+        }
+    }
+
+    scandinavia_unite_denmark_united = {
+        icon = "task_political"
+
+        requires = { 
+        	scandinavia_unite_denmark_north_pacify
+        	scandinavia_unite_denmark_sweden_military
+        } 
+
+        final = yes
+
+        potential = {}
+
+        allow = {
+        	tag = SKA
+        }
+
+        on_completion = {
+        	capital_scope = {
+        		remove_province_modifier = nordic_capital_modifier
+				add_province_modifier = {
+					name = nordic_grand_capital_modifier
+					duration = -1
+				}
+			}
+        }
+    }
+}

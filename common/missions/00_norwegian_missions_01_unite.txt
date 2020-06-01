@@ -1,0 +1,319 @@
+norway_unite = {
+    header = "mission_image_general"
+    icon = "general_1"
+
+    repeatable = no
+
+    chance = {}
+
+    potential = { 
+    	country_culture = rugian
+		NOR = {
+			is_endgame_tag_trigger = yes
+			is_tier_2_formable_trigger = yes
+			is_norse_tier_2_formable_trigger = yes
+			is_norse_endgame_tag_trigger = yes
+		}
+    }
+
+    abort = {}
+
+    on_potential = {}
+
+    on_start = {}
+
+    on_abort = {}
+
+    norway_unite_preparation = {
+        icon = "task_political"
+
+        duration = 365
+
+        potential = {}
+
+        allow = {
+        	treasury >= 75
+        }
+
+        on_start = {
+        	add_treasury = -75
+        }
+
+        on_completion = {
+        	add_country_modifier = {
+        		name = norwegian_infantry_modifier
+        		duration = -1
+        	}
+        }
+    }
+
+    norway_unite_homeland = {
+        icon = "task_expansion"
+
+        requires = { norway_unite_preparation }
+
+        duration = 120
+
+        bypass = {
+        	owns = 6038 #Lingum
+        	owns = 6039 #Grannia
+        	owns = 6040 #Augandzia
+			owns = 6041 #Aetelrugia
+			owns = 6042 #Eunixia
+			owns = 6043 #Arothia
+		}
+
+        potential = {}
+
+        allow = {}
+
+        on_completion = {
+        		area:ultima_thule_area = { add_provincial_claim_effect = yes }
+        }
+    }
+
+    norway_unite_homeland_pacify = {
+        icon = "task_political"
+
+        requires = { norway_unite_homeland }
+
+        potential = {}
+		
+		highlight = {
+			scope:province = {
+				province_id = 6038 #Lingum
+        		province_id = 6039 #Grannia
+        		province_id = 6040 #Augandzia
+				province_id = 6041 #Aetelrugia
+				province_id = 6042 #Eunixia
+				province_id = 6043 #Arothia
+			}
+		}
+
+        allow = { 
+        	owns = 6038 #Lingum
+        	owns = 6039 #Grannia
+        	owns = 6040 #Augandzia
+			owns = 6041 #Aetelrugia
+			owns = 6042 #Eunixia
+			owns = 6043 #Arothia
+        }
+
+        on_completion = {
+        	p:6038 = {
+        		while = {
+					count = 5
+					create_state_pop = citizen
+				}
+        	} 	
+    	}
+    }
+
+    norway_unite_capital_fortify = {
+        icon = "task_economical"
+
+        requires = { norway_unite_homeland_pacify }  
+
+        potential = {}
+		
+		highlight = {
+			scope:province = {
+				province_id = 6038 #Lingum
+			}
+		}
+
+        allow = {
+        	treasury >= 100
+			p:6038 = {
+				fort_level >= 1
+			}
+		} 
+
+        on_completion = { 
+        	add_treasury = -100
+        	p:6038 = {
+				add_province_modifier = {
+					name = norwegian_capital_fortification_modifier
+					duration = -1
+				}
+			}	
+        }
+    }
+
+    norway_unite_liberate = {
+        icon = "task_political"
+
+        requires = { norway_unite_homeland_pacify }  
+
+        duration = 120
+
+        potential = {}
+
+        allow = {
+        	treasury >= 50
+        }
+
+        on_start = {
+        	add_treasury = -50
+        }
+
+        on_completion = {
+        	add_country_modifier = {
+        		name = norwegian_infantry_liberation_modifier
+        		duration = 1000
+        	}
+        }
+    }
+
+    norway_unite_barbarian = {
+        icon = "task_economical"
+
+        duration = 100
+
+        requires = { 
+        	norway_unite_capital_fortify
+        	norway_unite_mountain_fort
+        }  
+
+        potential = {}
+		
+		highlight = {
+			scope:province = {
+				province_id = 5381
+			}
+		}
+
+        allow = {
+        	treasury >= 100
+		} 
+
+        on_completion = { 
+        	add_treasury = -100
+        	p:5381 = {
+				remove_province_modifier = minor_barbarian_spawn_place
+			}	
+        }
+    }
+
+    norway_unite_liberated = {
+        icon = "task_political"
+
+        requires = { 
+        	norway_unite_capital_fortify
+            norway_unite_liberate
+
+        }  
+
+        potential = {}
+		
+		highlight = {
+			scope:province = {
+				province_id = 6037 #Raumariki
+			}
+		}
+
+        allow = { 
+        	owns = 6037 #Raumariki
+        }
+
+        on_completion = { 
+        	p:6037 = {
+        		if = {
+					limit = {
+						has_city_status = no
+					}
+					show_as_tooltip = {
+						set_city_status = city
+					}
+					trigger_event = {
+						id = state_improvement.6
+					}
+				}
+				add_province_modifier = {
+					name = liberated_city_modifier
+					duration = -1
+				}
+			}	
+        }
+    }
+
+    norway_unite_mountain_fort = {
+        icon = "task_economical"
+
+        requires = { 
+        	norway_unite_preparation
+        } 
+
+        potential = {}
+		
+		highlight = {
+			scope:province = {
+				province_id = 6042
+			}
+		}
+
+        allow = {
+        	treasury >= 100
+			p:6042 = {
+				fort_level >= 1
+			}
+		} 
+
+
+        on_completion = { 
+        	add_treasury = -100
+        	p:6042 = {
+				add_province_modifier = {
+					name = norwegian_mountain_fort_modifier
+					duration = -1
+				}
+			}	
+        }
+    }
+
+    norway_unite_united = {
+        icon = "task_political"
+
+        requires = { 
+        	norway_unite_liberated
+            norway_unite_barbarian
+        } 
+
+        final = yes
+
+        potential = {}
+
+        allow = {}
+
+        on_completion = {
+        	if = {
+				limit = {
+					p:6038 = { is_capital = no }
+				}
+				set_capital = 6038
+				hidden_effect = {
+					p:6038.state = {
+						set_state_capital = 6038
+					}
+				}
+			}
+        	capital_scope = {
+        		if = {
+					limit = {
+						has_city_status = no
+					}
+					show_as_tooltip = {
+						set_city_status = city
+					}
+					trigger_event = {
+						id = state_improvement.6
+					}
+				}
+				add_province_modifier = {
+					name = nordic_capital_modifier
+					duration = -1
+				}
+			}
+        }
+    }
+}

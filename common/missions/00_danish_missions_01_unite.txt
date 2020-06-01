@@ -1,0 +1,401 @@
+denmark_unite = {
+    header = "mission_image_general"
+    icon = "general_1"
+
+    repeatable = no
+
+    chance = {}
+
+    potential = { 
+    	OR = {
+    		tag = AVO
+			country_culture = herulian
+			country_culture = cimbrian
+			country_culture = teutonian
+		}
+		NOR = {
+			is_endgame_tag_trigger = yes
+			is_tier_2_formable_trigger = yes
+			is_norse_tier_2_formable_trigger = yes
+			is_norse_endgame_tag_trigger = yes
+		}
+    }
+
+    abort = {}
+
+    on_potential = {}
+
+    on_start = {}
+
+    on_abort = {}
+
+    denmark_unite_preparation = {
+        icon = "task_political"
+
+        duration = 365
+
+        potential = {}
+
+        allow = {
+        	treasury >= 75
+        }
+
+        on_start = {
+        	add_treasury = -75
+        }
+
+        on_completion = {
+        	add_country_modifier = {
+        		name = danish_infantry_modifier
+        		duration = -1
+        	}
+        }
+    }
+
+    denmark_unite_straits = {
+        icon = "task_expansion"
+
+        requires = { denmark_unite_preparation }
+
+        duration = 120
+
+        bypass = {
+			owns_or_subject_owns_area = scandia_insula_area
+		}
+
+        potential = {}
+
+        allow = {}
+
+        on_completion = {
+        	area:scandia_insula_area = { add_provincial_claim_effect = yes }
+        }
+    }
+
+    denmark_unite_mainland = {
+        icon = "task_expansion"
+
+        requires = { denmark_unite_preparation }
+
+        duration = 120
+
+        bypass = {
+			owns_or_subject_owns_area = cimbrica_superioris_area
+		}
+
+        potential = {}
+
+        allow = {}
+
+        on_completion = {
+        	area:cimbrica_superioris_area = { add_provincial_claim_effect = yes }
+        }
+    }
+
+    denmark_unite_holstein = {
+        icon = "task_expansion"
+
+        requires = { denmark_unite_preparation }
+
+        duration = 120
+
+        bypass = {
+			owns_or_subject_owns_area = cimbrica_inferioris_area
+		}
+
+        potential = {}
+
+        allow = {}
+
+        on_completion = { 
+        	area:cimbrica_inferioris_area = { add_provincial_claim_effect = yes } 
+        }
+    }
+
+    denmark_unite_straits_pacify = {
+        icon = "task_political"
+
+        requires = { denmark_unite_straits }  
+
+        potential = {}
+		
+		highlight = {
+			scope:province = {
+				is_in_area = scandia_insula_area
+			}
+		}
+
+        allow = { 
+        	owns_or_subject_owns_area = scandia_insula_area
+        }
+
+        on_completion = { 
+        	area:scandia_insula_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 1
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								}
+							order_by = pop_hapiness
+							max = 14
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
+			}	
+        }
+    }
+
+    denmark_unite_straits_fortify = {
+        icon = "task_economical"
+
+        duration = 120
+
+        requires = { denmark_unite_straits }  
+
+        potential = {}
+		
+		highlight = {
+			scope:province = {
+				province_id = 3887
+			}
+		}
+
+        allow = {
+        	treasury >= 100
+			p:3887 = {
+				fort_level >= 1
+			}
+		} 
+
+
+        on_completion = { 
+        	add_treasury = -100
+        	p:3887 = {
+				add_province_modifier = {
+					name = danish_strait_fortification_modifier
+					duration = -1
+				}
+			}	
+        }
+    }
+
+    denmark_unite_straits_trade = {
+        icon = "task_economical"
+
+        duration = 120
+
+        requires = { 
+        	denmark_unite_straits_fortify 
+        	denmark_unite_straits_pacify
+        }  
+
+        potential = {}
+		
+		highlight = {
+			scope:province = {
+				province_id = 3887
+			}
+		}
+
+        allow = {
+        	trigger_if = {
+				limit = { is_ai = yes }
+				treasury > 150
+				scope:governorship_capital = {
+					has_city_status = yes
+				}
+			} #needs to expire first
+			trigger_else = {
+				p:3887 = {
+					has_city_status = yes
+					num_of_commerce_building >= 2
+				}
+			}
+		} 
+
+
+        on_completion = { 
+        	add_country_modifier = {
+        		name = danish_straits_trade_modifier
+        		duration = -1
+        	}	
+        }
+    }
+
+    denmark_unite_mainland_pacify = {
+        icon = "task_political"
+
+        requires = { denmark_unite_mainland } 
+
+        potential = {}
+
+        highlight = {
+			scope:province = {
+				is_in_area = cimbrica_superioris_area
+			}
+		}
+
+        allow = { 
+        	owns_or_subject_owns_area = cimbrica_superioris_area
+        }
+
+        on_completion = {
+        	area:cimbrica_superioris_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 1
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								}
+							order_by = pop_hapiness
+							max = 14
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
+			}
+        }
+    }
+
+	denmark_unite_holstein_pacify = {
+        icon = "task_political"
+
+        requires = { denmark_unite_holstein } 
+
+        potential = {}
+
+        highlight = {
+			scope:province = {
+				is_in_area = cimbrica_inferioris_area
+			}
+		}
+
+        allow = { owns_or_subject_owns_area = cimbrica_inferioris_area }
+
+        on_completion = {
+        	area:cimbrica_inferioris_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 1
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								}
+							order_by = pop_hapiness
+							max = 14
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
+			}
+		}
+    }
+
+    denmark_unite_united = {
+        icon = "task_political"
+
+        requires = { 
+        	denmark_unite_holstein_pacify
+        	denmark_unite_mainland_pacify
+        	denmark_unite_straits_pacify
+        } 
+
+        final = yes
+
+        potential = {}
+
+        allow = {}
+
+        on_completion = {
+        	if = {
+				limit = {
+					p:3887 = { is_capital = no }
+				}
+				set_capital = 3887
+				hidden_effect = {
+					p:3887.state = {
+						set_state_capital = 3887
+					}
+				}
+			}
+        	capital_scope = {
+        		if = {
+					limit = {
+						has_city_status = no
+					}
+					show_as_tooltip = {
+						set_city_status = city
+					}
+					trigger_event = {
+						id = state_improvement.6
+					}
+				}
+				add_province_modifier = {
+					name = nordic_capital_modifier
+					duration = -1
+				}
+			}
+        }
+    }
+}

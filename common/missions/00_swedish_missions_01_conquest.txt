@@ -1,0 +1,556 @@
+scandinavia_unite_sweden = {
+    header = "mission_image_general"
+    icon = "general_1"
+
+    repeatable = no
+
+    chance = {}
+
+    potential = { 
+		tag = SWD
+    }
+
+    abort = {}
+
+    on_potential = {}
+
+    on_start = {}
+
+    on_abort = {}
+	
+	scandinavia_unite_sweden_south = {
+        icon = "task_expansion"
+
+        duration = 120
+
+        bypass = {
+			owns_or_subject_owns_area = herulia_area
+		}
+
+        potential = {}
+
+        allow = {}
+
+        on_completion = {
+        	area:herulia_area = { add_provincial_claim_effect = yes }
+        }
+    }
+
+    scandinavia_unite_sweden_south_pacify = {
+        icon = "task_political"
+
+        requires = { scandinavia_unite_sweden_south } 
+
+        potential = {}
+
+        highlight = {
+			scope:province = {
+				is_in_area = herulia_area
+			}
+		}
+
+        allow = { owns_or_subject_owns_area = herulia_area}
+
+        on_completion = {
+        	area:herulia_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 1
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								}
+							order_by = pop_hapiness
+							max = 14
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
+			}
+		}
+    }
+
+    scandinavia_unite_sweden_greater_sweden = {
+        icon = "task_political"
+
+        requires = { 
+        	scandinavia_unite_sweden_south_pacify
+        } 
+
+        potential = {}
+
+        allow = {}
+
+        on_completion = {
+        	add_country_modifier = {
+    		name = greater_sweden_united_modifier
+    		duration = -1
+    		}
+		}
+    }
+
+    scandinavia_unite_sweden_colonization = {
+        icon = "task_economical"
+
+        requires = { scandinavia_unite_sweden_greater_sweden }
+
+        duration = 120
+
+        bypass = {
+			owns = 6027 #Tivedia
+			owns = 6024 #Rane
+		}
+
+        potential = { 
+        	NOT = { 
+        		owns = 6027 #Tivedia
+				owns = 6024 #Rane 
+        	} 
+        }
+
+        allow = {
+        	treasury >= 50
+        }
+
+        on_start = {
+        	add_treasury = -50
+        }
+
+        on_completion = { 
+        	p:6027 = { set_conquered_by = root } 
+        	p:6024 = { set_conquered_by = root } 
+        }
+    }
+
+    scandinavia_unite_sweden_island_expedition = {
+        icon = "task_economical"
+
+        requires = { scandinavia_unite_sweden_greater_sweden }
+
+        duration = 120
+
+        bypass = {
+			owns = 6010 #Vineta
+		}
+
+        potential = { 
+        	NOT = { 
+        		owns = 6010 #Vineta 
+        	} 
+        }
+
+        allow = {
+        	treasury >= 80
+        }
+
+        on_start = {
+        	add_treasury = -80
+        }
+
+        on_completion = { 
+        	p:6010 = { set_conquered_by = root } 
+        }
+    }
+
+    scandinavia_unite_sweden_north = {
+        icon = "task_political"
+
+        duration = 120
+
+        potential = {}
+
+        allow = {}
+
+        on_start = {}
+
+        on_completion = {
+        	add_country_modifier = {
+        		name = norwegian_army_modifier
+        		duration = -1
+        	}
+        	area:ultima_thule_area = { add_provincial_claim_effect = yes }
+        }
+    }
+
+    scandinavia_unite_sweden_north_pacify = {
+        icon = "task_political"
+
+        requires = { 
+        	scandinavia_unite_sweden_north 
+        } 
+
+        potential = {}
+
+        highlight = {
+			scope:province = {
+				is_in_area = ultima_thule_area
+			}
+		}
+
+        allow = { 
+        	owns_or_subject_owns_area = ultima_thule_area
+        }
+
+        on_completion = {
+        	area:ultima_thule_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 1
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								}
+							order_by = pop_hapiness
+							max = 14
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
+			}
+        }
+    }
+
+    scandinavia_unite_sweden_straits = {
+        icon = "task_political"
+
+        requires = {
+        	scandinavia_unite_sweden_south_pacify
+        }
+
+        duration = 120
+
+        potential = {}
+
+        allow = {}
+
+        on_start = {}
+
+        on_completion = {
+        	area:ultima_thule_area = { add_provincial_claim_effect = yes }
+        }
+    }
+
+    scandinavia_unite_sweden_straits_pacify = {
+        icon = "task_political"
+
+        requires = {  
+        	scandinavia_unite_sweden_straits
+        }  
+
+        potential = {}
+		
+		highlight = {
+			scope:province = {
+				is_in_area = scandia_insula_area
+			}
+		}
+
+        allow = { 
+        	owns_or_subject_owns_area = scandia_insula_area
+        }
+
+        on_completion = { 
+        	area:scandia_insula_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 1
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								}
+							order_by = pop_hapiness
+							max = 14
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
+			}	
+        }
+    }
+
+    scandinavia_unite_sweden_straits_fortify_copenhagen = {
+        icon = "task_economical"
+
+        duration = 120
+
+        requires = { scandinavia_unite_sweden_straits_pacify }  
+
+        potential = {}
+		
+		highlight = {
+			scope:province = {
+				province_id = 3887
+			}
+		}
+
+        allow = {
+        	treasury >= 100
+			p:3887 = {
+				fort_level >= 1
+			}
+		} 
+
+
+        on_completion = { 
+        	add_treasury = -100
+        	p:3887 = {
+				add_province_modifier = {
+					name = danish_strait_fortification_modifier
+					duration = -1
+				}
+			}	
+        }
+    }
+
+    scandinavia_unite_sweden_straits_trade = {
+        icon = "task_economical"
+
+        requires = { 
+        	scandinavia_unite_sweden_straits_fortify_copenhagen
+        	scandinavia_unite_sweden_mainland_pacify
+        }  
+
+        potential = {}
+		
+		highlight = {
+			scope:province = {
+				province_id = 3887
+			}
+		}
+
+        allow = {
+        	trigger_if = {
+				limit = { is_ai = yes }
+				treasury > 150
+				scope:governorship_capital = {
+					has_city_status = yes
+				}
+			} #needs to expire first
+			trigger_else = {
+				p:3887 = {
+					has_city_status = yes
+					num_of_commerce_building >= 2
+				}
+			}
+		} 
+
+
+        on_completion = { 
+        	add_country_modifier = {
+        		name = danish_straits_trade_modifier
+        		duration = -1
+        	}	
+        }
+    }
+
+    scandinavia_unite_sweden_mainland = {
+        icon = "task_expansion"
+
+        requires = { scandinavia_unite_sweden_straits_pacify }
+
+        duration = 120
+
+        bypass = {
+			owns_or_subject_owns_area = cimbrica_superioris_area
+			owns_or_subject_owns_area = cimbrica_inferioris_area
+		}
+
+        potential = {}
+
+        allow = {}
+
+        on_completion = {
+        	area:cimbrica_superioris_area = { add_provincial_claim_effect = yes }
+        	area:cimbrica_inferioris_area = { add_provincial_claim_effect = yes } 
+        }
+    }
+
+    scandinavia_unite_sweden_mainland_pacify = {
+        icon = "task_political"
+
+        requires = { scandinavia_unite_sweden_mainland } 
+
+        potential = {}
+
+        highlight = {
+        	scope:province = {
+				is_in_area = cimbrica_superioris_area
+				is_in_area = cimbrica_inferioris_area
+			}
+		}
+
+        allow = { 
+        	owns_or_subject_owns_area = cimbrica_superioris_area
+        	owns_or_subject_owns_area = cimbrica_inferioris_area
+        }
+
+        on_completion = {
+        	area:cimbrica_superioris_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 1
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								}
+							order_by = pop_hapiness
+							max = 14
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
+			}
+			area:cimbrica_inferioris_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 1
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								}
+							order_by = pop_hapiness
+							max = 14
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
+			}
+        }
+    }
+
+    scandinavia_unite_sweden_united = {
+        icon = "task_political"
+
+        requires = { 
+        	scandinavia_unite_sweden_greater_gothia
+        	scandinavia_unite_sweden_straits_trade
+        	scandinavia_unite_sweden_north_pacify
+        } 
+
+        final = yes
+
+        potential = {}
+
+        allow = {
+        	tag = SKA
+        }
+
+        on_completion = {
+        	capital_scope = {
+        		remove_province_modifier = nordic_capital_modifier
+			}
+			if = {
+				limit = {
+					p:3887 = { is_capital = no }
+				}
+				set_capital = 3887
+				hidden_effect = {
+					p:3887.state = {
+						set_state_capital = 3887
+					}
+				}
+			}
+        	capital_scope = {
+				add_province_modifier = {
+					name = nordic_grand_capital_modifier
+					duration = -1
+				}
+			}
+        }
+    }
+}

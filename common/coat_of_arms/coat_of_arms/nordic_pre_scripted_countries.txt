@@ -1,0 +1,99 @@
+GOTHIA_FLAG = {
+	pattern = "pattern_solid.tga"
+	color1 = rgb {0 61 143} #gothia blue
+	color2 = "ck2_white"
+
+	colored_emblem = {
+		texture = "ce_halland_01.dds"
+		color1 = "ck2_white"
+		color2 = rgb {212 0 0} #gothia red
+		instance = { scale = { 0.90 0.90 } }
+	}
+	colored_emblem = {
+		texture = "ce_border_simple_square.dds"
+		color1 = "ck2_black"
+	}
+}
+
+SWEDEN_FLAG = {
+	pattern = "pattern_solid.tga"
+	color1 = "swede_blue"
+	color2 = rgb {254 204 0} #sweden yellow
+
+	colored_emblem = {
+		texture = "ce_deer_02.dds"
+		color1 = rgb {254 204 0} #sweden yellow
+		color2 = rgb {51 49 48}
+	}
+}
+
+DENMARK_FLAG = {
+	pattern = "pattern_circle_02.dds"
+	color1 = rgb {51 49 48}
+	color2 = "ck2_black"
+
+	colored_emblem = {
+		texture = "ce_viking_raven_02.dds"
+		color1 = rgb {198 12 48} #denmark red
+		instance = { scale = { 0.75 0.75 } }
+	}
+	colored_emblem = {
+		texture = "ce_border_simple_square.dds"
+		color1 = rgb {198 12 48} #denmark red
+	}
+}
+
+NORWAY_FLAG = {
+	pattern = "pattern_vertical_split_01.tga"
+	color1 = rgb {239 43 43} #norway red
+	color2 = "ck2_yellow"
+
+	colored_emblem = {
+		texture = "ce_viking_wolf_01.dds"
+		color1 = rgb {0 40 104} #norway blue
+		color2 = "ck2_white"
+	}
+}
+
+MAGNA_GERMANIA = {
+	pattern = "pattern_solid.tga"
+	color1 = "ck2_black"
+	color2 = "suebia_color"
+
+	colored_emblem = {
+		texture = "ce_celtic_02a.dds"
+		color1 = "suebia_color"
+	}
+}
+
+SCANDINAVIAN_TRIBAL_FLAG = {
+	pattern = "pattern_solid.tga"
+	color1 = rgb {0 51 153} #euro blue
+	color2 = "ck2_white"
+
+	colored_emblem = {
+		texture = "ce_halland_01.dds"
+		instance = { position = { 0.25 0.25 } scale = { 0.5 0.5 }  }
+		color1 = "ck2_white"
+		color2 = "ck2_white"
+	}
+	colored_emblem = {
+		texture = "ce_knot_01a.dds"
+		instance = { position = { 0.75 0.70 } scale = { 0.5 0.5 }  }
+		color1 = "ck2_white"
+	}
+	colored_emblem = {
+		texture = "ce_germanic_pattern_02.dds"
+		instance = { position = { 0.75 0.25 } scale = { 0.5 0.5 }  }
+		instance = { position = { 0.25 0.75 } scale = { 0.5 0.5 }  }
+		color1 = rgb {198 12 48} #denmark red
+		color2 = "ck2_white"
+	}
+}
+
+SCANDINAVIAN_FLAG = {
+	pattern = "pattern_icelandic_01.dds"
+	color1 = rgb {255 222 0} #kalmar yellow
+	color2 = "ck2_red"
+	color3 = "ck2_white"
+}

@@ -1,0 +1,333 @@
+gothia_develop = {
+    header = "mission_image_general"
+    icon = "general_1"
+
+    repeatable = no
+
+    chance = {}
+
+    potential = { 
+    	OR = {
+            owns_area = herulia_area
+            AND = {
+                owns_area = herulia_area
+                NOR = {
+                    owns = 6004 #Burgundarholm
+                    owns = 6009 #Eowia
+                }
+            }
+        }
+        
+    }
+
+    abort = {}
+
+    on_potential = {}
+
+    on_start = {}
+
+    on_abort = {}
+    gothia_develop_vang_city = {
+        icon = "task_political"
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                province_id = 6005 #Vang
+            }
+        }
+
+        allow = {
+            p:6005 = {
+                has_city_status = yes
+            }
+        }
+
+        on_start = {}
+
+        on_completion = {
+            p:6005 = {
+                set_trade_goods = gems
+            }
+        }
+    }
+
+    gothia_develop_vang_gemstone_2 = {
+        icon = "task_political"
+
+        requires = { gothia_develop_vang_city }
+
+        duration = 120
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                province_id = 6005 #Vang
+            }
+        }
+
+        allow = {
+            treasury >= 60
+        }
+
+        on_start = {}
+
+        on_completion = {
+            add_treasury = -60
+            p:6005 = {
+                add_province_modifier = {
+                    name = norse_mine_modifier
+                    duration = -1
+                }
+            }
+        }
+    }
+
+    gothia_develop_svimraros_food = {
+        icon = "task_political"
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                province_id = 6001 #Svimraros
+            }
+        }
+
+        allow = {
+            treasury >= 30
+        }
+
+        on_start = {}
+
+        on_completion = {
+            add_treasury = -30
+            p:6001 = {
+                add_province_modifier = {
+                    name = norse_light_food_supply_modifier
+                    duration = -1
+                }
+            }
+        }
+    }
+
+    gothia_develop_burgundarholm_food = {
+        icon = "task_political"
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                province_id = 6004 #Burgundarholm
+            }
+        }
+
+        allow = {
+            treasury >= 30
+        }
+
+        on_start = {}
+
+        on_completion = {
+            add_treasury = -30
+            p:6004 = {
+                add_province_modifier = {
+                    name = norse_light_food_supply_modifier
+                    duration = -1
+                }
+            }
+        }
+    }
+
+    gothia_develop_food_capacity = {
+        icon = "task_political"
+
+        requires = { 
+            gothia_develop_burgundarholm_food
+            gothia_develop_svimraros_food
+            gothia_develop_vang_city
+        }
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                province_id = 6005 #Vang
+                province_id = 6009 #Eowia
+                province_id = 6000 #Uppakra
+            }
+        }
+
+        allow = {
+            OR = {
+                p:6005 = {
+                    num_of_population_building >= 1
+                }
+                p:6009 = {
+                    num_of_population_building >= 1
+                }
+                p:6000 = {
+                    num_of_population_building >= 1
+                }
+            }
+        }
+
+        on_start = {}
+
+        on_completion = {
+            p:6000.state = {
+                add_state_modifier = {
+                    name = norse_food_capacity_modifier
+                    duration = -1
+                }
+            }
+        }
+    }
+
+    gothia_develop_wood = {
+        icon = "task_political"
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                province_id = 6014 #Finnaithae
+            }
+        }
+
+        allow = {
+            treasury >= 50
+        }
+
+        on_start = {}
+
+        on_completion = {
+            add_treasury = -50
+            p:6014 = { 
+                add_province_modifier = {
+                    name = norse_woodery_modifier
+                    duration = -1
+                }
+            }
+        }
+    }
+
+    gothia_develop_eowia_port = {
+        icon = "task_expansion"
+
+        requires = { 
+            gothia_develop_wood
+        }
+
+        bypass = {}
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                province_id = 6009 #Eowia
+            }
+        }
+
+        allow = {
+            p:6009 = {
+                has_city_status = yes
+            }
+            p:6009 = {
+                num_of_foundry_building >= 2
+            }
+        }
+
+        on_completion = {
+            p:6009 = { 
+                add_province_modifier = {
+                    name = norse_homeport_modifier
+                    duration = -1
+                }
+            }
+        }
+    }
+
+    gothia_develop_fleet = {
+        icon = "task_expansion"
+
+        requires = { 
+            gothia_develop_eowia_port 
+        }
+
+        duration = 365
+
+        bypass = {}
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                province_id = 6009 #Eowia
+            }
+        }
+
+        allow = {
+            treasury >= 150
+        }
+
+        on_completion = {
+            add_treasury = -150
+            add_country_modifier = {
+                name = norse_fleet_modifier
+                duration = -1
+            }
+            create_unit = {
+                location = p:6009
+                navy = yes
+                sub_unit = hexere
+                add_subunit = hexere
+                add_subunit = hexere
+                add_subunit = hexere
+                add_subunit = hexere
+                add_subunit = hexere
+                add_subunit = hexere
+                add_subunit = hexere
+                add_subunit = hexere
+                add_subunit = hexere
+            }
+        }
+    }
+
+    gothia_develop_city = {
+        icon = "task_political"
+
+        requires = {
+            gothia_develop_food_capacity
+            gothia_develop_eowia_port
+        }
+
+        final = yes
+
+        potential = {}
+
+        highlight = {
+            scope:province = {
+                is_in_area = herulia_area
+            }
+        }
+
+        allow = {}
+
+        on_start = {}
+
+        on_completion = {
+            p:6000.state = {
+                add_state_modifier = {
+                    name = "norse_prosperous_modifier"
+                    duration = -1
+                }
+            }
+            set_variable = {
+                name = developped_gothia 
+            }
+        }
+    }
+}

@@ -1,0 +1,111 @@
+country_decisions = {
+	
+	# Form Denmark
+	form_denmark = {
+		
+		potential = {
+			num_of_cities >= 1
+			OR = {
+				tag = AVO
+				country_culture = herulian
+				country_culture = cimbrian
+				country_culture = teutonian
+			}
+			NOT = {
+				tag = DEN
+			}
+			OR = {
+				is_ai = no
+				num_of_cities >= 12
+			}
+			NOR = {
+				is_endgame_tag_trigger = yes
+				is_tier_2_formable_trigger = yes
+				is_norse_tier_2_formable_trigger = yes
+				is_norse_endgame_tag_trigger = yes
+			}
+		}
+		
+		highlight = {
+			scope:province = {
+				OR = {
+					province_id = 3887 #Herulio Orientalis
+					province_id = 3876 #Teutonia Centralis
+					province_id = 3879 #Cimbria Borealis
+					province_id = 3871 #Eudosia Cimbricaris
+					province_id = 3864 #Avionia Maiores
+					province_id = 3881 #Anglia Insula
+				}
+			}
+		}
+		
+		allow = {
+			custom_tooltip = {
+				text = formable_not_brettonia_exists
+				NOT = {
+					any_country = {
+						tag = DEN
+					}
+				}
+			}
+			can_form_nation_trigger = yes
+			num_of_cities >= 8
+			owns = 3887 #Herulio Orientalis
+			owns = 3876 #Teutonia Centralis
+			owns = 3879 #Cimbria Borealis
+			owns = 3871 #Eudosia Cimbricaris
+			owns = 3864 #Avionia Maiores
+			owns = 3881 #Anglia Insula
+		}
+		
+		effect = {
+			custom_tooltip = "tier_2_formable_tooltip"
+			change_country_name = "DENMARK_NAME"
+			hidden_effect = {
+				change_country_adjective = "DENMARK_ADJECTIVE"
+				change_country_color =  "magna_graecia_color"
+				change_country_flag = DENMARK_FLAG
+				change_country_tag = DEN
+			}
+			if = {
+				limit = {
+					p:3887 = { is_capital = no }
+				}
+				set_capital = 3887
+				hidden_effect = {
+					p:3887.state = {
+						set_state_capital = 3887
+					}
+				}
+			}
+			capital_scope = {
+				establish_city_effect = yes
+				if = {
+					limit = {
+						root = {
+						is_tribal = yes
+						}
+					}
+					capital_formable_tribal_effect = yes
+					tribal_formable_government_change_effect = yes
+					}
+				else = {
+					capital_formable_medium_effect = yes
+					monarchy_formable_government_change_effect = yes
+					}
+			}
+			hidden_effect = {
+				area:candia_insula_area = { formable_area_province_effect = yes }
+				area:imbrica_superioris_area = { formable_area_province_effect = yes }
+				area:cimbrica_inferioris_area = { formable_area_province_effect = yes }
+			}
+			add_2_free_province_investments = yes
+		}
+		
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+} 
+
