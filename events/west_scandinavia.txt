@@ -1,0 +1,169 @@
+namespace = west_scandinavia
+
+	west_scandinavia.1 = {
+    	type = country_event
+    	title = west_scandinavia.1.t
+    	desc = west_scandinavia.1.desc
+    	picture = throneroom
+
+    	immediate = {}
+
+	    option = {      
+        	name = west_scandinavia.1.a
+        	trigger_event = {
+				id = federalise_scandinavia.2
+				days = 50
+			}
+			add_treasury = -30
+		}
+	}
+	
+	west_scandinavia.2 = {
+    	type = country_event
+    	title = west_scandinavia.2.t
+    	desc = west_scandinavia.2.desc
+    	picture = throneroom
+
+    	immediate = {}
+
+	    option = {      
+        	name = west_scandinavia.2.a
+        	trigger_event = {
+				id = federalise_scandinavia.3
+				days = 365
+			}
+			add_treasury = -50
+		}
+	}	
+
+	west_scandinavia.3 = {
+    	type = country_event
+    	title = west_scandinavia.3.t
+    	desc = west_scandinavia.3.desc
+    	picture = throneroom
+
+    	immediate = {}
+
+	    option = {      
+			name = west_scandinavia.3.a
+			set_variable = {
+                name = mapped_brittania
+			}
+			add_treasury = -20
+		}
+	}	
+
+	west_scandinavia.4 = {
+		type = country_event
+		title = west_scandinavia.4.t
+		desc = west_scandinavia.4.desc
+		picture = greek_city_market
+		
+		left_portrait = current_ruler
+	
+		trigger = {}
+	
+		immediate = {
+			p:2022 = {
+				save_scope_as = britain_capital_scope
+			}
+		}
+	
+		option = {      
+			name = west_scandinavia.4.a
+			if = {
+				limit = {
+					any_subject = {
+						is_ai = no
+						any_owned_province = {
+							OR = {
+								is_in_region = caledonia_region
+								is_in_region = britain_region
+							}
+						}		
+					}
+				}
+				custom_tooltip = west_scandinavia.4.a.tt_player
+			}
+			else = {
+				custom_tooltip = west_scandinavia.4.a.tt
+			}
+			current_ruler = {
+				add_popularity = popularity_medium
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						any_subject = {
+							is_ai = no
+							any_owned_province = {
+								OR = {
+									is_in_region = caledonia_region
+									is_in_region = britain_region
+								}
+	
+							}		
+						}
+					}
+					random_subject = {
+						limit = {
+							is_ai = no
+							any_owned_province = {
+								OR = {
+									is_in_region = caledonia_region
+									is_in_region = britain_region
+								}
+							}	
+						}
+						save_scope_as = britain_scope
+						current_ruler = { save_scope_as = britain_scope_ruler }
+						scope:britain_scope = {
+							change_country_name = "britain_NAME"
+							change_country_adjective = "britain_ADJECTIVE"
+							change_country_tag = BRN
+							change_country_flag = BRN_FLAG 
+							change_country_color = navy_blue
+							set_country_religion = germanic_religion
+							set_primary_culture = norse
+						}
+					}
+				}
+				else = {
+					scope:britain_capital_scope = {
+						create_country = {
+							name = {
+								name = "BARLARIA_NOVA_NAME"
+								adjective = "BARLARIA_NOVA_ADJECTIVE"
+							}
+							save_scope_as = britain_scope
+							change_country_tag = BRN
+							change_country_flag = BRN_FLAG 
+							change_country_color = navy_blue
+							set_primary_culture = norse
+							set_country_religion = germanic_religion
+							change_government = plutocratic_republic
+							add_treasury = 50.0
+						}
+					}
+				}
+				every_owned_province = {
+					limit = {
+						OR = {
+							is_in_region = caledonia_region
+							is_in_region = britain_region
+						}
+					}
+					set_conquered_by = scope:britain_scope
+				}
+				if = {
+					limit = {
+						NOT = { is_subject_of = root }
+					}
+					make_subject = { # Make Colony of Barlaria
+						target = scope:britain_scope
+						type = subject_colony
+					}
+				}
+			}
+		}
+	}

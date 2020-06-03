@@ -10,7 +10,7 @@ namespace = federalise_scandinavia
 
 	    option = {      
         	name = federalise_scandinavia.1.a
-        	add_stability = -25
+			add_stability = -25
         	change_government = despotic_monarchy
         	change_country_flag = SCANDINAVIAN_FLAG
 			switch_government_type_event_clearup_effect = yes
