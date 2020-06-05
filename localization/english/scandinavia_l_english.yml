@@ -89,6 +89,12 @@
  scandinavia_unite_sweden_united:0 "Rule over all Scandinavia"
 
  #General Scandinavian localization
+ norse:0 "Norse"
+ norse_malename:1 "$NAME_MALE$ $REGNALNUMBER$ $FAMILY_MALE$ $NICKNAME$"
+ norse_femalename:1 "$NAME_FEMALE$ $REGNALNUMBER$ $FAMILY_MALE$ $NICKNAME$"
+ aenglisc:0 "Ænglisc"
+ aenglisc_malename:1 "$NAME_MALE$ $REGNALNUMBER$ $FAMILY_MALE$ $NICKNAME$"
+ aenglisc_femalename:1 "$NAME_FEMALE$ $REGNALNUMBER$ $FAMILY_MALE$ $NICKNAME$"
  nordic_capital_modifier:0 "Nordic capital"
  formed_scandinavia_tt:0 "You must have formed Scatinavia"
  nordic_grand_capital_modifier:0 "Grand Nordic capital"

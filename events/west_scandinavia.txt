@@ -11,7 +11,7 @@ namespace = west_scandinavia
 	    option = {      
         	name = west_scandinavia.1.a
         	trigger_event = {
-				id = federalise_scandinavia.2
+				id = west_scandinavia.2
 				days = 50
 			}
 			add_treasury = -30
@@ -29,7 +29,7 @@ namespace = west_scandinavia
 	    option = {      
         	name = west_scandinavia.2.a
         	trigger_event = {
-				id = federalise_scandinavia.3
+				id = west_scandinavia.3
 				days = 365
 			}
 			add_treasury = -50
@@ -64,7 +64,7 @@ namespace = west_scandinavia
 		trigger = {}
 	
 		immediate = {
-			p:2022 = {
+			p:2032 = {
 				save_scope_as = britain_capital_scope
 			}
 		}
@@ -88,6 +88,7 @@ namespace = west_scandinavia
 			else = {
 				custom_tooltip = west_scandinavia.4.a.tt
 			}
+			area:cantiacia_area = { add_provincial_claim_effect = yes }
 			current_ruler = {
 				add_popularity = popularity_medium
 			}
@@ -125,6 +126,8 @@ namespace = west_scandinavia
 							change_country_color = navy_blue
 							set_country_religion = germanic_religion
 							set_primary_culture = norse
+							change_government = plutocratic_republic
+							area:cantiacia_area = { add_provincial_claim_effect = yes }
 						}
 					}
 				}
@@ -132,8 +135,8 @@ namespace = west_scandinavia
 					scope:britain_capital_scope = {
 						create_country = {
 							name = {
-								name = "BARLARIA_NOVA_NAME"
-								adjective = "BARLARIA_NOVA_ADJECTIVE"
+								name = "britain_NAME"
+								adjective = "britain_ADJECTIVE"
 							}
 							save_scope_as = britain_scope
 							change_country_tag = BRN
@@ -142,6 +145,7 @@ namespace = west_scandinavia
 							set_primary_culture = norse
 							set_country_religion = germanic_religion
 							change_government = plutocratic_republic
+							area:cantiacia_area = { add_provincial_claim_effect = yes }
 							add_treasury = 50.0
 						}
 					}
@@ -153,7 +157,7 @@ namespace = west_scandinavia
 							is_in_region = britain_region
 						}
 					}
-					set_conquered_by = scope:britain_scope
+					set_owned_by = scope:britain_scope
 				}
 				if = {
 					limit = {

@@ -1,0 +1,323 @@
+britannia = {
+    header = "mission_image_general"
+    icon = "general_1"
+
+    repeatable = no
+
+    chance = {}
+
+    potential = { 
+		tag = SKA
+    }
+
+    abort = {}
+
+    on_potential = {
+		trigger_event = {
+			id = west_scandinavia.1
+			days = 30
+		}
+	}
+
+    on_start = {}
+
+    on_abort = {}
+	
+	britannia_landing = {
+        icon = "task_expansion"
+
+        duration = 120
+
+        bypass = {
+			owns_or_subject_owns_area = icenia_area
+		}
+
+        potential = {}
+
+        allow = {}
+
+        on_completion = {
+        	area:icenia_area = { add_provincial_claim_effect = yes }
+        }
+	}
+	
+	britannia_bribe = {
+        icon = "task_expansion"
+
+		duration = 30
+		
+		requires = {
+			britannia_landing
+		}
+
+        bypass = {
+			owns_or_subject_owns = 2031
+		}
+
+        potential = {}
+
+        allow = {
+			treasury >= 120
+		}
+
+        on_completion = {
+			add_treasury = -120
+        	p:2031 = {
+				set_owned_by = ROOT
+			}
+        }
+	}
+	
+	britannia_supply = {
+        icon = "task_expansion"
+
+		duration = 50
+		
+		requires = {
+			britannia_landing
+		}
+
+		scope:province = {
+			province_id = 2031
+		}
+
+        bypass = {}
+
+        potential = {}
+
+        allow = {
+			treasury >= 20
+			owns_or_subject_owns = 2031
+		}
+
+        on_completion = {
+			add_treasury = -20
+        	p:2031 = {
+                add_province_modifier = {
+                    name = norse_supply_port_modifier
+                    duration = -1
+                }
+            }
+        }
+	}
+
+	britannia_governance = {
+        icon = "task_expansion"
+		
+		requires = {
+			britannia_supply
+		}
+
+		highlight = {
+			scope:province = {
+				is_in_area = icenia_area
+			}
+		}
+
+        bypass = {}
+
+        potential = {}
+
+        allow = {
+			owns_or_subject_owns_area = icenia_area
+		}
+
+        on_completion = {
+        	trigger_event = {
+				id = west_scandinavia.4
+				days = 0
+			}
+        }
+	}
+
+	britannia_midlands = {
+        icon = "task_expansion"
+		
+		requires = {
+			britannia_governance
+		}
+
+		highlight = {
+			scope:province = {
+				is_in_area = cantiacia_area
+			}
+		}
+
+        bypass = {}
+
+        potential = {}
+
+        allow = {
+			owns_or_subject_owns_area = cantiacia_area
+		}
+
+        on_completion = {
+			area:dobunnia_area = { add_provincial_claim_effect = yes }
+			area:durotrigia_area = { add_provincial_claim_effect = yes }
+        }
+	}
+
+	britannia_west = {
+        icon = "task_expansion"
+		
+		requires = {
+			britannia_midlands
+		}
+
+		highlight = {
+			scope:province = {
+				is_in_area = dobunnia_area
+				is_in_area = durotrigia_area
+			}
+		}
+
+        bypass = {}
+
+        potential = {}
+
+        allow = {
+			owns_or_subject_owns_area = dobunnia_area
+			owns_or_subject_owns_area = durotrigia_area
+		}
+
+        on_completion = {
+			area:coritania_area = { add_provincial_claim_effect = yes }
+			area:cornovia_area = { add_provincial_claim_effect = yes }
+			area:brigantria_area = { add_provincial_claim_effect = yes }
+        }
+	}
+
+	britannia_north = {
+        icon = "task_expansion"
+		
+		requires = {
+			britannia_midlands
+		}
+
+		highlight = {
+			scope:province = {
+				is_in_area = dobunnia_area
+				is_in_area = durotrigia_area
+			}
+		}
+
+        bypass = {}
+
+        potential = {}
+
+        allow = {
+			owns_or_subject_owns_area = dobunnia_area
+			owns_or_subject_owns_area = durotrigia_area
+		}
+
+        on_completion = {
+			area:britannia_secunda_septentrionalis_area = { add_provincial_claim_effect = yes }
+			area:britannia_secunda_meridionalis_area = { add_provincial_claim_effect = yes }
+        }
+	}
+
+	britannia_south = {
+        icon = "task_expansion"
+		
+		requires = {
+			britannia_midlands
+		}
+
+		highlight = {
+			scope:province = {
+				is_in_area = dobunnia_area
+				is_in_area = durotrigia_area
+			}
+		}
+
+        bypass = {}
+
+        potential = {}
+
+        allow = {
+			owns_or_subject_owns_area = dobunnia_area
+			owns_or_subject_owns_area = durotrigia_area
+		}
+
+        on_completion = {
+			area:dumnonia_area = { add_provincial_claim_effect = yes }
+        }
+	}
+
+	britannia_pacify = {
+        icon = "task_expansion"
+		
+		requires = {
+			britannia_south
+			britannia_north
+			britannia_west
+		}
+
+		highlight = {
+			scope:province = {
+				is_in_area = dumnonia_area
+				is_in_area = britannia_secunda_septentrionalis_area
+				is_in_area = britannia_secunda_meridionalis_area
+				is_in_area = coritania_area
+				is_in_area = cornovia_area
+			}
+		}
+
+
+        bypass = {}
+
+        potential = {}
+
+		duration = 365
+
+        allow = {
+			owns_or_subject_owns_area = dumnonia_area
+			owns_or_subject_owns_area = britannia_secunda_septentrionalis_area
+			owns_or_subject_owns_area = britannia_secunda_meridionalis_area
+			owns_or_subject_owns_area = coritania_area
+			owns_or_subject_owns_area = cornovia_area
+		}
+
+		on_start = {
+			trigger_event = {
+				id = britannia.1
+				days = 5
+			}
+		}
+
+        on_completion = {}
+	}
+
+
+	britannia_empire = {
+        icon = "task_expansion"
+		
+		requires = {
+			britannia_pacify
+		}
+
+		bypass = {}
+		
+		final = yes
+
+        potential = {}
+
+        allow = {}
+
+        on_completion = {
+			if = {
+				limit = {
+					is_monarchy = yes
+					NOR = {
+						government = imperium
+						government = imperial_cult
+					}
+				}
+				change_government = imperium
+			}
+			else = {
+				change_government = athenian_republic
+			}
+        }
+	}
+}

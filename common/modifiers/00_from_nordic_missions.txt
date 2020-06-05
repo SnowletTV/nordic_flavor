@@ -173,3 +173,11 @@ norse_supply_port_modifier = {
 	local_commerce_modifier = 0.15
 	supply_limit = 12
 }
+
+norse_rogue_state_modifier = {
+	diplomatic_reputation = -66
+	global_monthly_state_loyalty = 0.25
+	governor_loyalty = 30
+	max_loyalty = 20
+	general_loyalty = 35
+}
