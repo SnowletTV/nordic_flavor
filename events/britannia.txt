@@ -61,14 +61,8 @@ namespace = britannia
     	picture = throneroom
 
     	immediate = {
-			scope:britain_scope = {
-				trigger_event = {
-					id = britannia.4
-					days = 35
-				}
-			}
 			trigger_event = {
-				id = britannia.6
+				id = britannia.4
 				days = 35
 			}	
 		}
@@ -77,19 +71,6 @@ namespace = britannia
 			name = britannia.3.a
 		}
 	}
-
-	britannia.6 = {
-    	type = country_event
-    	title = britannia.3.t
-    	desc = britannia.3.desc
-    	picture = throneroom
-
-    	immediate = {
-		}
-
-	    option = {      	
-		}
-	}	
 
 	britannia.4 = {
 		type = country_event
@@ -111,11 +92,65 @@ namespace = britannia
 			p:2077 = {
 				save_scope_as = northumbria_capital_scope
 			}
+			p:2032 = {
+				save_scope_as = britain_capital_scope
+			}
+			p:3887 = {
+				save_scope_as = scandinavia_capital_scope
+			}
 		}
 	
 		option = {      
-			name = britannia.4.a
+			name = britannia.4.a #Staying at home
 			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						fort_level >= 1
+						AND = {
+							OR = {
+								is_in_region = britain_region
+								is_in_region = caledonia_region
+							}
+							NOT = {
+								is_in_area = icenia_area
+							}
+						}
+					}
+					save_scope_as = brit_restore_fort_scope
+					remove_building_level = fortress_building
+				}
+				scope:britain_capital_scope = {
+					create_country = {
+						name = {
+							name = "britain_NAME"
+							adjective = "britain_ADJECTIVE"
+						}
+						save_scope_as = britain_scope
+						change_country_tag = BRN
+						change_country_flag = BRN_FLAG 
+						change_country_color = navy_blue
+						set_primary_culture = norse
+						set_country_religion = germanic_religion
+						change_government = plutocratic_republic
+						region:britain_region = { formable_region_province_effect = yes }
+						add_treasury = 50.0
+					}
+				}
+				every_owned_province = {
+					limit = {
+						is_in_area = icenia_area
+					}
+					set_owned_by = scope:britain_scope
+				}
+				if = {
+					limit = {
+						NOT = { is_subject_of = root }
+					}
+					make_subject = { # Make Colony
+						target = scope:britain_scope
+						type = subject_colony
+					}
+				}
 				scope:wales_capital_scope = {
 					create_country = {
 						name = {
@@ -133,10 +168,6 @@ namespace = britannia
 						add_country_modifier = {
 							name = norse_rogue_state_modifier
 							duration = -1
-						}
-						trigger_event = {
-							id = britannia.7
-							days = 7
 						}
 						create_unit = {
 							sub_unit = light_infantry
@@ -241,7 +272,7 @@ namespace = britannia
 						}
 						trigger_event = {
 							id = britannia.7
-							days = 3
+							days = 4
 						}
 						declare_war_with_wargoal = {
 							war_goal = conquer_wargoal
@@ -267,38 +298,954 @@ namespace = britannia
 					}
 					set_owned_by = scope:northumbria_scope
 				}
+				scope:wales_scope = {
+					trigger_event = {
+						id = britannia.7
+						days = 3
+					}
+				}
+			}
+		}
+
+		option = {      
+			name = britannia.4.b #Become Britain
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						fort_level >= 1
+						AND = {
+							OR = {
+								is_in_region = britain_region
+								is_in_region = caledonia_region
+							}
+							NOT = {
+								is_in_area = icenia_area
+							}
+						}
+					}
+					save_scope_as = brit_restore_fort_scope
+					remove_building_level = fortress_building
+				}
+				every_unit = { destroy_unit = yes}
+				set_capital = 2035
+				change_country_tag = BRN
+				change_country_name = "britain_NAME"
+				change_country_adjective = "britain_ADJECTIVE"
+				change_country_flag = BRN_FLAG 
+				change_country_color = navy_blue
+				set_primary_culture = norse
+				set_country_religion = germanic_religion
+				change_government = plutocratic_republic
+				add_treasury = 50.0
+				scope:wales_capital_scope = {
+					create_country = {
+						name = {
+							name = "WALES_NAME"
+							adjective = "WALES_ADJECTIVE"
+						}
+						save_scope_as = wales_scope
+						change_country_tag = WAL
+						change_country_flag = WAL_FLAG 
+						change_country_color = navy_blue
+						set_primary_culture = norse
+						set_country_religion = germanic_religion
+						change_government = stratocratic_monarchy
+						add_treasury = 50.0
+						add_country_modifier = {
+							name = norse_rogue_state_modifier
+							duration = -1
+						}
+						create_unit = {
+							sub_unit = light_infantry
+							hidden_effect = {
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+								add_subunit = light_cavalry
+								add_subunit = light_cavalry
+								add_subunit = heavy_cavalry
+								add_subunit = heavy_cavalry
+							}
+						}
+						region:britain_region = { formable_region_province_effect = yes }
+					}
+				}
+				every_owned_province = {
+					limit = {
+						OR = {
+							is_in_area = britannia_secunda_septentrionalis_area
+							is_in_area = britannia_secunda_meridionalis_area
+							is_in_area = cornovia_area
+							is_in_area = dobunnia_area
+						}
+					}
+					set_owned_by = scope:wales_scope
+				}
+				scope:wessex_capital_scope = {
+					create_country = {
+						name = {
+							name = "WESSEX_NAME"
+							adjective = "WESSEX_ADJECTIVE"
+						}
+						save_scope_as = wessex_scope
+						change_country_tag = WSX
+						change_country_flag = WSX_FLAG 
+						change_country_color = navy_blue
+						set_primary_culture = norse
+						set_country_religion = germanic_religion
+						change_government = democratic_republic
+						add_treasury = 50.0
+						add_country_modifier = {
+							name = norse_rogue_state_modifier
+							duration = -1
+						}
+						declare_war_with_wargoal = {
+							war_goal = conquer_wargoal
+							province = 2003
+							target = scope:wales_scope
+						}
+						trigger_event = {
+							id = britannia.7
+							days = 5
+						}
+						create_unit = {
+							sub_unit = light_infantry
+							hidden_effect = {
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+							}
+						}
+						region:britain_region = { formable_region_province_effect = yes }
+					}
+				}
+				every_owned_province = {
+					limit = {
+						OR = {
+							is_in_area = cantiacia_area
+							is_in_area = durotrigia_area
+							is_in_area = dumnonia_area
+						}
+					}
+					set_owned_by = scope:wessex_scope
+				}
+				scope:northumbria_capital_scope = {
+					create_country = {
+						name = {
+							name = "NORTHUMBRIA_NAME"
+							adjective = "NORTHUMBRIA_ADJECTIVE"
+						}
+						save_scope_as = northumbria_scope
+						change_country_tag = ENG
+						change_country_flag = ENG_FLAG 
+						change_country_color = navy_blue
+						set_primary_culture = britannic
+						set_country_religion = druidism
+						change_government = despotic_monarchy
+						add_treasury = 50.0
+						add_country_modifier = {
+							name = norse_rogue_state_modifier
+							duration = -1
+						}
+						create_unit = {
+							sub_unit = light_infantry
+							hidden_effect = {
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+							}
+						}
+						trigger_event = {
+							id = britannia.7
+							days = 4
+						}
+						declare_war_with_wargoal = {
+							war_goal = conquer_wargoal
+							province = 2102
+							target = scope:wales_scope
+						}
+						declare_war_with_wargoal = {
+							war_goal = conquer_wargoal
+							province = 2003
+							target = scope:wessex_scope
+						}
+						region:britain_region = { formable_region_province_effect = yes }
+					}
+				}
+				every_owned_province = {
+					limit = {
+						OR = {
+							is_in_area = brigantia_area
+							is_in_area = coritania_area
+							is_in_area = caledonia_meridionalis_area
+							is_in_area = caledonia_septentrionalis_area
+						}
+					}
+					set_owned_by = scope:northumbria_scope
+				}
+				scope:wales_scope = {
+					trigger_event = {
+						id = britannia.7
+						days = 3
+					}
+				}
+				p:3887 = {
+					create_country = {
+						name = {
+							name = "SCANDINAVIA_NAME"
+							adjective = "SCANDINAVIA_ADJECTIVE"
+						}
+						save_scope_as = scandi_scope
+						change_country_tag = SKA
+						change_country_flag = SCANDINAVIAN_FLAG
+						change_country_color = pan_hellenic_blue
+						set_primary_culture = norse
+						set_country_religion = germanic_religion
+						change_government = plutocratic_republic
+						region:britain_region = { formable_region_province_effect = yes }
+						add_treasury = 50.0
+					}
+				}
+				every_owned_province = {
+					limit = {
+						NOT = {
+							is_in_area = icenia_area
+						}		
+					}
+					set_owned_by = scope:scandi_scope
+				}
+				if = {
+					limit = {
+						NOT = { is_subject_of = scandi_scope }
+					}
+					make_subject = { # Make Colony
+						target = root
+						type = subject_colony
+					}
+				}
+				region:britain_region = { formable_region_province_effect = yes }
+			}
+		}
+
+		option = {      
+			name = britannia.4.c #Become Wessex
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						fort_level >= 1
+						AND = {
+							OR = {
+								is_in_region = britain_region
+								is_in_region = caledonia_region
+							}
+							NOT = {
+								is_in_area = icenia_area
+							}
+						}
+					}
+					save_scope_as = brit_restore_fort_scope
+					remove_building_level = fortress_building
+				}
+				set_capital = 2003
+				every_unit = { destroy_unit = yes}
+				change_country_name = "WESSEX_NAME"
+				change_country_adjective = "WESSEX_ADJECTIVE"
+				save_scope_as = wessex_scope
+				change_country_tag = WSX
+				change_country_flag = WSX_FLAG 
+				change_country_color = navy_blue
+				set_primary_culture = norse
+				set_country_religion = germanic_religion
+				change_government = democratic_republic
+				add_treasury = 50.0
+				add_country_modifier = {
+					name = norse_rogue_state_modifier
+					duration = -1
+				}
+				trigger_event = {
+					id = britannia.7
+					days = 5
+				}
+				create_unit = {
+					sub_unit = light_infantry
+					hidden_effect = {
+						add_subunit = light_infantry
+						add_subunit = light_infantry
+						add_subunit = light_infantry
+					}
+				}
+				region:britain_region = { formable_region_province_effect = yes }
+				scope:wales_capital_scope = {
+					create_country = {
+						name = {
+							name = "WALES_NAME"
+							adjective = "WALES_ADJECTIVE"
+						}
+						save_scope_as = wales_scope
+						change_country_tag = WAL
+						change_country_flag = WAL_FLAG 
+						change_country_color = navy_blue
+						set_primary_culture = norse
+						set_country_religion = germanic_religion
+						change_government = stratocratic_monarchy
+						add_treasury = 50.0
+						add_country_modifier = {
+							name = norse_rogue_state_modifier
+							duration = -1
+						}
+						create_unit = {
+							sub_unit = light_infantry
+							hidden_effect = {
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+								add_subunit = light_cavalry
+								add_subunit = light_cavalry
+								add_subunit = heavy_cavalry
+								add_subunit = heavy_cavalry
+							}
+						}
+						region:britain_region = { formable_region_province_effect = yes }
+					}
+				}
+				every_owned_province = {
+					limit = {
+						OR = {
+							is_in_area = britannia_secunda_septentrionalis_area
+							is_in_area = britannia_secunda_meridionalis_area
+							is_in_area = cornovia_area
+							is_in_area = dobunnia_area
+						}
+					}
+					set_owned_by = scope:wales_scope
+				}
+				scope:northumbria_capital_scope = {
+					create_country = {
+						name = {
+							name = "NORTHUMBRIA_NAME"
+							adjective = "NORTHUMBRIA_ADJECTIVE"
+						}
+						save_scope_as = northumbria_scope
+						change_country_tag = ENG
+						change_country_flag = ENG_FLAG 
+						change_country_color = navy_blue
+						set_primary_culture = britannic
+						set_country_religion = druidism
+						change_government = despotic_monarchy
+						add_treasury = 50.0
+						add_country_modifier = {
+							name = norse_rogue_state_modifier
+							duration = -1
+						}
+						create_unit = {
+							sub_unit = light_infantry
+							hidden_effect = {
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+							}
+						}
+						trigger_event = {
+							id = britannia.7
+							days = 4
+						}
+						declare_war_with_wargoal = {
+							war_goal = conquer_wargoal
+							province = 2102
+							target = scope:wales_scope
+						}
+						declare_war_with_wargoal = {
+							war_goal = conquer_wargoal
+							province = 2003
+							target = scope:wessex_scope
+						}
+						region:britain_region = { formable_region_province_effect = yes }
+					}
+				}
+				every_owned_province = {
+					limit = {
+						OR = {
+							is_in_area = brigantia_area
+							is_in_area = coritania_area
+							is_in_area = caledonia_meridionalis_area
+							is_in_area = caledonia_septentrionalis_area
+						}
+					}
+					set_owned_by = scope:northumbria_scope
+				}
+				scope:wales_scope = {
+					trigger_event = {
+						id = britannia.7
+						days = 3
+					}
+				}
+				p:3887 = {
+					create_country = {
+						name = {
+							name = "SCANDINAVIA_NAME"
+							adjective = "SCANDINAVIA_ADJECTIVE"
+						}
+						save_scope_as = scandi_scope
+						change_country_tag = SKA
+						change_country_flag = SCANDINAVIAN_FLAG
+						change_country_color = pan_hellenic_blue
+						set_primary_culture = norse
+						set_country_religion = germanic_religion
+						change_government = plutocratic_republic
+						region:britain_region = { formable_region_province_effect = yes }
+						add_treasury = 50.0
+					}
+				}
+				every_owned_province = {
+					limit = {
+						NOT = {
+							is_in_area = cantiacia_area
+							is_in_area = durotrigia_area
+							is_in_area = dumnonia_area
+							is_in_area = icenia_area
+						}		
+					}
+					set_owned_by = scope:scandi_scope
+				}
+				scope:britain_capital_scope = {
+					create_country = {
+						name = {
+							name = "britain_NAME"
+							adjective = "britain_ADJECTIVE"
+						}
+						save_scope_as = britain_scope
+						change_country_tag = BRN
+						change_country_flag = BRN_FLAG 
+						change_country_color = navy_blue
+						set_primary_culture = norse
+						set_country_religion = germanic_religion
+						change_government = plutocratic_republic
+						region:britain_region = { formable_region_province_effect = yes }
+						add_treasury = 50.0
+					}
+				}
+				every_owned_province = {
+					limit = {
+						is_in_area = icenia_area
+					}
+					set_owned_by = scope:britain_scope
+				}
+				if = {
+					limit = {
+						NOT = { is_subject_of = scandi_scope }
+					}
+					scope:scandi_scope = {
+						make_subject = { # Make Colony
+						target = scope:britain_scope
+						type = subject_colony
+						}
+					}	
+				}
+				declare_war_with_wargoal = {
+					war_goal = conquer_wargoal
+					province = 2003
+					target = scope:wales_scope
+				}
+				region:britain_region = { formable_region_province_effect = yes }
+			}
+		}
+
+		option = {      
+			name = britannia.4.d #Become Wales
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						fort_level >= 1
+						AND = {
+							OR = {
+								is_in_region = britain_region
+								is_in_region = caledonia_region
+							}
+							NOT = {
+								is_in_area = icenia_area
+							}
+						}
+					}
+					save_scope_as = brit_restore_fort_scope
+					remove_building_level = fortress_building
+				}
+				set_capital = 2003
+				every_unit = { destroy_unit = yes}
+				change_country_name = "WALES_NAME"
+				change_country_adjective = "WALES_ADJECTIVE"
+				save_scope_as = wales_scope
+				change_country_tag = WAL
+				change_country_flag = WAL_FLAG 
+				change_country_color = navy_blue
+				set_primary_culture = norse
+				set_country_religion = germanic_religion
+				change_government = stratocratic_monarchy
+				add_treasury = 50.0
+				add_country_modifier = {
+					name = norse_rogue_state_modifier
+					duration = -1
+				}
+				create_unit = {
+					sub_unit = light_infantry
+					hidden_effect = {
+						add_subunit = light_infantry
+						add_subunit = light_infantry
+						add_subunit = light_infantry
+						add_subunit = light_infantry
+						add_subunit = light_cavalry
+						add_subunit = light_cavalry
+						add_subunit = heavy_cavalry
+						add_subunit = heavy_cavalry
+					}
+				}
+				trigger_event = {
+					id = britannia.7
+					days = 5
+				}
+				region:britain_region = { formable_region_province_effect = yes }
+				scope:wessex_capital_scope = {
+					create_country = {
+						name = {
+							name = "WESSEX_NAME"
+							adjective = "WESSEX_ADJECTIVE"
+						}
+						save_scope_as = wessex_scope
+						change_country_tag = WSX
+						change_country_flag = WSX_FLAG 
+						change_country_color = navy_blue
+						set_primary_culture = norse
+						set_country_religion = germanic_religion
+						change_government = democratic_republic
+						add_treasury = 50.0
+						add_country_modifier = {
+							name = norse_rogue_state_modifier
+							duration = -1
+						}
+						trigger_event = {
+							id = britannia.7
+							days = 5
+						}
+						create_unit = {
+							sub_unit = light_infantry
+							hidden_effect = {
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+							}
+						}
+						declare_war_with_wargoal = {
+							war_goal = conquer_wargoal
+							province = 2003
+							target = scope:wales_scope
+						}
+						region:britain_region = { formable_region_province_effect = yes }
+					}
+				}
+				every_owned_province = {
+					limit = {
+						OR = {
+							is_in_area = cantiacia_area
+							is_in_area = durotrigia_area
+							is_in_area = dumnonia_area
+						}
+					}
+					set_owned_by = scope:wessex_scope
+				}
+				scope:northumbria_capital_scope = {
+					create_country = {
+						name = {
+							name = "NORTHUMBRIA_NAME"
+							adjective = "NORTHUMBRIA_ADJECTIVE"
+						}
+						save_scope_as = northumbria_scope
+						change_country_tag = ENG
+						change_country_flag = ENG_FLAG 
+						change_country_color = navy_blue
+						set_primary_culture = britannic
+						set_country_religion = druidism
+						change_government = despotic_monarchy
+						add_treasury = 50.0
+						add_country_modifier = {
+							name = norse_rogue_state_modifier
+							duration = -1
+						}
+						create_unit = {
+							sub_unit = light_infantry
+							hidden_effect = {
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+							}
+						}
+						trigger_event = {
+							id = britannia.7
+							days = 4
+						}
+						declare_war_with_wargoal = {
+							war_goal = conquer_wargoal
+							province = 2102
+							target = scope:wales_scope
+						}
+						declare_war_with_wargoal = {
+							war_goal = conquer_wargoal
+							province = 2003
+							target = scope:wessex_scope
+						}
+						region:britain_region = { formable_region_province_effect = yes }
+					}
+				}
+				every_owned_province = {
+					limit = {
+						OR = {
+							is_in_area = brigantia_area
+							is_in_area = coritania_area
+							is_in_area = caledonia_meridionalis_area
+							is_in_area = caledonia_septentrionalis_area
+						}
+					}
+					set_owned_by = scope:northumbria_scope
+				}
+				p:3887 = {
+					create_country = {
+						name = {
+							name = "SCANDINAVIA_NAME"
+							adjective = "SCANDINAVIA_ADJECTIVE"
+						}
+						save_scope_as = scandi_scope
+						change_country_tag = SKA
+						change_country_flag = SCANDINAVIAN_FLAG
+						change_country_color = pan_hellenic_blue
+						set_primary_culture = norse
+						set_country_religion = germanic_religion
+						change_government = plutocratic_republic
+						region:britain_region = { formable_region_province_effect = yes }
+						add_treasury = 50.0
+					}
+				}
+				every_owned_province = {
+					limit = {
+						NOT = {
+							is_in_area = britannia_secunda_septentrionalis_area
+							is_in_area = britannia_secunda_meridionalis_area
+							is_in_area = cornovia_area
+							is_in_area = dobunnia_area
+							is_in_area = icenia_area
+						}		
+					}
+					set_owned_by = scope:scandi_scope
+				}
+				scope:britain_capital_scope = {
+					create_country = {
+						name = {
+							name = "britain_NAME"
+							adjective = "britain_ADJECTIVE"
+						}
+						save_scope_as = britain_scope
+						change_country_tag = BRN
+						change_country_flag = BRN_FLAG 
+						change_country_color = navy_blue
+						set_primary_culture = norse
+						set_country_religion = germanic_religion
+						change_government = plutocratic_republic
+						region:britain_region = { formable_region_province_effect = yes }
+						add_treasury = 50.0
+					}
+				}
+				every_owned_province = {
+					limit = {
+						is_in_area = icenia_area
+					}
+					set_owned_by = scope:britain_scope
+				}
+				if = {
+					limit = {
+						NOT = { is_subject_of = scandi_scope }
+					}
+					scope:scandi_scope = {
+						make_subject = { # Make Colony
+						target = scope:britain_scope
+						type = subject_colony
+						}
+					}	
+				}
+				region:britain_region = { formable_region_province_effect = yes }
+			}
+		}
+
+		option = {      
+			name = britannia.4.e #Become Northumbria
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						fort_level >= 1
+						AND = {
+							OR = {
+								is_in_region = britain_region
+								is_in_region = caledonia_region
+							}
+							NOT = {
+								is_in_area = icenia_area
+							}
+						}
+					}
+					save_scope_as = brit_restore_fort_scope
+					remove_building_level = fortress_building
+				}
+				set_capital = 2003
+				every_unit = { destroy_unit = yes}
+				change_country_name = "WALES_NAME"
+				change_country_adjective = "WALES_ADJECTIVE"
+				save_scope_as = northumbria_scope
+				change_country_tag = ENG
+				change_country_flag = ENG_FLAG 
+				change_country_color = navy_blue
+				set_primary_culture = britannic
+				set_country_religion = druidism
+				change_government = despotic_monarchy
+				add_treasury = 50.0
+				add_country_modifier = {
+					name = norse_rogue_state_modifier
+					duration = -1
+				}
+				create_unit = {
+					sub_unit = light_infantry
+					hidden_effect = {
+						add_subunit = light_infantry
+						add_subunit = light_infantry
+						add_subunit = light_infantry
+					}
+				}
+				trigger_event = {
+					id = britannia.7
+					days = 4
+				}
+				declare_war_with_wargoal = {
+					war_goal = conquer_wargoal
+					province = 2102
+					target = scope:wales_scope
+				}
+				declare_war_with_wargoal = {
+					war_goal = conquer_wargoal
+					province = 2003
+					target = scope:wessex_scope
+				}
+				region:britain_region = { formable_region_province_effect = yes }
+				scope:wessex_capital_scope = {
+					create_country = {
+						name = {
+							name = "WESSEX_NAME"
+							adjective = "WESSEX_ADJECTIVE"
+						}
+						save_scope_as = wessex_scope
+						change_country_tag = WSX
+						change_country_flag = WSX_FLAG 
+						change_country_color = navy_blue
+						set_primary_culture = norse
+						set_country_religion = germanic_religion
+						change_government = democratic_republic
+						add_treasury = 50.0
+						add_country_modifier = {
+							name = norse_rogue_state_modifier
+							duration = -1
+						}
+						declare_war_with_wargoal = {
+							war_goal = conquer_wargoal
+							province = 2003
+							target = scope:wales_scope
+						}
+						trigger_event = {
+							id = britannia.7
+							days = 5
+						}
+						create_unit = {
+							sub_unit = light_infantry
+							hidden_effect = {
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+							}
+						}
+						region:britain_region = { formable_region_province_effect = yes }
+					}
+				}
+				every_owned_province = {
+					limit = {
+						OR = {
+							is_in_area = cantiacia_area
+							is_in_area = durotrigia_area
+							is_in_area = dumnonia_area
+						}
+					}
+					set_owned_by = scope:wessex_scope
+				}
+				scope:wales_capital_scope = {
+					create_country = {
+						name = {
+							name = "WALES_NAME"
+							adjective = "WALES_ADJECTIVE"
+						}
+						save_scope_as = wales_scope
+						change_country_tag = WAL
+						change_country_flag = WAL_FLAG 
+						change_country_color = navy_blue
+						set_primary_culture = norse
+						set_country_religion = germanic_religion
+						change_government = stratocratic_monarchy
+						add_treasury = 50.0
+						add_country_modifier = {
+							name = norse_rogue_state_modifier
+							duration = -1
+						}
+						create_unit = {
+							sub_unit = light_infantry
+							hidden_effect = {
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+								add_subunit = light_infantry
+								add_subunit = light_cavalry
+								add_subunit = light_cavalry
+								add_subunit = heavy_cavalry
+								add_subunit = heavy_cavalry
+							}
+						}
+						region:britain_region = { formable_region_province_effect = yes }
+					}
+				}
+				every_owned_province = {
+					limit = {
+						OR = {
+							is_in_area = britannia_secunda_septentrionalis_area
+							is_in_area = britannia_secunda_meridionalis_area
+							is_in_area = cornovia_area
+							is_in_area = dobunnia_area
+						}
+					}
+					set_owned_by = scope:wales_scope
+				}
+				scope:wales_scope = {
+					trigger_event = {
+						id = britannia.7
+						days = 3
+					}
+				}
+				p:3887 = {
+					create_country = {
+						name = {
+							name = "SCANDINAVIA_NAME"
+							adjective = "SCANDINAVIA_ADJECTIVE"
+						}
+						save_scope_as = scandi_scope
+						change_country_tag = SKA
+						change_country_flag = SCANDINAVIAN_FLAG
+						change_country_color = pan_hellenic_blue
+						set_primary_culture = norse
+						set_country_religion = germanic_religion
+						change_government = plutocratic_republic
+						region:britain_region = { formable_region_province_effect = yes }
+						add_treasury = 50.0
+					}
+				}
+				every_owned_province = {
+					limit = {
+						NOT = {
+							is_in_area = brigantia_area
+							is_in_area = coritania_area
+							is_in_area = caledonia_meridionalis_area
+							is_in_area = caledonia_septentrionalis_area
+							is_in_area = icenia_area
+						}		
+					}
+					set_owned_by = scope:scandi_scope
+				}
+				scope:britain_capital_scope = {
+					create_country = {
+						name = {
+							name = "britain_NAME"
+							adjective = "britain_ADJECTIVE"
+						}
+						save_scope_as = britain_scope
+						change_country_tag = BRN
+						change_country_flag = BRN_FLAG 
+						change_country_color = navy_blue
+						set_primary_culture = norse
+						set_country_religion = germanic_religion
+						change_government = plutocratic_republic
+						region:britain_region = { formable_region_province_effect = yes }
+						add_treasury = 50.0
+					}
+				}
+				every_owned_province = {
+					limit = {
+						is_in_area = icenia_area
+					}
+					set_owned_by = scope:britain_scope
+				}
+				if = {
+					limit = {
+						NOT = { is_subject_of = scandi_scope }
+					}
+					scope:scandi_scope = {
+						make_subject = { # Make Colony
+						target = scope:britain_scope
+						type = subject_colony
+						}
+					}	
+				}
+				declare_war_with_wargoal = {
+					war_goal = conquer_wargoal
+					province = 2102
+					target = scope:wales_scope
+				}
+				declare_war_with_wargoal = {
+					war_goal = conquer_wargoal
+					province = 2003
+					target = scope:wessex_scope
+				}
+				region:britain_region = { formable_region_province_effect = yes }
 			}
 		}
 	}
 
 	britannia.7 = {
     	type = country_event
-    	title = britannia.3.t
-    	desc = britannia.3.desc
+    	title = britannia.7.t
+    	desc = britannia.7.desc
 		picture = throneroom
 		hidden = yes
 
-		trigger = {
-			OR = {
-				AND = {
-					exists = scope:northumbria_scope
-					exists = scope:wessex_scope
-				}
-				AND = {
-					exists = scope:northumbria_scope
-					exists = scope:wales_scope
-				}
-				AND = {
-					exists = scope:wessex_scope
-					exists = scope:wales_scope
-				}
-			}	
-		}
+		trigger = {}
 
     	immediate = {
-			trigger_event = {
-				id = britannia.7
-				days = 1
+			if = {
+				limit = { 
+					OR = {
+						AND = {
+							exists = scope:northumbria_scope
+							exists = scope:wessex_scope
+						}
+						AND = {
+							exists = scope:northumbria_scope
+							exists = scope:wales_scope
+						}
+						AND = {
+							exists = scope:wessex_scope
+							exists = scope:wales_scope
+						}
+					}
+				}
+				trigger_event = {
+					id = britannia.7
+					days = 1
+				}
+			}
+			else = {
+				trigger_event = {
+					id = britannia.8
+					days = 1
+				}
 			}
 		}
 
@@ -355,28 +1302,80 @@ namespace = britannia
 						exists = scope:northumbria_scope
 					}
 					scope:northumbria_scope = {
-						declare_war_with_wargoal = {
-							war_goal = conquer_wargoal
-							province = 2003
-							target = scope:wessex_scope
+						if = {
+							limit = {
+								exists = scope:wessex_scope
+							}
+							declare_war_with_wargoal = {
+								war_goal = conquer_wargoal
+								province = 2003
+								target = scope:wessex_scope
+							}
+							add_stability = -100
+							add_war_exhaustion = -1
+							add_aggressive_expansion = -25
+							add_stability = 50
 						}
-						declare_war_with_wargoal = {
-							war_goal = conquer_wargoal
-							province = 2102
-							target = scope:wales_scope
+						else = {
+							declare_war_with_wargoal = {
+								war_goal = conquer_wargoal
+								province = 2102
+								target = scope:wales_scope
+							}
+							add_stability = -100
+							add_war_exhaustion = -1
+							add_aggressive_expansion = -25
+							add_stability = 50
 						}
 					}
 				}
 				else = {
 					scope:wessex_scope = {
+						add_stability = -100
 						declare_war_with_wargoal = {
 							war_goal = conquer_wargoal
 							province = 2102
 							target = scope:wales_scope
 						}
+						add_stability = 50
+						add_aggressive_expansion = -25
+						add_war_exhaustion = -1
 					}
 				}
 			}
 		}    
+	}
+
+	britannia.8 = {
+    	type = country_event
+		title = britannia.8.t
+		if = {
+			limit = {
+				tag = ENG
+			}
+			desc = britannia.8.desc.northumbria
+		}
+		if = {
+			limit = {
+				tag = WAL
+			}
+			desc = britannia.8.desc.wales
+		}
+		if = {
+			limit = {
+				tag = WSX
+			}
+			desc = britannia.8.desc.wessex
+		}
+    	picture = throneroom
+
+    	immediate = {
+			remove_country_modifier = norse_rogue_state_modifier
+			scope:brit_restore_fort_scope = {
+				add_building_level = fortress_building
+			}	 
+		}
+
+	    option = {}
 	}
 	

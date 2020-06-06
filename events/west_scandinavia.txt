@@ -64,9 +64,7 @@ namespace = west_scandinavia
 		trigger = {}
 	
 		immediate = {
-			p:2032 = {
-				save_scope_as = britain_capital_scope
-			}
+			
 		}
 	
 		option = {      

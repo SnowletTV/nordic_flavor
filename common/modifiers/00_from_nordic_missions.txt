@@ -175,9 +175,11 @@ norse_supply_port_modifier = {
 }
 
 norse_rogue_state_modifier = {
-	diplomatic_reputation = -66
+	diplomatic_reputation = -999
 	global_monthly_state_loyalty = 0.25
 	governor_loyalty = 30
 	max_loyalty = 20
 	general_loyalty = 35
+	civil_war_threshold = 0.25
+	rebellion_threshold = 0.25
 }
