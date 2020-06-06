@@ -25,6 +25,7 @@ namespace = federalise_scandinavia
         	add_stability = -25
         	change_government = democratic_republic
         	change_country_flag = SCANDINAVIAN_FLAG
+			set_primary_culture = norse
 			switch_government_type_event_clearup_effect = yes
 			add_country_modifier = {
         		name = norse_rebellion_modifier

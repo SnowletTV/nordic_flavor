@@ -45,7 +45,7 @@ namespace = britannia
     	immediate = {
 			trigger_event = {
 				id = britannia.5
-				days = 35
+				days = 60
 			}
 		}
 
@@ -53,29 +53,11 @@ namespace = britannia
 			name = britannia.3.a
 		}
 	}
-	
+
 	britannia.5 = {
-    	type = country_event
-    	title = britannia.3.t
-    	desc = britannia.3.desc
-    	picture = throneroom
-
-    	immediate = {
-			trigger_event = {
-				id = britannia.4
-				days = 35
-			}	
-		}
-
-	    option = {      
-			name = britannia.3.a
-		}
-	}
-
-	britannia.4 = {
 		type = country_event
-		title = britannia.4.t
-		desc = britannia.4.desc
+		title = britannia.5.t
+		desc = britannia.5.desc
 		picture = greek_city_market
 		
 		left_portrait = current_ruler
@@ -101,7 +83,7 @@ namespace = britannia
 		}
 	
 		option = {      
-			name = britannia.4.a #Staying at home
+			name = britannia.5.a #Staying at home
 			hidden_effect = {
 				every_owned_province = {
 					limit = {
@@ -129,11 +111,11 @@ namespace = britannia
 						change_country_tag = BRN
 						change_country_flag = BRN_FLAG 
 						change_country_color = navy_blue
-						set_primary_culture = norse
+						set_primary_culture = aenglisc
 						set_country_religion = germanic_religion
 						change_government = plutocratic_republic
 						region:britain_region = { formable_region_province_effect = yes }
-						add_treasury = 50.0
+						add_treasury = 100
 					}
 				}
 				every_owned_province = {
@@ -160,11 +142,11 @@ namespace = britannia
 						save_scope_as = wales_scope
 						change_country_tag = WAL
 						change_country_flag = WAL_FLAG 
-						change_country_color = navy_blue
-						set_primary_culture = norse
+						change_country_color = roman_red
+						set_primary_culture = aenglisc
 						set_country_religion = germanic_religion
 						change_government = stratocratic_monarchy
-						add_treasury = 50.0
+						add_treasury = 100
 						add_country_modifier = {
 							name = norse_rogue_state_modifier
 							duration = -1
@@ -205,11 +187,11 @@ namespace = britannia
 						save_scope_as = wessex_scope
 						change_country_tag = WSX
 						change_country_flag = WSX_FLAG 
-						change_country_color = navy_blue
-						set_primary_culture = norse
+						change_country_color = etruscan_blue
+						set_primary_culture = aenglisc
 						set_country_religion = germanic_religion
 						change_government = democratic_republic
-						add_treasury = 50.0
+						add_treasury = 100
 						add_country_modifier = {
 							name = norse_rogue_state_modifier
 							duration = -1
@@ -253,11 +235,11 @@ namespace = britannia
 						save_scope_as = northumbria_scope
 						change_country_tag = ENG
 						change_country_flag = ENG_FLAG 
-						change_country_color = navy_blue
+						change_country_color = dark_green
 						set_primary_culture = britannic
 						set_country_religion = druidism
 						change_government = despotic_monarchy
-						add_treasury = 50.0
+						add_treasury = 100
 						add_country_modifier = {
 							name = norse_rogue_state_modifier
 							duration = -1
@@ -308,7 +290,7 @@ namespace = britannia
 		}
 
 		option = {      
-			name = britannia.4.b #Become Britain
+			name = britannia.5.b #Become Britain
 			hidden_effect = {
 				every_owned_province = {
 					limit = {
@@ -333,10 +315,10 @@ namespace = britannia
 				change_country_adjective = "britain_ADJECTIVE"
 				change_country_flag = BRN_FLAG 
 				change_country_color = navy_blue
-				set_primary_culture = norse
+				set_primary_culture = aenglisc
 				set_country_religion = germanic_religion
 				change_government = plutocratic_republic
-				add_treasury = 50.0
+				add_treasury = 100
 				scope:wales_capital_scope = {
 					create_country = {
 						name = {
@@ -346,11 +328,11 @@ namespace = britannia
 						save_scope_as = wales_scope
 						change_country_tag = WAL
 						change_country_flag = WAL_FLAG 
-						change_country_color = navy_blue
-						set_primary_culture = norse
+						change_country_color = roman_red
+						set_primary_culture = aenglisc
 						set_country_religion = germanic_religion
 						change_government = stratocratic_monarchy
-						add_treasury = 50.0
+						add_treasury = 100
 						add_country_modifier = {
 							name = norse_rogue_state_modifier
 							duration = -1
@@ -391,11 +373,11 @@ namespace = britannia
 						save_scope_as = wessex_scope
 						change_country_tag = WSX
 						change_country_flag = WSX_FLAG 
-						change_country_color = navy_blue
-						set_primary_culture = norse
+						change_country_color = etruscan_blue
+						set_primary_culture = aenglisc
 						set_country_religion = germanic_religion
 						change_government = democratic_republic
-						add_treasury = 50.0
+						add_treasury = 100
 						add_country_modifier = {
 							name = norse_rogue_state_modifier
 							duration = -1
@@ -439,11 +421,11 @@ namespace = britannia
 						save_scope_as = northumbria_scope
 						change_country_tag = ENG
 						change_country_flag = ENG_FLAG 
-						change_country_color = navy_blue
+						change_country_color = dark_green
 						set_primary_culture = britannic
 						set_country_religion = druidism
 						change_government = despotic_monarchy
-						add_treasury = 50.0
+						add_treasury = 100
 						add_country_modifier = {
 							name = norse_rogue_state_modifier
 							duration = -1
@@ -504,7 +486,7 @@ namespace = britannia
 						set_country_religion = germanic_religion
 						change_government = plutocratic_republic
 						region:britain_region = { formable_region_province_effect = yes }
-						add_treasury = 50.0
+						add_treasury = 100
 					}
 				}
 				every_owned_province = {
@@ -515,10 +497,7 @@ namespace = britannia
 					}
 					set_owned_by = scope:scandi_scope
 				}
-				if = {
-					limit = {
-						NOT = { is_subject_of = scandi_scope }
-					}
+				scope:scandi_scope = {
 					make_subject = { # Make Colony
 						target = root
 						type = subject_colony
@@ -529,7 +508,7 @@ namespace = britannia
 		}
 
 		option = {      
-			name = britannia.4.c #Become Wessex
+			name = britannia.5.c #Become Wessex
 			hidden_effect = {
 				every_owned_province = {
 					limit = {
@@ -554,18 +533,14 @@ namespace = britannia
 				save_scope_as = wessex_scope
 				change_country_tag = WSX
 				change_country_flag = WSX_FLAG 
-				change_country_color = navy_blue
-				set_primary_culture = norse
+				change_country_color = etruscan_blue
+				set_primary_culture = aenglisc
 				set_country_religion = germanic_religion
 				change_government = democratic_republic
-				add_treasury = 50.0
+				add_treasury = 100
 				add_country_modifier = {
 					name = norse_rogue_state_modifier
 					duration = -1
-				}
-				trigger_event = {
-					id = britannia.7
-					days = 5
 				}
 				create_unit = {
 					sub_unit = light_infantry
@@ -585,11 +560,11 @@ namespace = britannia
 						save_scope_as = wales_scope
 						change_country_tag = WAL
 						change_country_flag = WAL_FLAG 
-						change_country_color = navy_blue
-						set_primary_culture = norse
+						change_country_color = roman_red
+						set_primary_culture = aenglisc
 						set_country_religion = germanic_religion
 						change_government = stratocratic_monarchy
-						add_treasury = 50.0
+						add_treasury = 100
 						add_country_modifier = {
 							name = norse_rogue_state_modifier
 							duration = -1
@@ -630,11 +605,11 @@ namespace = britannia
 						save_scope_as = northumbria_scope
 						change_country_tag = ENG
 						change_country_flag = ENG_FLAG 
-						change_country_color = navy_blue
+						change_country_color = dark_green
 						set_primary_culture = britannic
 						set_country_religion = druidism
 						change_government = despotic_monarchy
-						add_treasury = 50.0
+						add_treasury = 100
 						add_country_modifier = {
 							name = norse_rogue_state_modifier
 							duration = -1
@@ -695,7 +670,7 @@ namespace = britannia
 						set_country_religion = germanic_religion
 						change_government = plutocratic_republic
 						region:britain_region = { formable_region_province_effect = yes }
-						add_treasury = 50.0
+						add_treasury = 100
 					}
 				}
 				every_owned_province = {
@@ -719,11 +694,11 @@ namespace = britannia
 						change_country_tag = BRN
 						change_country_flag = BRN_FLAG 
 						change_country_color = navy_blue
-						set_primary_culture = norse
+						set_primary_culture = aenglisc
 						set_country_religion = germanic_religion
 						change_government = plutocratic_republic
 						region:britain_region = { formable_region_province_effect = yes }
-						add_treasury = 50.0
+						add_treasury = 100
 					}
 				}
 				every_owned_province = {
@@ -748,12 +723,16 @@ namespace = britannia
 					province = 2003
 					target = scope:wales_scope
 				}
+				trigger_event = {
+					id = britannia.7
+					days = 5
+				}
 				region:britain_region = { formable_region_province_effect = yes }
 			}
 		}
 
 		option = {      
-			name = britannia.4.d #Become Wales
+			name = britannia.5.d #Become Wales
 			hidden_effect = {
 				every_owned_province = {
 					limit = {
@@ -778,11 +757,11 @@ namespace = britannia
 				save_scope_as = wales_scope
 				change_country_tag = WAL
 				change_country_flag = WAL_FLAG 
-				change_country_color = navy_blue
-				set_primary_culture = norse
+				change_country_color = roman_red
+				set_primary_culture = aenglisc
 				set_country_religion = germanic_religion
 				change_government = stratocratic_monarchy
-				add_treasury = 50.0
+				add_treasury = 100
 				add_country_modifier = {
 					name = norse_rogue_state_modifier
 					duration = -1
@@ -800,10 +779,6 @@ namespace = britannia
 						add_subunit = heavy_cavalry
 					}
 				}
-				trigger_event = {
-					id = britannia.7
-					days = 5
-				}
 				region:britain_region = { formable_region_province_effect = yes }
 				scope:wessex_capital_scope = {
 					create_country = {
@@ -814,11 +789,11 @@ namespace = britannia
 						save_scope_as = wessex_scope
 						change_country_tag = WSX
 						change_country_flag = WSX_FLAG 
-						change_country_color = navy_blue
-						set_primary_culture = norse
+						change_country_color = etruscan_blue
+						set_primary_culture = aenglisc
 						set_country_religion = germanic_religion
 						change_government = democratic_republic
-						add_treasury = 50.0
+						add_treasury = 100
 						add_country_modifier = {
 							name = norse_rogue_state_modifier
 							duration = -1
@@ -862,11 +837,11 @@ namespace = britannia
 						save_scope_as = northumbria_scope
 						change_country_tag = ENG
 						change_country_flag = ENG_FLAG 
-						change_country_color = navy_blue
+						change_country_color = dark_green
 						set_primary_culture = britannic
 						set_country_religion = druidism
 						change_government = despotic_monarchy
-						add_treasury = 50.0
+						add_treasury = 100
 						add_country_modifier = {
 							name = norse_rogue_state_modifier
 							duration = -1
@@ -921,7 +896,7 @@ namespace = britannia
 						set_country_religion = germanic_religion
 						change_government = plutocratic_republic
 						region:britain_region = { formable_region_province_effect = yes }
-						add_treasury = 50.0
+						add_treasury = 100
 					}
 				}
 				every_owned_province = {
@@ -946,11 +921,11 @@ namespace = britannia
 						change_country_tag = BRN
 						change_country_flag = BRN_FLAG 
 						change_country_color = navy_blue
-						set_primary_culture = norse
+						set_primary_culture = aenglisc
 						set_country_religion = germanic_religion
 						change_government = plutocratic_republic
 						region:britain_region = { formable_region_province_effect = yes }
-						add_treasury = 50.0
+						add_treasury = 100
 					}
 				}
 				every_owned_province = {
@@ -970,12 +945,16 @@ namespace = britannia
 						}
 					}	
 				}
+				trigger_event = {
+					id = britannia.7
+					days = 5
+				}
 				region:britain_region = { formable_region_province_effect = yes }
 			}
 		}
 
 		option = {      
-			name = britannia.4.e #Become Northumbria
+			name = britannia.5.e #Become Northumbria
 			hidden_effect = {
 				every_owned_province = {
 					limit = {
@@ -1000,11 +979,11 @@ namespace = britannia
 				save_scope_as = northumbria_scope
 				change_country_tag = ENG
 				change_country_flag = ENG_FLAG 
-				change_country_color = navy_blue
+				change_country_color = dark_green
 				set_primary_culture = britannic
 				set_country_religion = druidism
 				change_government = despotic_monarchy
-				add_treasury = 50.0
+				add_treasury = 100
 				add_country_modifier = {
 					name = norse_rogue_state_modifier
 					duration = -1
@@ -1016,10 +995,6 @@ namespace = britannia
 						add_subunit = light_infantry
 						add_subunit = light_infantry
 					}
-				}
-				trigger_event = {
-					id = britannia.7
-					days = 4
 				}
 				declare_war_with_wargoal = {
 					war_goal = conquer_wargoal
@@ -1042,10 +1017,10 @@ namespace = britannia
 						change_country_tag = WSX
 						change_country_flag = WSX_FLAG 
 						change_country_color = navy_blue
-						set_primary_culture = norse
+						set_primary_culture = aenglisc
 						set_country_religion = germanic_religion
 						change_government = democratic_republic
-						add_treasury = 50.0
+						add_treasury = 100
 						add_country_modifier = {
 							name = norse_rogue_state_modifier
 							duration = -1
@@ -1089,11 +1064,11 @@ namespace = britannia
 						save_scope_as = wales_scope
 						change_country_tag = WAL
 						change_country_flag = WAL_FLAG 
-						change_country_color = navy_blue
-						set_primary_culture = norse
+						change_country_color = roman_red
+						set_primary_culture = aenglisc
 						set_country_religion = germanic_religion
 						change_government = stratocratic_monarchy
-						add_treasury = 50.0
+						add_treasury = 100
 						add_country_modifier = {
 							name = norse_rogue_state_modifier
 							duration = -1
@@ -1145,7 +1120,7 @@ namespace = britannia
 						set_country_religion = germanic_religion
 						change_government = plutocratic_republic
 						region:britain_region = { formable_region_province_effect = yes }
-						add_treasury = 50.0
+						add_treasury = 100
 					}
 				}
 				every_owned_province = {
@@ -1170,11 +1145,11 @@ namespace = britannia
 						change_country_tag = BRN
 						change_country_flag = BRN_FLAG 
 						change_country_color = navy_blue
-						set_primary_culture = norse
+						set_primary_culture = aenglisc
 						set_country_religion = germanic_religion
 						change_government = plutocratic_republic
 						region:britain_region = { formable_region_province_effect = yes }
-						add_treasury = 50.0
+						add_treasury = 100
 					}
 				}
 				every_owned_province = {
@@ -1203,6 +1178,10 @@ namespace = britannia
 					war_goal = conquer_wargoal
 					province = 2003
 					target = scope:wessex_scope
+				}
+				trigger_event = {
+					id = britannia.7
+					days = 5
 				}
 				region:britain_region = { formable_region_province_effect = yes }
 			}

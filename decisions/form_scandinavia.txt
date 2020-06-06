@@ -90,6 +90,10 @@ country_decisions = {
 				change_country_color =  "pan_hellenic_blue"
 				change_country_flag = SCANDINAVIAN_TRIBAL_FLAG
 				change_country_tag = SKA
+				trigger_event = {
+					id = west_scandinavia.1
+					days = 30
+				}
 			}
 			if = {
 				limit = {

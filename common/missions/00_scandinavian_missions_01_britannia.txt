@@ -7,17 +7,12 @@ britannia = {
     chance = {}
 
     potential = { 
-		tag = SKA
+		has_variable = mapped_brittania
     }
 
     abort = {}
 
-    on_potential = {
-		trigger_event = {
-			id = west_scandinavia.1
-			days = 30
-		}
-	}
+    on_potential = {}
 
     on_start = {}
 
@@ -25,8 +20,6 @@ britannia = {
 	
 	britannia_landing = {
         icon = "task_expansion"
-
-        duration = 120
 
         bypass = {
 			owns_or_subject_owns_area = icenia_area
@@ -101,40 +94,11 @@ britannia = {
         }
 	}
 
-	britannia_governance = {
-        icon = "task_expansion"
-		
-		requires = {
-			britannia_supply
-		}
-
-		highlight = {
-			scope:province = {
-				is_in_area = icenia_area
-			}
-		}
-
-        bypass = {}
-
-        potential = {}
-
-        allow = {
-			owns_or_subject_owns_area = icenia_area
-		}
-
-        on_completion = {
-        	trigger_event = {
-				id = west_scandinavia.4
-				days = 0
-			}
-        }
-	}
-
 	britannia_midlands = {
         icon = "task_expansion"
 		
 		requires = {
-			britannia_governance
+			britannia_supply
 		}
 
 		highlight = {
@@ -157,7 +121,7 @@ britannia = {
         }
 	}
 
-	britannia_west = {
+	britannia_north = {
         icon = "task_expansion"
 		
 		requires = {
@@ -166,8 +130,10 @@ britannia = {
 
 		highlight = {
 			scope:province = {
-				is_in_area = dobunnia_area
-				is_in_area = durotrigia_area
+				OR = {
+					is_in_area = dobunnia_area
+					is_in_area = durotrigia_area
+				}	
 			}
 		}
 
@@ -183,11 +149,11 @@ britannia = {
         on_completion = {
 			area:coritania_area = { add_provincial_claim_effect = yes }
 			area:cornovia_area = { add_provincial_claim_effect = yes }
-			area:brigantria_area = { add_provincial_claim_effect = yes }
+			area:brigantia_area = { add_provincial_claim_effect = yes }
         }
 	}
 
-	britannia_north = {
+	britannia_west = {
         icon = "task_expansion"
 		
 		requires = {
@@ -196,8 +162,10 @@ britannia = {
 
 		highlight = {
 			scope:province = {
-				is_in_area = dobunnia_area
-				is_in_area = durotrigia_area
+				OR = {
+					is_in_area = dobunnia_area
+					is_in_area = durotrigia_area
+				}
 			}
 		}
 
@@ -225,8 +193,10 @@ britannia = {
 
 		highlight = {
 			scope:province = {
-				is_in_area = dobunnia_area
-				is_in_area = durotrigia_area
+				OR = {
+					is_in_area = dobunnia_area
+					is_in_area = durotrigia_area
+				}
 			}
 		}
 
@@ -255,11 +225,18 @@ britannia = {
 
 		highlight = {
 			scope:province = {
-				is_in_area = dumnonia_area
-				is_in_area = britannia_secunda_septentrionalis_area
-				is_in_area = britannia_secunda_meridionalis_area
-				is_in_area = coritania_area
-				is_in_area = cornovia_area
+				OR = {
+					is_in_area = dumnonia_area
+					is_in_area = britannia_secunda_septentrionalis_area
+					is_in_area = britannia_secunda_meridionalis_area
+					is_in_area = coritania_area
+					is_in_area = cornovia_area
+					is_in_area = dobunnia_area
+					is_in_area = durotrigia_area
+					is_in_area = icenia_area
+					is_in_area = cantiacia_area
+					is_in_area = brigantia_area
+				}			
 			}
 		}
 
@@ -276,12 +253,17 @@ britannia = {
 			owns_or_subject_owns_area = britannia_secunda_meridionalis_area
 			owns_or_subject_owns_area = coritania_area
 			owns_or_subject_owns_area = cornovia_area
+			owns_or_subject_owns_area = dobunnia_area
+			owns_or_subject_owns_area = durotrigia_area
+			owns_or_subject_owns_area = icenia_area
+			owns_or_subject_owns_area = cantiacia_area
+			owns_or_subject_owns_area = brigantia_area
 		}
 
 		on_start = {
 			trigger_event = {
 				id = britannia.1
-				days = 5
+				days = 100
 			}
 		}
 
