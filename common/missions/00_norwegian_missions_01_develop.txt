@@ -36,13 +36,13 @@ norway_develop = {
         }
 
         allow = {
-        	treasury >= 50
+        	treasury >= 40
         }
 
         on_start = {}
 
         on_completion = {
-        	add_treasury = -50
+        	add_treasury = -40
             p:6042 = {
                 set_trade_goods = stone
             }
@@ -54,7 +54,7 @@ norway_develop = {
 
         requires = { norway_develop_enuxia_stone }
 
-        duration = 120
+        duration = 60
 
         potential = {}
 
@@ -65,13 +65,13 @@ norway_develop = {
         }
 
         allow = {
-            treasury >= 60
+            treasury >= 40
         }
 
         on_start = {}
 
         on_completion = {
-            add_treasury = -60
+            add_treasury = -40
             p:6042 = {
                 add_province_modifier = {
                     name = norse_mine_modifier
@@ -125,7 +125,11 @@ norway_develop = {
 
         bypass = {}
 
-        potential = {}
+        potential = {
+            NOT = {
+                has_variable = norse_fleet_built
+            }
+        }
 
         highlight = {
             scope:province = {
@@ -143,6 +147,9 @@ norway_develop = {
                 name = norse_fleet_modifier
                 duration = -1
             }
+            set_variable = {
+                name = norse_fleet_built
+            }
             create_unit = {
                 location = p:6038
                 navy = yes
@@ -156,6 +163,14 @@ norway_develop = {
                 add_subunit = hexere
                 add_subunit = hexere
                 add_subunit = hexere
+            }
+            create_unit = {
+                location = p:6038
+                navy = yes
+                sub_unit = mega_galley
+                add_subunit = mega_galley
+                add_subunit = mega_galley
+                add_subunit = mega_galley
             }
         }
     }
@@ -182,6 +197,19 @@ norway_develop = {
             p:6043 = {
                 set_trade_goods = wood
             }
+            p:6038 = {
+                if = {
+					limit = {
+						has_city_status = no
+					}
+					show_as_tooltip = {
+						set_city_status = city
+					}
+					trigger_event = {
+						id = state_improvement.6
+					}
+				}
+            }
         }
     }
 
@@ -197,13 +225,13 @@ norway_develop = {
         }
 
         allow = {
-            treasury >= 50
+            treasury >= 40
         }
 
         on_start = {}
 
         on_completion = {
-            add_treasury = -50
+            add_treasury = -40
             p:6040 = {
                 add_province_modifier = {
                     name = norse_food_supply_modifier
@@ -266,13 +294,13 @@ norway_develop = {
         }
 
         allow = {
-            treasury >= 50
+            treasury >= 40
         }
 
         on_start = {}
 
         on_completion = {
-            add_treasury = -50
+            add_treasury = -40
             p:6037 = {
                 set_trade_goods = glass
             }
@@ -295,14 +323,14 @@ norway_develop = {
         }
 
         allow = {
-            treasury >= 100
+            treasury >= 50
             p:6034 = {
                 fort_level >= 1
             }
         } 
 
         on_completion = { 
-            add_treasury = -100
+            add_treasury = -50
             p:6034 = {
                 add_province_modifier = {
                     name = norse_fortification_modifier

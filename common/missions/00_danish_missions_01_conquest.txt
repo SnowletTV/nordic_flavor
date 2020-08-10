@@ -21,16 +21,16 @@ scandinavia_unite_denmark = {
     scandinavia_unite_denmark_preparation = {
         icon = "task_political"
 
-        duration = 120
+        duration = 60
 
         potential = {}
 
         allow = {
-        	treasury >= 75
+        	treasury >= 40
         }
 
         on_start = {
-        	add_treasury = -75
+        	add_treasury = -40
         }
 
         on_completion = {
@@ -56,14 +56,14 @@ scandinavia_unite_denmark = {
 		}
 
         allow = {
-        	treasury >= 100
+        	treasury >= 50
 			p:6003 = {
 				fort_level >= 1
 			}
 		}
 
 		on_completion = { 
-        	add_treasury = -100
+        	add_treasury = -50
         	p:6003 = {
 				add_province_modifier = {
 					name = gotar_strait_fortification_modifier
@@ -76,7 +76,7 @@ scandinavia_unite_denmark = {
     scandinavia_unite_denmark_south_pacify = {
         icon = "task_political"
 
-        duration = 120
+        duration = 60
 
         requires = { scandinavia_unite_denmark_preparation } 
 
@@ -111,7 +111,7 @@ scandinavia_unite_denmark = {
         	area:herulia_area = {
 				ordered_area_province = {
 					order_by = total_population
-					max = 1
+					max = 3
 					if = {
 						limit = {
 							any_pops_in_province = {
@@ -128,7 +128,7 @@ scandinavia_unite_denmark = {
 								}								
 							}
 							order_by = pop_hapiness
-							max = 14
+							max = 8
 							check_range_bounds = no
 							hidden_effect = {
 								set_pop_culture = prev.owner.culture
@@ -154,7 +154,7 @@ scandinavia_unite_denmark = {
         	scandinavia_unite_denmark_straits_fortify
         } 
 
-        duration = 120
+        duration = 60
 
         potential = {}
 
@@ -175,7 +175,7 @@ scandinavia_unite_denmark = {
         	scandinavia_unite_denmark_east_pacify
         }
 
-        duration = 120
+        duration = 60
 
         bypass = {
 			owns = 6010 #Vineta
@@ -188,11 +188,11 @@ scandinavia_unite_denmark = {
         }
 
         allow = {
-        	treasury >= 80
+        	treasury >= 40
         }
 
         on_start = {
-        	treasury = -80
+        	treasury = -40
         }
 
         on_completion = { 
@@ -235,7 +235,7 @@ scandinavia_unite_denmark = {
         	area:west_gothia_area = {
 				ordered_area_province = {
 					order_by = total_population
-					max = 1
+					max = 3
 					if = {
 						limit = {
 							any_pops_in_province = {
@@ -252,7 +252,7 @@ scandinavia_unite_denmark = {
 								}								
 							}
 							order_by = pop_hapiness
-							max = 14
+							max = 8
 							check_range_bounds = no
 							hidden_effect = {
 								set_pop_culture = prev.owner.culture
@@ -275,7 +275,7 @@ scandinavia_unite_denmark = {
 
         requires = { scandinavia_unite_denmark_west_pacify }
 
-        duration = 120
+        duration = 60
 
         bypass = {
 			owns = 6027 #Tivedia
@@ -339,7 +339,7 @@ scandinavia_unite_denmark = {
         	area:east_gothia_area = {
 				ordered_area_province = {
 					order_by = total_population
-					max = 1
+					max = 3
 					if = {
 						limit = {
 							any_pops_in_province = {
@@ -356,7 +356,7 @@ scandinavia_unite_denmark = {
 								}								
 							}
 							order_by = pop_hapiness
-							max = 14
+							max = 8
 							check_range_bounds = no
 							hidden_effect = {
 								set_pop_culture = prev.owner.culture
@@ -382,7 +382,7 @@ scandinavia_unite_denmark = {
         	scandinavia_unite_denmark_east_pacify
         } 
 
-        duration = 120
+        duration = 60
 
         potential = {}
 
@@ -403,7 +403,7 @@ scandinavia_unite_denmark = {
 
         requires = { scandinavia_unite_denmark_west_pacify } 
 
-        duration = 120
+        duration = 30
 
         potential = {}
 
@@ -414,7 +414,7 @@ scandinavia_unite_denmark = {
         on_completion = {
         	add_country_modifier = {
         		name = norwegian_army_modifier
-        		duration = -1
+        		duration = 18250
         	}
         	area:ultima_thule_area = { add_provincial_claim_effect = yes }
         }
@@ -443,7 +443,7 @@ scandinavia_unite_denmark = {
         	area:ultima_thule_area = {
 				ordered_area_province = {
 					order_by = total_population
-					max = 1
+					max = 3
 					if = {
 						limit = {
 							any_pops_in_province = {
@@ -460,7 +460,7 @@ scandinavia_unite_denmark = {
 								}								
 							}
 							order_by = pop_hapiness
-							max = 14
+							max = 8
 							check_range_bounds = no
 							hidden_effect = {
 								set_pop_culture = prev.owner.culture

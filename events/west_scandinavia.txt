@@ -32,7 +32,7 @@ namespace = west_scandinavia
 				id = west_scandinavia.3
 				days = 365
 			}
-			add_treasury = -50
+			add_treasury = -40
 		}
 	}	
 

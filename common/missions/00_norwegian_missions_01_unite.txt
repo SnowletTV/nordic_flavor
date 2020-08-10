@@ -27,16 +27,16 @@ norway_unite = {
     norway_unite_preparation = {
         icon = "task_political"
 
-        duration = 365
+        duration = 120
 
         potential = {}
 
         allow = {
-        	treasury >= 75
+        	treasury >= 60
         }
 
         on_start = {
-        	add_treasury = -75
+        	add_treasury = -60
         }
 
         on_completion = {
@@ -52,7 +52,7 @@ norway_unite = {
 
         requires = { norway_unite_preparation }
 
-        duration = 120
+        duration = 60
 
         bypass = {
         	owns = 6038 #Lingum
@@ -68,7 +68,7 @@ norway_unite = {
         allow = {}
 
         on_completion = {
-        		area:ultima_thule_area = { add_provincial_claim_effect = yes }
+        	area:ultima_thule_area = { add_provincial_claim_effect = yes }
         }
     }
 
@@ -123,14 +123,12 @@ norway_unite = {
 		}
 
         allow = {
-        	treasury >= 100
 			p:6038 = {
 				fort_level >= 1
 			}
 		} 
 
         on_completion = { 
-        	add_treasury = -100
         	p:6038 = {
 				add_province_modifier = {
 					name = norwegian_capital_fortification_modifier
@@ -145,7 +143,7 @@ norway_unite = {
 
         requires = { norway_unite_homeland_pacify }  
 
-        duration = 120
+        duration = 60
 
         potential = {}
 
@@ -168,7 +166,7 @@ norway_unite = {
     norway_unite_barbarian = {
         icon = "task_economical"
 
-        duration = 100
+        duration = 60
 
         requires = { 
         	norway_unite_capital_fortify
@@ -184,11 +182,11 @@ norway_unite = {
 		}
 
         allow = {
-        	treasury >= 80
+        	treasury >= 40
 		} 
 
         on_completion = { 
-        	add_treasury = -80
+        	add_treasury = -40
         	p:5381 = {
 				remove_province_modifier = minor_barbarian_spawn_place
 			}	
@@ -253,7 +251,6 @@ norway_unite = {
 		}
 
         allow = {
-        	treasury >= 100
 			p:6042 = {
 				fort_level >= 1
 			}
@@ -261,7 +258,6 @@ norway_unite = {
 
 
         on_completion = { 
-        	add_treasury = -100
         	p:6042 = {
 				add_province_modifier = {
 					name = norwegian_mountain_fort_modifier
@@ -297,7 +293,7 @@ norway_unite = {
 					}
 				}
 			}
-        	capital_scope = {
+        	p:6038 = {
         		if = {
 					limit = {
 						has_city_status = no

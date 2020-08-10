@@ -155,4 +155,10 @@ template = {
 			color2 = ck2_white
 		}
 	}
+	flag_type_vi_17 = { #Danish patterns
+		pattern = list "vi_patterns_07"
+		color1 = list "triggered_colors_list1"
+		color2 = ck2_black
+		color3 = ck2_white
+	}
 }

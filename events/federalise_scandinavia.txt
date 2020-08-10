@@ -11,8 +11,17 @@ namespace = federalise_scandinavia
 	    option = {      
         	name = federalise_scandinavia.1.a
 			add_stability = -25
-        	change_government = despotic_monarchy
-        	change_country_flag = SCANDINAVIAN_FLAG
+			if = {
+				limit = {
+					has_variable = norse_empire
+				}
+				change_government = imperium
+			}
+			else = {
+				change_government = despotic_monarchy
+			}  	
+			change_country_flag = SCANDINAVIAN_FLAG
+			set_primary_culture = norse
 			switch_government_type_event_clearup_effect = yes
 			add_country_modifier = {
         		name = norse_big_rebellion_modifier
@@ -22,8 +31,16 @@ namespace = federalise_scandinavia
 		
 		option = {      
         	name = federalise_scandinavia.1.b
-        	add_stability = -25
-        	change_government = democratic_republic
+			add_stability = -25
+			if = {
+				limit = {
+					has_variable = norse_empire
+				}
+				change_government = athenian_republic
+			}
+			else = {
+				change_government = democratic_republic
+			}
         	change_country_flag = SCANDINAVIAN_FLAG
 			set_primary_culture = norse
 			switch_government_type_event_clearup_effect = yes

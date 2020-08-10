@@ -21,16 +21,16 @@ scandinavia_unite_norway = {
     scandinavia_unite_norway_preparation = {
         icon = "task_political"
 
-        duration = 120
+        duration = 60
 
         potential = {}
 
         allow = {
-        	treasury >= 75
+        	treasury >= 60
         }
 
         on_start = {
-        	add_treasury = -75
+        	add_treasury = -60
         }
 
         on_completion = {
@@ -81,7 +81,7 @@ scandinavia_unite_norway = {
         	area:west_gothia_area = {
 				ordered_area_province = {
 					order_by = total_population
-					max = 1
+					max = 3
 					if = {
 						limit = {
 							any_pops_in_province = {
@@ -98,7 +98,7 @@ scandinavia_unite_norway = {
 								}								
 							}
 							order_by = pop_hapiness
-							max = 14
+							max = 8
 							check_range_bounds = no
 							hidden_effect = {
 								set_pop_culture = prev.owner.culture
@@ -121,7 +121,7 @@ scandinavia_unite_norway = {
 
         requires = { scandinavia_unite_norway_west_pacify }
 
-        duration = 120
+        duration = 60
 
         bypass = {
 			owns = 6027 #Tivedia
@@ -136,11 +136,11 @@ scandinavia_unite_norway = {
         }
 
         allow = {
-        	treasury >= 50
+        	treasury >= 20
         }
 
         on_start = {
-        	add_treasury = -50
+        	add_treasury = -20
         }
 
         on_completion = { 
@@ -156,7 +156,7 @@ scandinavia_unite_norway = {
         	scandinavia_unite_norway_west_pacify
         } 
 
-        duration = 120
+        duration = 60
 
         potential = {}
 
@@ -177,7 +177,7 @@ scandinavia_unite_norway = {
         	scandinavia_unite_norway_colonization
         } 
 
-        duration = 120
+        duration = 60
 
         potential = {}
 
@@ -226,7 +226,7 @@ scandinavia_unite_norway = {
         	area:east_gothia_area = {
 				ordered_area_province = {
 					order_by = total_population
-					max = 1
+					max = 3
 					if = {
 						limit = {
 							any_pops_in_province = {
@@ -243,7 +243,7 @@ scandinavia_unite_norway = {
 								}								
 							}
 							order_by = pop_hapiness
-							max = 14
+							max = 8
 							check_range_bounds = no
 							hidden_effect = {
 								set_pop_culture = prev.owner.culture
@@ -268,7 +268,7 @@ scandinavia_unite_norway = {
         	scandinavia_unite_norway_east_pacify
         }
 
-        duration = 120
+        duration = 60
 
         bypass = {
 			owns = 6010 #Vineta
@@ -281,11 +281,11 @@ scandinavia_unite_norway = {
         }
 
         allow = {
-        	treasury >= 80
+        	treasury >= 30
         }
 
         on_start = {
-        	add_treasury = -80
+        	add_treasury = -30
         }
 
         on_completion = { 
@@ -296,7 +296,7 @@ scandinavia_unite_norway = {
     scandinavia_unite_norway_south_pacify = {
         icon = "task_political"
 
-        duration = 120
+        duration = 60
 
         requires = { scandinavia_unite_norway_gothia } 
 
@@ -331,7 +331,7 @@ scandinavia_unite_norway = {
         	area:herulia_area = {
 				ordered_area_province = {
 					order_by = total_population
-					max = 1
+					max = 3
 					if = {
 						limit = {
 							any_pops_in_province = {
@@ -348,7 +348,7 @@ scandinavia_unite_norway = {
 								}								
 							}
 							order_by = pop_hapiness
-							max = 14
+							max = 8
 							check_range_bounds = no
 							hidden_effect = {
 								set_pop_culture = prev.owner.culture
@@ -380,14 +380,12 @@ scandinavia_unite_norway = {
 		}
 
         allow = {
-        	treasury >= 100
 			p:6003 = {
 				fort_level >= 1
 			}
 		}
 
 		on_completion = { 
-        	add_treasury = -100
         	p:6003 = {
 				add_province_modifier = {
 					name = gotar_strait_fortification_modifier
@@ -405,16 +403,16 @@ scandinavia_unite_norway = {
         	scandinavia_unite_norway_south_pacify
         } 
 
-        duration = 120
+        duration = 60
 
         potential = {}
 
         allow = {
-        	treasury >= 100
+        	treasury >= 40
         }
 
         on_start = {
-        	add_treasury = -100
+        	add_treasury = -40
         }
 
         on_completion = {
@@ -450,7 +448,7 @@ scandinavia_unite_norway = {
         	area:scandia_insula_area = {
 				ordered_area_province = {
 					order_by = total_population
-					max = 1
+					max = 3
 					if = {
 						limit = {
 							any_pops_in_province = {
@@ -467,7 +465,7 @@ scandinavia_unite_norway = {
 								}								
 							}
 							order_by = pop_hapiness
-							max = 14
+							max = 8
 							check_range_bounds = no
 							hidden_effect = {
 								set_pop_culture = prev.owner.culture
@@ -488,7 +486,7 @@ scandinavia_unite_norway = {
     scandinavia_unite_norway_straits_fortify_copenhagen = {
         icon = "task_economical"
 
-        duration = 120
+        duration = 60
 
         requires = { scandinavia_unite_norway_straits_pacify }  
 
@@ -501,7 +499,6 @@ scandinavia_unite_norway = {
 		}
 
         allow = {
-        	treasury >= 100
 			p:3887 = {
 				fort_level >= 1
 			}
@@ -509,11 +506,21 @@ scandinavia_unite_norway = {
 
 
         on_completion = { 
-        	add_treasury = -100
         	p:3887 = {
 				add_province_modifier = {
 					name = danish_strait_fortification_modifier
 					duration = -1
+				}
+				if = {
+					limit = {
+						has_city_status = no
+					}
+					show_as_tooltip = {
+						set_city_status = city
+					}
+					trigger_event = {
+						id = state_improvement.6
+					}
 				}
 			}	
         }
@@ -535,18 +542,8 @@ scandinavia_unite_norway = {
 		}
 
         allow = {
-        	trigger_if = {
-				limit = { is_ai = yes }
-				treasury > 150
-				p:3887 = {
-					has_city_status = yes
-				}
-			} #needs to expire first
-			trigger_else = {
-				p:3887 = {
-					has_city_status = yes
-					num_of_commerce_building >= 2
-				}
+        	p:3887 = {
+				num_of_commerce_building >= 2
 			}
 		} 
 
@@ -564,7 +561,7 @@ scandinavia_unite_norway = {
 
         requires = { scandinavia_unite_norway_straits_pacify }
 
-        duration = 120
+        duration = 60
 
         bypass = {
 			owns_or_subject_owns_area = cimbrica_superioris_area
@@ -604,7 +601,7 @@ scandinavia_unite_norway = {
         	area:cimbrica_superioris_area = {
 				ordered_area_province = {
 					order_by = total_population
-					max = 1
+					max = 2
 					if = {
 						limit = {
 							any_pops_in_province = {
@@ -621,7 +618,7 @@ scandinavia_unite_norway = {
 								}								
 							}
 							order_by = pop_hapiness
-							max = 14
+							max = 8
 							check_range_bounds = no
 							hidden_effect = {
 								set_pop_culture = prev.owner.culture
@@ -639,7 +636,7 @@ scandinavia_unite_norway = {
 			area:cimbrica_inferioris_area = {
 				ordered_area_province = {
 					order_by = total_population
-					max = 1
+					max = 2
 					if = {
 						limit = {
 							any_pops_in_province = {
@@ -656,7 +653,7 @@ scandinavia_unite_norway = {
 								}								
 							}
 							order_by = pop_hapiness
-							max = 14
+							max = 8
 							check_range_bounds = no
 							hidden_effect = {
 								set_pop_culture = prev.owner.culture
@@ -692,9 +689,6 @@ scandinavia_unite_norway = {
         }
 
         on_completion = {
-        	capital_scope = {
-        		remove_province_modifier = nordic_capital_modifier
-			}
 			if = {
 				limit = {
 					p:3887 = { is_capital = no }
@@ -706,7 +700,7 @@ scandinavia_unite_norway = {
 					}
 				}
 			}
-			capital_scope = {
+			p:3887 = {
 				establish_city_effect = yes
 				add_province_modifier = {
 					name = nordic_grand_capital_modifier

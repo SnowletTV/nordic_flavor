@@ -37,11 +37,11 @@ denmark_unite = {
         potential = {}
 
         allow = {
-        	treasury >= 75
+        	treasury >= 60
         }
 
         on_start = {
-        	add_treasury = -75
+        	add_treasury = -60
         }
 
         on_completion = {
@@ -57,7 +57,7 @@ denmark_unite = {
 
         requires = { denmark_unite_preparation }
 
-        duration = 120
+        duration = 60
 
         bypass = {
 			owns_or_subject_owns_area = scandia_insula_area
@@ -77,7 +77,7 @@ denmark_unite = {
 
         requires = { denmark_unite_preparation }
 
-        duration = 120
+        duration = 60
 
         bypass = {
 			owns_or_subject_owns_area = cimbrica_superioris_area
@@ -97,7 +97,7 @@ denmark_unite = {
 
         requires = { denmark_unite_preparation }
 
-        duration = 120
+        duration = 60
 
         bypass = {
 			owns_or_subject_owns_area = cimbrica_inferioris_area
@@ -171,7 +171,7 @@ denmark_unite = {
     denmark_unite_straits_fortify = {
         icon = "task_economical"
 
-        duration = 120
+        duration = 60
 
         requires = { denmark_unite_straits }  
 
@@ -184,7 +184,7 @@ denmark_unite = {
 		}
 
         allow = {
-        	treasury >= 100
+        	treasury >= 50
 			p:3887 = {
 				fort_level >= 1
 			}
@@ -192,11 +192,22 @@ denmark_unite = {
 
 
         on_completion = { 
-        	add_treasury = -100
+        	add_treasury = -50
         	p:3887 = {
 				add_province_modifier = {
 					name = danish_strait_fortification_modifier
 					duration = -1
+				}
+				if = {
+					limit = {
+						has_city_status = no
+					}
+					show_as_tooltip = {
+						set_city_status = city
+					}
+					trigger_event = {
+						id = state_improvement.6
+					}
 				}
 			}	
         }
@@ -205,7 +216,7 @@ denmark_unite = {
     denmark_unite_straits_trade = {
         icon = "task_economical"
 
-        duration = 120
+        duration = 60
 
         requires = { 
         	denmark_unite_straits_fortify 
@@ -221,18 +232,8 @@ denmark_unite = {
 		}
 
         allow = {
-        	trigger_if = {
-				limit = { is_ai = yes }
-				treasury > 150
-				scope:governorship_capital = {
-					has_city_status = yes
-				}
-			} #needs to expire first
-			trigger_else = {
-				p:3887 = {
-					has_city_status = yes
-					num_of_commerce_building >= 2
-				}
+        	p:3887 = {
+				num_of_commerce_building >= 2
 			}
 		} 
 
@@ -266,7 +267,7 @@ denmark_unite = {
         	area:cimbrica_superioris_area = {
 				ordered_area_province = {
 					order_by = total_population
-					max = 1
+					max = 3
 					if = {
 						limit = {
 							any_pops_in_province = {
@@ -283,7 +284,7 @@ denmark_unite = {
 								}								
 							}
 							order_by = pop_hapiness
-							max = 14
+							max = 8
 							check_range_bounds = no
 							hidden_effect = {
 								set_pop_culture = prev.owner.culture
@@ -320,7 +321,7 @@ denmark_unite = {
         	area:cimbrica_inferioris_area = {
 				ordered_area_province = {
 					order_by = total_population
-					max = 1
+					max = 3
 					if = {
 						limit = {
 							any_pops_in_province = {
@@ -337,7 +338,7 @@ denmark_unite = {
 								}								
 							}
 							order_by = pop_hapiness
-							max = 14
+							max = 8
 							check_range_bounds = no
 							hidden_effect = {
 								set_pop_culture = prev.owner.culture
@@ -382,7 +383,7 @@ denmark_unite = {
 					}
 				}
 			}
-        	capital_scope = {
+        	p:3887 = {
         		if = {
 					limit = {
 						has_city_status = no

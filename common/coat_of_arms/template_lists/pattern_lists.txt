@@ -49,6 +49,14 @@ pattern_texture_lists = {
 		20 = "pattern_viking_02.dds"
 		20 = "pattern_viking_03.dds"
 		20 = "pattern_viking_04.dds"
+		20 = "pattern_viking_05.dds"
+		20 = "pattern_viking_06.dds"
+		20 = "pattern_viking_07.dds"
+		20 = "pattern_viking_08.dds"
+		20 = "pattern_viking_09.dds"
+		20 = "pattern_viking_10.dds"
+		20 = "pattern_viking_11.dds"
+		20 = "pattern_viking_12.dds"
 	}
 	vi_patterns_06 = { #Icelandic
 		20 = "pattern_icelandic_01.dds"
@@ -56,6 +64,12 @@ pattern_texture_lists = {
 		20 = "pattern_icelandic_03.dds"
 		20 = "pattern_cross_bar_01.dds"
 		20 = "pattern_cross_bar_02.dds"
+	}
+	vi_patterns_07 = { #Danish
+		20 = "pattern_danish_01.dds"
+		20 = "pattern_danish_02.dds"
+		20 = "pattern_danish_03.dds"
+		20 = "pattern_danish_04.dds"
 	}
 	
 	simple = {

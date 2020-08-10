@@ -47,12 +47,25 @@ gothia_develop = {
             p:6005 = {
                 has_city_status = yes
             }
+            treasury >= 100
         }
 
         on_start = {}
 
         on_completion = {
+            add_treasury = -100
             p:6005 = {
+                if = {
+					limit = {
+						has_city_status = no
+					}
+					show_as_tooltip = {
+						set_city_status = city
+					}
+					trigger_event = {
+						id = state_improvement.6
+					}
+				}
                 set_trade_goods = gems
             }
         }
@@ -63,7 +76,7 @@ gothia_develop = {
 
         requires = { gothia_develop_vang_city }
 
-        duration = 120
+        duration = 60
 
         potential = {}
 
@@ -74,7 +87,7 @@ gothia_develop = {
         }
 
         allow = {
-            treasury >= 60
+            treasury >= 40
         }
 
         on_start = {}
@@ -238,9 +251,6 @@ gothia_develop = {
 
         allow = {
             p:6009 = {
-                has_city_status = yes
-            }
-            p:6009 = {
                 num_of_foundry_building >= 2
             }
         }
@@ -266,7 +276,11 @@ gothia_develop = {
 
         bypass = {}
 
-        potential = {}
+        potential = {
+            NOT = {
+                has_variable = norse_fleet_built
+            }
+        }
 
         highlight = {
             scope:province = {
@@ -284,6 +298,9 @@ gothia_develop = {
                 name = norse_fleet_modifier
                 duration = -1
             }
+            set_variable = {
+                name = norse_fleet_built
+            }
             create_unit = {
                 location = p:6009
                 navy = yes
@@ -297,6 +314,14 @@ gothia_develop = {
                 add_subunit = hexere
                 add_subunit = hexere
                 add_subunit = hexere
+            }
+            create_unit = {
+                location = p:6009
+                navy = yes
+                sub_unit = mega_galley
+                add_subunit = mega_galley
+                add_subunit = mega_galley
+                add_subunit = mega_galley
             }
         }
     }

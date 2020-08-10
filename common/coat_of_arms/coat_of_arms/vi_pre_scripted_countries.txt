@@ -1,0 +1,39 @@
+
+### = {
+	pattern = "pattern_viking_05.dds"
+	color1 = rgb { 28 33 35 }
+	color2 = rgb { 137 30 54 }
+}
+
+### = {
+	pattern = "pattern_viking_09.dds"
+	color1 = rgb { 72 121 121 }
+	color2 = "ck2_black"
+}
+
+### = {
+	pattern = "pattern_solid.tga"
+	color1 = rgb { 137 30 54 }
+	color2 = rgb { 28 33 35 }
+
+	colored_emblem = {
+		texture = "ce_celtic_13a.dds"
+		color1 = rgb { 28 33 35 }
+		color2 = "offwhite"
+	}
+}
+
+### = {
+	pattern = "pattern_danish_01.dds"
+	color1 = "ck2_white"
+	color2 = "ck2_black"
+
+	colored_emblem = {
+		texture = "ce_viking_raven_02.dds"
+		color1 = rgb { 28 33 35 }
+		instance = { rotation = 0 scale = { 0.35 0.35 } position = { 0.2 0.50 } }
+	}
+}
+
+
+

@@ -33,18 +33,31 @@ denmark_develop = {
         }
 
         allow = {
-            treasury >= 60
+            treasury >= 40
         }
 
         on_start = {}
 
         on_completion = {
-            add_treasury = -60
+            add_treasury = -40
             p:3882 = { 
                 add_province_modifier = {
                     name = norse_woodery_modifier
                     duration = -1
                 }
+            }
+            p:3887 = {
+                if = {
+					limit = {
+						has_city_status = no
+					}
+					show_as_tooltip = {
+						set_city_status = city
+					}
+					trigger_event = {
+						id = state_improvement.6
+					}
+				}
             }
         }
     }
@@ -61,13 +74,13 @@ denmark_develop = {
         }
 
         allow = {
-        	treasury >= 50
+        	treasury >= 40
         }
 
         on_start = {}
 
         on_completion = {
-        	add_treasury = -50
+        	add_treasury = -40
             p:3864 = {
                 set_trade_goods = iron
             }
@@ -79,8 +92,6 @@ denmark_develop = {
 
         requires = { denmark_develop_avionia_iron }
 
-        duration = 120
-
         potential = {}
 
         highlight = {
@@ -90,13 +101,13 @@ denmark_develop = {
         }
 
         allow = {
-            treasury >= 50
+            treasury >= 40
         }
 
         on_start = {}
 
         on_completion = {
-            add_treasury = -50
+            add_treasury = -40
             p:3864 = {
                 add_province_modifier = {
                     name = norse_mine_modifier
@@ -109,8 +120,6 @@ denmark_develop = {
     denmark_develop_teutonia_stone = {
         icon = "task_political"
 
-        duration = 120
-
         potential = {}
 
         highlight = {
@@ -120,13 +129,13 @@ denmark_develop = {
         }
 
         allow = {
-            treasury >= 60
+            treasury >= 40
         }
 
         on_start = {}
 
         on_completion = {
-            add_treasury = -60
+            add_treasury = -40
             p:3876 = {
                 add_province_modifier = {
                     name = norse_mine_modifier
@@ -148,13 +157,13 @@ denmark_develop = {
         }
 
         allow = {
-            treasury >= 50
+            treasury >= 40
         }
 
         on_start = {}
 
         on_completion = {
-            add_treasury = -50
+            add_treasury = -40
             p:3886 = {
                 add_province_modifier = {
                     name = norse_large_food_supply_modifier
@@ -177,7 +186,6 @@ denmark_develop = {
         highlight = {
             scope:province = {
                 province_id = 3887 #Herulia Orientalis
-                province_id = 6037 #Raumariki
             }
         }
 
@@ -243,7 +251,11 @@ denmark_develop = {
 
         bypass = {}
 
-        potential = {}
+        potential = {
+            NOT = {
+                has_variable = norse_fleet_built
+            }
+        }
 
         highlight = {
             scope:province = {
@@ -260,6 +272,9 @@ denmark_develop = {
             add_country_modifier = {
                 name = norse_fleet_modifier
                 duration = -1
+            }
+            set_variable = {
+                name = norse_fleet_built
             }
             create_unit = {
                 location = p:3887
@@ -303,13 +318,13 @@ denmark_develop = {
         }
 
         allow = {
-            treasury >= 200
+            treasury >= 40
         }
 
         on_start = {}
 
         on_completion = {
-            add_treasury = -200
+            add_treasury = -40
             p:6024 = {
                 set_trade_goods = horses
             }

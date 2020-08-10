@@ -36,11 +36,11 @@ gothia_unite = {
         potential = {}
 
         allow = {
-        	treasury >= 75
+        	treasury >= 60
         }
 
         on_start = {
-        	add_treasury = -75
+        	add_treasury = -60
         }
 
         on_completion = {
@@ -56,7 +56,7 @@ gothia_unite = {
 
         requires = { gothia_unite_preparation }
 
-        duration = 120
+        duration = 60
 
         bypass = {
 			owns_or_subject_owns_area = herulia_area
@@ -68,169 +68,6 @@ gothia_unite = {
 
         on_completion = {
         	area:herulia_area = { add_provincial_claim_effect = yes }
-        }
-    }
-
-    gothia_unite_north = {
-        icon = "task_expansion"
-
-        requires = { gothia_unite_south }
-
-        duration = 240
-
-        bypass = {
-			owns_or_subject_owns_area = west_gothia_area
-			owns_or_subject_owns_area = east_gothia_area
-		}
-
-        potential = {}
-
-        allow = {}
-
-        on_completion = { 
-        	area:west_gothia_area = { add_provincial_claim_effect = yes } 
-        	area:east_gothia_area = { add_provincial_claim_effect = yes }
-        }
-    }
-
-    gothia_unite_west_pacify = {
-        icon = "task_political"
-
-        requires = { gothia_unite_north }  
-
-        potential = {}
-		
-		highlight = {
-			scope:province = {
-				AND = {
-					is_in_area = west_gothia_area
-					NOT = {
-						province_id = 6024 #Rane
-						province_id = 6027 #Tivedia
-						province_id = 6033 #Vrine
-						province_id = 6036 #Rania
-					}
-				}
-			}
-		}
-
-        allow = { 
-        	owns_or_subject_owns = 6011 #Feruira
-			owns_or_subject_owns = 6012 #Konghelle
-        	owns_or_subject_owns = 6013 #Gautigothia
-			owns_or_subject_owns = 6016 #Thwetum
-			owns_or_subject_owns = 6022 #Hio
-			owns_or_subject_owns = 6023 #Gothalia
-			owns_or_subject_owns = 6025 #Ragnaricia
-        }
-
-        on_completion = { 
-        	area:west_gothia_area = {
-				ordered_area_province = {
-					order_by = total_population
-					max = 1
-					if = {
-						limit = {
-							any_pops_in_province = {
-								NOT = {
-									pop_culture = prev.owner.culture
-								}
-							}
-						}
-						custom_tooltip = assimilate_15_tt
-						ordered_pops_in_province = {
-							limit = {
-								NOT = {
-									pop_culture = prev.owner.culture
-								}								
-							}
-							order_by = pop_hapiness
-							max = 14
-							check_range_bounds = no
-							hidden_effect = {
-								set_pop_culture = prev.owner.culture
-							}
-						}
-					}
-					else = {
-						while = {
-							count = 5
-							create_state_pop = citizen
-						}
-					}
-				}
-			}	
-        }
-    }
-
-    gothia_unite_east_pacify = {
-        icon = "task_political"
-
-        requires = { gothia_unite_north } 
-
-        potential = {}
-
-        highlight = {
-			scope:province = {
-				AND = {
-					is_in_area = east_gothia_area
-					NOT = {
-						province_id = 6010
-					}
-				}
-			}
-		}
-
-        allow = { 
-        	owns_or_subject_owns = 6008 #Theustia
-			owns_or_subject_owns = 6018 #Vist
-			owns_or_subject_owns = 6019 #Vikbo
-			owns_or_subject_owns = 6020 #Kinda
-			owns_or_subject_owns = 6021 #Aska
-			owns_or_subject_owns = 6026 #Miriquidui
-			owns_or_subject_owns = 6028 #Arbugae
-			owns_or_subject_owns = 6029 #Rekarne
-			owns_or_subject_owns = 6030 #Birka
-			owns_or_subject_owns = 6031 #Arosia
-			owns_or_subject_owns = 6032 #Broborg
-        }
-
-        on_completion = {
-        	area:east_gothia_area = {
-				ordered_area_province = {
-					order_by = total_population
-					max = 1
-					if = {
-						limit = {
-							any_pops_in_province = {
-								NOT = {
-									pop_culture = prev.owner.culture
-								}
-							}
-						}
-						custom_tooltip = assimilate_15_tt
-						ordered_pops_in_province = {
-							limit = {
-								NOT = {
-									pop_culture = prev.owner.culture
-								}								
-							}
-							order_by = pop_hapiness
-							max = 14
-							check_range_bounds = no
-							hidden_effect = {
-								set_pop_culture = prev.owner.culture
-							}
-						}
-					}
-					else = {
-						while = {
-							count = 5
-							create_state_pop = citizen
-						}
-					}
-				}
-			}
         }
     }
 
@@ -273,7 +110,7 @@ gothia_unite = {
         	area:herulia_area = {
 				ordered_area_province = {
 					order_by = total_population
-					max = 1
+					max = 3
 					if = {
 						limit = {
 							any_pops_in_province = {
@@ -290,7 +127,7 @@ gothia_unite = {
 								}								
 							}
 							order_by = pop_hapiness
-							max = 14
+							max = 8
 							check_range_bounds = no
 							hidden_effect = {
 								set_pop_culture = prev.owner.culture
@@ -311,9 +148,9 @@ gothia_unite = {
     gothia_unite_island_expedition = {
         icon = "task_economical"
 
-        requires = { gothia_unite_east_pacify }
+        requires = { gothia_unite_south_pacify }
 
-        duration = 120
+        duration = 60
 
         bypass = {
 			owns = 6010 #Vineta
@@ -326,68 +163,15 @@ gothia_unite = {
         }
 
         allow = {
-        	treasury >= 80
+        	treasury >= 40
         }
 
         on_start = {
-        	add_treasury = -80
+        	add_treasury = -40
         }
 
         on_completion = { 
         	p:6010 = { set_conquered_by = root } 
-        }
-    }
-
-    gothia_unite_greater_gothia = {
-        icon = "task_political"
-
-        requires = { 
-        	gothia_unite_island_expedition
-        	gothia_unite_colonization
-        } 
-
-        potential = {}
-
-        allow = {}
-
-        on_completion = {
-        	add_country_modifier = {
-    		name = greater_gothia_united_modifier
-    		duration = -1
-    		}
-		}
-    }
-
-    gothia_unite_colonization = {
-        icon = "task_economical"
-
-        requires = { gothia_unite_west_pacify }
-
-        duration = 120
-
-        bypass = {
-			owns = 6027 #Tivedia
-			owns = 6024 #Rane
-		}
-
-        potential = { 
-        	NOT = { 
-        		owns = 6027 #Tivedia
-				owns = 6024 #Rane 
-        	} 
-        }
-
-        allow = {
-        	treasury >= 50
-        }
-
-        on_start = {
-        	add_treasury = -50
-        }
-
-        on_completion = { 
-        	p:6027 = { set_conquered_by = root } 
-        	p:6024 = { set_conquered_by = root } 
         }
     }
 
@@ -405,14 +189,14 @@ gothia_unite = {
 		}
 
         allow = {
-        	treasury >= 100
+        	treasury >= 40
 			p:6003 = {
 				fort_level >= 1
 			}
 		}
 
 		on_completion = { 
-        	add_treasury = -100
+        	add_treasury = -40
         	p:6003 = {
 				add_province_modifier = {
 					name = gotar_strait_fortification_modifier
@@ -447,7 +231,7 @@ gothia_unite = {
 					}
 				}
 			}
-        	capital_scope = {
+        	p:6000 = {
         		if = {
 					limit = {
 						has_city_status = no

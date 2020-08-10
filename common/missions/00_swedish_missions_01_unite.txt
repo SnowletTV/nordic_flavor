@@ -36,11 +36,11 @@ sweden_unite = {
         potential = {}
 
         allow = {
-        	treasury >= 75
+        	treasury >= 60
         }
 
         on_start = {
-        	add_treasury = -75
+        	add_treasury = -60
         }
 
         on_completion = {
@@ -56,7 +56,7 @@ sweden_unite = {
 
         requires = { sweden_unite_preparation }
 
-        duration = 120
+        duration = 30
 
         bypass = {
 			owns_or_subject_owns_area = east_gothia_area
@@ -76,7 +76,7 @@ sweden_unite = {
 
         requires = { sweden_unite_preparation }
 
-        duration = 120
+        duration = 30
 
         bypass = {
 			owns_or_subject_owns_area = herulia_area
@@ -96,7 +96,7 @@ sweden_unite = {
 
         requires = { sweden_unite_preparation }
 
-        duration = 120
+        duration = 30
 
         bypass = {
 			owns_or_subject_owns_area = west_gothia_area
@@ -146,7 +146,7 @@ sweden_unite = {
         	area:west_gothia_area = {
 				ordered_area_province = {
 					order_by = total_population
-					max = 1
+					max = 2
 					if = {
 						limit = {
 							any_pops_in_province = {
@@ -163,7 +163,7 @@ sweden_unite = {
 								}								
 							}
 							order_by = pop_hapiness
-							max = 14
+							max = 8
 							check_range_bounds = no
 							hidden_effect = {
 								set_pop_culture = prev.owner.culture
@@ -217,7 +217,7 @@ sweden_unite = {
         	area:east_gothia_area = {
 				ordered_area_province = {
 					order_by = total_population
-					max = 1
+					max = 2
 					if = {
 						limit = {
 							any_pops_in_province = {
@@ -234,7 +234,7 @@ sweden_unite = {
 								}								
 							}
 							order_by = pop_hapiness
-							max = 14
+							max = 8
 							check_range_bounds = no
 							hidden_effect = {
 								set_pop_culture = prev.owner.culture
@@ -288,7 +288,7 @@ sweden_unite = {
         	area:herulia_area = {
 				ordered_area_province = {
 					order_by = total_population
-					max = 1
+					max = 2
 					if = {
 						limit = {
 							any_pops_in_province = {
@@ -305,7 +305,7 @@ sweden_unite = {
 								}								
 							}
 							order_by = pop_hapiness
-							max = 14
+							max = 8
 							check_range_bounds = no
 							hidden_effect = {
 								set_pop_culture = prev.owner.culture
@@ -337,14 +337,12 @@ sweden_unite = {
 		}
 
         allow = {
-        	treasury >= 100
 			p:6003 = {
 				fort_level >= 1
 			}
 		}
 
 		on_completion = { 
-        	add_treasury = -100
         	p:6003 = {
 				add_province_modifier = {
 					name = gotar_strait_fortification_modifier
@@ -352,14 +350,14 @@ sweden_unite = {
 				}
 			}	
         }
-    }
+	}
 
     sweden_unite_island_expedition = {
         icon = "task_economical"
 
         requires = { sweden_unite_east_pacify }
 
-        duration = 120
+        duration = 30
 
         bypass = {
 			owns = 6010 #Vineta
@@ -372,11 +370,11 @@ sweden_unite = {
         }
 
         allow = {
-        	treasury >= 80
+        	treasury >= 40
         }
 
         on_start = {
-        	add_treasury = -80
+        	add_treasury = -40
         }
 
         on_completion = { 
@@ -400,7 +398,7 @@ sweden_unite = {
         on_completion = {
         	add_country_modifier = {
     		name = greater_sweden_united_modifier
-    		duration = -1
+    		duration = 3650
     		}
 		}
     }
@@ -410,7 +408,7 @@ sweden_unite = {
 
         requires = { sweden_unite_west_pacify }
 
-        duration = 120
+        duration = 60
 
         bypass = {
 			owns = 6027 #Tivedia
@@ -425,11 +423,11 @@ sweden_unite = {
         }
 
         allow = {
-        	treasury >= 50
+        	treasury >= 40
         }
 
         on_start = {
-        	add_treasury = -50
+        	add_treasury = -40
         }
 
         on_completion = { 
@@ -453,7 +451,7 @@ sweden_unite = {
         allow = {}
 
         on_completion = {
-        	capital_scope = {
+        	p:6030 = {
         		if = {
 					limit = {
 						has_city_status = no

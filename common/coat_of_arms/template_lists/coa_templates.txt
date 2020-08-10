@@ -18,6 +18,17 @@ coat_of_arms_template_lists = {
 		}
 		special_selection = {
 			trigger = {
+				or = {
+					country_culture = "teutonian"
+					country_culture = "cimbrian"
+					country_culture = "herulian"
+					country_culture = "anglian"
+				}
+			}
+			1000000 = flag_type_vi_17
+		}
+		special_selection = {
+			trigger = {
 				country_culture = "hibernian"
 			}
 			1000000 = flag_type_vi_07
@@ -43,7 +54,12 @@ coat_of_arms_template_lists = {
 		}
 		special_selection = {
 			trigger = {
-				country_culture = "caledonian"
+				or = {
+					country_culture = "caledonian"
+					country_culture = "damnonian"
+					country_culture = "taexalian"
+					country_culture = "votadinian"
+				}
 			}
 			1000000 = flag_type_vi_09
 		}

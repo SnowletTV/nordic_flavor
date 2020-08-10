@@ -54,13 +54,13 @@ sweden_develop = {
         }
 
         allow = {
-        	treasury >= 50
+        	treasury >= 40
         }
 
         on_start = {}
 
         on_completion = {
-        	add_treasury = -50
+        	add_treasury = -40
             p:6027 = {
                 set_trade_goods = base_metals
             }
@@ -72,7 +72,7 @@ sweden_develop = {
 
         requires = { sweden_develop_tivedia_copper }
 
-        duration = 120
+        duration = 60
 
         potential = {}
 
@@ -83,13 +83,13 @@ sweden_develop = {
         }
 
         allow = {
-            treasury >= 60
+            treasury >= 40
         }
 
         on_start = {}
 
         on_completion = {
-            add_treasury = -60
+            add_treasury = -40
             p:6027 = {
                 add_province_modifier = {
                     name = norse_mine_modifier
@@ -106,6 +106,8 @@ sweden_develop = {
             sweden_develop_tivedia_copper
         }
 
+        duration = 60
+
         potential = {}
 
         highlight = {
@@ -115,15 +117,25 @@ sweden_develop = {
         }
 
         allow = {
-            p:6016 = {
-                has_city_status = yes
-            }
+            treasury >= 40
         }
 
         on_start = {}
 
         on_completion = {
+            add_treasury = -40
             p:6016 = {
+                if = {
+                    limit = {
+                        has_city_status = no
+                    }
+                    show_as_tooltip = {
+                        set_city_status = city
+                    }
+                    trigger_event = {
+                        id = state_improvement.6
+                    }
+                }
                 set_trade_goods = cloth
             }
         }
@@ -153,7 +165,7 @@ sweden_develop = {
         }
 
         on_completion = {
-        	p:6038 = { 
+        	p:6030 = { 
                 add_province_modifier = {
                     name = norse_homeport_modifier
                     duration = -1
@@ -173,11 +185,15 @@ sweden_develop = {
 
         bypass = {}
 
-        potential = {}
+        potential = {
+            NOT = {
+                has_variable = norse_fleet_built
+            }
+        }
 
         highlight = {
             scope:province = {
-                province_id = 6038 #Lingum
+                province_id = 6030 #Lingum
             }
         }
 
@@ -191,8 +207,11 @@ sweden_develop = {
                 name = norse_fleet_modifier
                 duration = -1
             }
+            set_variable = {
+                name = norse_fleet_built
+            }
             create_unit = {
-                location = p:6038
+                location = p:6030
                 navy = yes
                 sub_unit = hexere
                 add_subunit = hexere
@@ -204,6 +223,14 @@ sweden_develop = {
                 add_subunit = hexere
                 add_subunit = hexere
                 add_subunit = hexere
+            }
+            create_unit = {
+                location = p:6030
+                navy = yes
+                sub_unit = mega_galley
+                add_subunit = mega_galley
+                add_subunit = mega_galley
+                add_subunit = mega_galley
             }
         }
     }
@@ -220,18 +247,31 @@ sweden_develop = {
         }
 
         allow = {
-            treasury >= 50
+            treasury >= 40
         }
 
         on_start = {}
 
         on_completion = {
-            add_treasury = -50
+            add_treasury = -40
             p:6013 = { 
                 add_province_modifier = {
                     name = norse_woodery_modifier
                     duration = -1
                 }
+            }
+            p:6030 = {
+                if = {
+					limit = {
+						has_city_status = no
+					}
+					show_as_tooltip = {
+						set_city_status = city
+					}
+					trigger_event = {
+						id = state_improvement.6
+					}
+				}
             }
         }
     }
@@ -351,13 +391,13 @@ sweden_develop = {
         }
 
         allow = {
-            treasury >= 50
+            treasury >= 40
         }
 
         on_start = {}
 
         on_completion = {
-            add_treasury = -50
+            add_treasury = -40
             p:6024 = {
                 add_province_modifier = {
                     name = norse_horses
@@ -384,15 +424,12 @@ sweden_develop = {
         }
 
         allow = {
-            treasury >= 50
-            p:6034 = {
-                fort_level >= 1
-            }
+            treasury >= 40
         } 
 
         on_completion = { 
-            add_treasury = -50
-            p:6034 = {
+            add_treasury = -40
+            p:6024 = {
                 add_province_modifier = {
                     name = norse_fortification_modifier
                     duration = -1
