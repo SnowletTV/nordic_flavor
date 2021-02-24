@@ -21,25 +21,73 @@ namespace = federalise_scandinavia
 				change_government = despotic_monarchy
 			}  	
 			change_country_flag = SCANDINAVIAN_FLAG
-			set_primary_culture = norse
 			switch_government_type_event_clearup_effect = yes
 			add_country_modifier = {
         		name = norse_big_rebellion_modifier
         		duration = 1460
-        	}		 
-			every_owned_province = {
-				any_pops_in_province = {
+        	}
+			set_primary_culture_cleanup_effect = {
+				NEW_PRIMARY_CULTURE = norse
+				MAKE_OLD_CULTURE_INTEGRATED = yes
+			}
+			hidden_effect = {
+				every_character = {
 					limit = {
-						pop_culture = owner.culture
+						OR = {
+							from_ruler_family = yes
+							is_minor_character = no
+						}
 					}
-					hidden_effect = {
+					set_culture = norse
+				}
+				capital_scope = {
+					every_pops_in_province = {
+						limit = {
+							OR = {
+								pop_type = citizen
+								pop_type = nobles
+								pop_type = freemen
+							}
+						}
 						set_pop_culture = norse
 					}
 				}
-			}
-			hidden_effect = {
-				set_primary_culture = norse
-			}			
+				every_owned_province = {
+					limit = {
+						is_state_capital = yes
+						has_city_status = yes
+						has_province_modifier = alexandria
+					}
+					ordered_pops_in_province = {
+						order_by = pop_hapiness
+						limit = {
+							OR = {
+								pop_type = citizen
+								pop_type = nobles
+							}
+							NOT = { pop_culture = norse }
+						}
+						set_pop_culture = norse
+						max = 5
+					}
+				}
+				ordered_owned_province = {
+					order_by = total_population
+					max = 15
+					ordered_pops_in_province = {
+						order_by = pop_hapiness
+						limit = {
+							OR = {
+								pop_type = citizen
+								pop_type = nobles
+							}
+							NOT = { pop_culture = norse }
+						}
+						set_pop_culture = norse
+						max = 10
+					}
+				}	
+			}				 		
 		}
 		
 		option = {      
@@ -55,21 +103,72 @@ namespace = federalise_scandinavia
 				change_government = democratic_republic
 			}
         	change_country_flag = SCANDINAVIAN_FLAG
-			set_primary_culture = norse
 			switch_government_type_event_clearup_effect = yes
 			add_country_modifier = {
         		name = norse_rebellion_modifier
         		duration = 1460
         	}
-			every_owned_province = {
-				any_pops_in_province = {
+			set_primary_culture_cleanup_effect = {
+				NEW_PRIMARY_CULTURE = norse
+				MAKE_OLD_CULTURE_INTEGRATED = yes
+			}
+			hidden_effect = {
+				every_character = {
 					limit = {
-						pop_culture = owner.culture
+						OR = {
+							from_ruler_family = yes
+							is_minor_character = no
+						}
 					}
-					hidden_effect = {
+					set_culture = norse
+				}
+				capital_scope = {
+					every_pops_in_province = {
+						limit = {
+							OR = {
+								pop_type = citizen
+								pop_type = nobles
+								pop_type = freemen
+							}
+						}
 						set_pop_culture = norse
 					}
 				}
+				every_owned_province = {
+					limit = {
+						is_state_capital = yes
+						has_city_status = yes
+						has_province_modifier = alexandria
+					}
+					ordered_pops_in_province = {
+						order_by = pop_hapiness
+						limit = {
+							OR = {
+								pop_type = citizen
+								pop_type = nobles
+							}
+							NOT = { pop_culture = norse }
+						}
+						set_pop_culture = norse
+						max = 5
+					}
+				}
+				ordered_owned_province = {
+					order_by = total_population
+					max = 15
+					ordered_pops_in_province = {
+						order_by = pop_hapiness
+						limit = {
+							OR = {
+								pop_type = citizen
+								pop_type = nobles
+							}
+							NOT = { pop_culture = norse }
+						}
+						set_pop_culture = norse
+						max = 10
+					}
+				}	
 			}
     	}
 	}	
