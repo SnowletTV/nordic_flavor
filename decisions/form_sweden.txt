@@ -1,14 +1,14 @@
 country_decisions = {
 	
-	# Form Denmark
+	# Form Sweden
 	form_sweden = {
 		
 		potential = {
 			num_of_cities >= 1
 			OR = {
 				tag = GIT
-				country_culture = suiones
-				country_culture = raumarician
+				primary_culture = suiones
+				primary_culture = raumarician
 			}
 
 			OR = {

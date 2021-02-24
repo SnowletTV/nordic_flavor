@@ -9,8 +9,8 @@ sweden_unite = {
     potential = {
     	OR = {
 			tag = GIT
-			country_culture = suiones
-			country_culture = raumarician
+			primary_culture = suiones
+			primary_culture = raumarician
 		}
 		NOR = {
 			is_endgame_tag_trigger = yes

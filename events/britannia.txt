@@ -74,30 +74,11 @@ namespace = britannia
 			p:2077 = {
 				save_scope_as = northumbria_capital_scope
 			}
-			p:3887 = {
-				save_scope_as = scandinavia_capital_scope
-			}
 		}
 	
 		option = {      
 			name = britannia.5.a #Staying at home
 			hidden_effect = {
-				every_owned_province = {
-					limit = {
-						fort_level >= 1
-						AND = {
-							OR = {
-								is_in_region = britain_region
-								is_in_region = caledonia_region
-							}
-							NOT = {
-								is_in_area = icenia_area
-							}
-						}
-					}
-					save_scope_as = brit_restore_fort_scope
-					remove_building_level = fortress_building
-				}
 				scope:wales_capital_scope = {
 					create_country = {
 						name = {
@@ -130,7 +111,7 @@ namespace = britannia
 							}
 						}
 						declare_war_with_wargoal = {
-							war_goal = conquer_wargoal
+							war_goal = diadochi_wargoal
 							province = 2037
 							target = SKA
 						}
@@ -167,12 +148,12 @@ namespace = britannia
 							duration = 1825
 						}
 						declare_war_with_wargoal = {
-							war_goal = conquer_wargoal
+							war_goal = diadochi_wargoal
 							province = 2003
 							target = scope:wales_scope
 						}
 						declare_war_with_wargoal = {
-							war_goal = conquer_wargoal
+							war_goal = diadochi_wargoal
 							province = 2037
 							target = SKA
 						}
@@ -224,17 +205,17 @@ namespace = britannia
 							}
 						}
 						declare_war_with_wargoal = {
-							war_goal = conquer_wargoal
+							war_goal = diadochi_wargoal
 							province = 2102
 							target = scope:wales_scope
 						}
 						declare_war_with_wargoal = {
-							war_goal = conquer_wargoal
+							war_goal = diadochi_wargoal
 							province = 2003
 							target = scope:wessex_scope
 						}
 						declare_war_with_wargoal = {
-							war_goal = conquer_wargoal
+							war_goal = diadochi_wargoal
 							province = 2037
 							target = SKA
 						}
@@ -258,23 +239,8 @@ namespace = britannia
 				region:britain_region = { formable_region_province_effect = yes }
 			}
 		}
-
-	britannia.8 = {
-    	type = country_event
-		title = britannia.8.t
-		desc = britannia.8.desc
-    	picture = throneroom
-		hidden = yes
-
-    	immediate = {
-			scope:brit_restore_fort_scope = {
-				add_building_level = fortress_building
-			}	 
-		}
-
-		option = {}
 	}
-
+	
 	britannia.11 = {
     	type = country_event
     	title = britannia.11.t
@@ -313,4 +279,16 @@ namespace = britannia
 			name = britannia.13.a
 		}
 	}
-	
+
+	britannia.14 = {
+    	type = country_event
+    	title = britannia.14.t
+    	desc = britannia.14.desc
+    	picture = throneroom
+
+    	immediate = {}
+
+	    option = {      
+			name = britannia.14.a
+		}
+	}	

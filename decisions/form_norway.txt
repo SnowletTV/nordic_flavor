@@ -1,11 +1,11 @@
 country_decisions = {
 	
-	# Form Denmark
+	# Form Norway
 	form_norway = {
 		
 		potential = {
 			num_of_cities >= 1
-			country_culture = rugian
+			primary_culture = rugian
 
 			NOT = {
 				tag = NOR

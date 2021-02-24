@@ -168,7 +168,7 @@ britannia = {
         icon = "task_expansion"
 		
 		requires = {
-			britannia_campaign
+			britannia_nego_4
 		}
 
 		highlight = {
@@ -190,6 +190,41 @@ britannia = {
 				id = britannia.11
 				days = 7
 			}
+			area:dumnonia_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 3
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								
+							}
+							order_by = pop_hapiness
+							max = 8
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
+			}
         }
 	}
 
@@ -197,13 +232,15 @@ britannia = {
         icon = "task_expansion"
 		
 		requires = {
-			britannia_campaign
+			britannia_nego_4
 		}
 
 		highlight = {
 			scope:province = {
-				is_in_area = britannia_secunda_meridionalis_area
-				is_in_area = britannia_secunda_septentrionalis_area
+				OR = {
+					is_in_area = britannia_secunda_meridionalis_area
+					is_in_area = britannia_secunda_septentrionalis_area
+				}				
 			}
 		}
 
@@ -221,19 +258,56 @@ britannia = {
 				id = britannia.12
 				days = 7
 			}
+			area:britannia_secunda_meridionalis_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 3
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								
+							}
+							order_by = pop_hapiness
+							max = 8
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
+			}
         }
 	}
 	britannia_nego_3 = {
         icon = "task_expansion"
 		
 		requires = {
-			britannia_campaign
+			britannia_nego_4
 		}
 
 		highlight = {
 			scope:province = {
-				is_in_area = cornovia_area
-				is_in_area = coritania_area
+				OR = {
+					is_in_area = cornovia_area
+					is_in_area = coritania_area
+				}				
 			}
 		}
 
@@ -250,6 +324,111 @@ britannia = {
 			trigger_event = {
 				id = britannia.13
 				days = 7
+			}
+			area:coritania_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 3
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								
+							}
+							order_by = pop_hapiness
+							max = 8
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
+			}
+        }
+	}
+
+	britannia_nego_4 = {
+        icon = "task_expansion"
+		
+		requires = {
+			britannia_campaign
+		}
+
+		highlight = {
+			scope:province = {
+				OR = {
+					is_in_area = cantiacia_area
+					is_in_area = durotrigia_area
+					is_in_area = dobunnia_area
+				}				
+			}
+		}
+
+        bypass = {}
+
+        potential = {}
+
+        allow = {
+			owns_or_subject_owns_area = cantiacia_area
+			owns_or_subject_owns_area = durotrigia_area
+			owns_or_subject_owns_area = dobunnia_area
+		}
+
+        on_completion = {
+			trigger_event = {
+				id = britannia.14
+				days = 7
+			}
+			area:cantiacia_area = {
+				ordered_area_province = {
+					order_by = total_population
+					max = 3
+					if = {
+						limit = {
+							any_pops_in_province = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}
+							}
+						}
+						custom_tooltip = assimilate_15_tt
+						ordered_pops_in_province = {
+							limit = {
+								NOT = {
+									pop_culture = prev.owner.culture
+								}								
+							}
+							order_by = pop_hapiness
+							max = 8
+							check_range_bounds = no
+							hidden_effect = {
+								set_pop_culture = prev.owner.culture
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 5
+							create_state_pop = citizen
+						}
+					}
+				}
 			}
         }
 	}
@@ -377,7 +556,95 @@ britannia = {
         allow = {}
 
         on_completion = {
-			remove_country_modifier = norse_civanarchy_modifier
+			
+        }
+	}
+
+	britannia_recover = {
+        icon = "task_expansion"
+		
+		requires = {
+			britannia_pacify
+		}
+
+		duration = 100
+
+		bypass = {}
+
+        potential = {
+			has_variable = british_civilwar
+		}
+
+        allow = {
+			can_form_nation_trigger = yes
+		}
+
+        on_completion = {
+			declare_war_with_wargoal = {
+				war_goal = diadochi_wargoal
+				province = 2000
+				target = WSX
+			}
+			declare_war_with_wargoal = {
+				war_goal = diadochi_wargoal
+				province = 2099
+				target = WAL
+			}
+			declare_war_with_wargoal = {
+				war_goal = diadochi_wargoal
+				province = 2080
+				target = ENG
+			}
+			add_country_modifier = {
+				name = scandinavian_reconquest_modifier
+				duration = 1095
+			}
+        }
+	}
+
+	britannia_consolidation= {
+        icon = "task_expansion"
+		
+		requires = {
+			britannia_recover
+		}
+
+		bypass = {}
+
+		final = yes
+
+        potential = {
+			has_variable = british_civilwar
+		}
+
+        allow = {
+			war = no
+		}
+
+        on_completion = {
+			custom_tooltip = scandinavia_empire_lol
+			set_variable = {
+				name = norse_empire
+			}
+			if = {
+				limit = {
+					is_tribal = yes
+				}
+				change_government = despotic_monarchy
+			}
+			if = {
+				limit = {
+					is_monarchy = yes
+					NOR = {
+						government = imperium
+						government = imperial_cult
+					}
+				}
+				change_government = imperium
+			}
+			else = {
+				change_government = athenian_republic
+			}
         }
 	}
 }

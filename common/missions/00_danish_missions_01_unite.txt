@@ -9,9 +9,9 @@ denmark_unite = {
     potential = { 
     	OR = {
     		tag = AVO
-			country_culture = herulian
-			country_culture = cimbrian
-			country_culture = teutonian
+			primary_culture = herulian
+			primary_culture = cimbrian
+			primary_culture = teutonian
 		}
 		NOR = {
 			is_endgame_tag_trigger = yes

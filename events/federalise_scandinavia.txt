@@ -26,7 +26,20 @@ namespace = federalise_scandinavia
 			add_country_modifier = {
         		name = norse_big_rebellion_modifier
         		duration = 1460
-        	}
+        	}		 
+			every_owned_province = {
+				any_pops_in_province = {
+					limit = {
+						pop_culture = owner.culture
+					}
+					hidden_effect = {
+						set_pop_culture = norse
+					}
+				}
+			}
+			hidden_effect = {
+				set_primary_culture = norse
+			}			
 		}
 		
 		option = {      
@@ -48,5 +61,15 @@ namespace = federalise_scandinavia
         		name = norse_rebellion_modifier
         		duration = 1460
         	}
+			every_owned_province = {
+				any_pops_in_province = {
+					limit = {
+						pop_culture = owner.culture
+					}
+					hidden_effect = {
+						set_pop_culture = norse
+					}
+				}
+			}
     	}
 	}	

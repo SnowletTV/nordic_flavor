@@ -1,20 +1,20 @@
 country_decisions = {
 	
-	# Form Denmark
+	# Form Scandinavia
 	form_scandinavia = {
 		
 		potential = {
 			num_of_cities >= 1
 			OR = {
 				tag = AVO
-				country_culture = suiones
-				country_culture = raumarician
-				country_culture = rugian
-				country_culture = gutones
-				country_culture = teutonian
-				country_culture = herulian
-				country_culture = cimbrian
-				country_culture = teutonian
+				primary_culture = suiones
+				primary_culture = raumarician
+				primary_culture = rugian
+				primary_culture = gutones
+				primary_culture = teutonian
+				primary_culture = herulian
+				primary_culture = cimbrian
+				primary_culture = teutonian
 			}
 
 			NOT = {
@@ -93,17 +93,6 @@ country_decisions = {
 				trigger_event = {
 					id = west_scandinavia.1
 					days = 30
-				}
-			}
-			if = {
-				limit = {
-					p:3887 = { is_capital = no }
-				}
-				set_capital = 3887
-				hidden_effect = {
-					p:3887.state = {
-						set_state_capital = 3887
-					}
 				}
 			}
 			capital_scope = {

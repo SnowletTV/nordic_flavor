@@ -1,7 +1,7 @@
 ﻿l_simp_chinese:
  DENMARK_NAME:0 "达尼亚"
  DENMARK_ADJECTIVE:0 "丹麦"
- form_denmark:0 "来自达尼亚"
+ form_denmark:0 "成立达尼亚"
  form_denmark_desc:0 "在丹麦的人民也许并非一个单一的民族，但他们有着共同的生活方式，而统一丹麦的理想并非闻所未闻。现在，这个想法应运而生，并将成为现实、给所有人带来安全。"
  denmark_unite:0 "统一丹麦"
  denmark_unite_DESCRIPTION:0 "在丹麦的人民也许并非一个单一的民族，但他们有着共同的生活方式，而统一丹麦的理想并非闻所未闻。现在，这个想法应运而生，并将成为现实、给所有人带来安全。"
@@ -24,7 +24,7 @@
  denmark_develop_DESCRIPTION:0 "尽管丹麦的土地已经十分繁荣，但是我们只需要投入一些资金，就可以让它更加繁荣。而且谁知道呢？也许我们有朝一日，可以在这里繁育一些马匹。"
  denmark_develop_BUTTON_TOOLTIP:0 "尽管丹麦的土地已经十分繁荣，但是我们只需要投入一些资金，就可以让它更加繁荣。而且谁知道呢？也许我们有朝一日，可以在这里繁育一些马匹。"
  denmark_develop_CRITERIA_DESCRIPTION:0 "当全丹麦繁荣昌盛的时候，这个使命将被认为完成。"
- denmark_develop_wood:0 "扩大木材出产"
+ denmark_develop_wood:0 "提高木材产出"
  denmark_develop_teutonia_stone:0 "拓展采石场"
  denmark_develop_herulia_food:0 "确保食物供给"
  denmark_develop_food_capacity:0 "创建像样的食物储备"

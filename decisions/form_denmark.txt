@@ -7,9 +7,9 @@ country_decisions = {
 			num_of_cities >= 1
 			OR = {
 				tag = AVO
-				country_culture = herulian
-				country_culture = cimbrian
-				country_culture = teutonian
+				primary_culture = herulian
+				primary_culture = cimbrian
+				primary_culture = teutonian
 			}
 			NOT = {
 				tag = DEN

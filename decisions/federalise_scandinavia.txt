@@ -1,9 +1,7 @@
 ﻿country_decisions = {
 	federalise_scandinavia = {
 		potential = {
-			OR = {
-				tag = SKA
-			}
+			tag = SKA
 			OR = {
 				government = tribal_chiefdom
 				government = tribal_federation
@@ -12,15 +10,6 @@
 		}
 		allow = {
 			treasury >= 300
-			custom_tooltip = {
-				text = scandinavian_reform_needs
-				AND = {
-					has_variable = developped_sweden
-					has_variable = developped_gothia
-					has_variable = developped_norway
-					has_variable = developped_denmark
-				}
-			}
 		}
 		effect = {
 			add_treasury = -300

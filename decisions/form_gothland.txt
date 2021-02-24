@@ -1,14 +1,14 @@
 country_decisions = {
 	
-	# Form Denmark
+	# Form Gothia
 	form_gothland = {
 		
 		potential = {
 			num_of_cities >= 1
 			OR = {
 				tag = BUR
-				country_culture = gutones
-				country_culture = teutonian
+				primary_culture = gutones
+				primary_culture = teutonian
 			}
 
 			OR = {

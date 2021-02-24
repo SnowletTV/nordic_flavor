@@ -7,7 +7,7 @@ norway_unite = {
     chance = {}
 
     potential = { 
-    	country_culture = rugian
+    	primary_culture = rugian
 		NOR = {
 			is_endgame_tag_trigger = yes
 			is_tier_2_formable_trigger = yes
@@ -158,7 +158,7 @@ norway_unite = {
         on_completion = {
         	add_country_modifier = {
         		name = norwegian_infantry_liberation_modifier
-        		duration = 1000
+        		duration = 1200
         	}
         }
     }
