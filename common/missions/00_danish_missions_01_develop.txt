@@ -225,8 +225,8 @@ denmark_develop = {
         }
 
         allow = {
-            p:6030 = {
-                num_of_foundry_building >= 2
+            p:3887 = {
+                num_of_foundry_building >= 1
             }
         }
 
