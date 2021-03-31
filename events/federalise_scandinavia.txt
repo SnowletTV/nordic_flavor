@@ -26,10 +26,6 @@ namespace = federalise_scandinavia
         		name = norse_big_rebellion_modifier
         		duration = 1460
         	}
-			set_primary_culture_cleanup_effect = {
-				NEW_PRIMARY_CULTURE = norse
-				MAKE_OLD_CULTURE_INTEGRATED = yes
-			}
 			hidden_effect = {
 				every_character = {
 					limit = {
@@ -87,7 +83,11 @@ namespace = federalise_scandinavia
 						max = 10
 					}
 				}	
-			}				 		
+			}
+			set_primary_culture_cleanup_effect = {
+				NEW_PRIMARY_CULTURE = norse
+				MAKE_OLD_CULTURE_INTEGRATED = yes
+			}			
 		}
 		
 		option = {      
@@ -108,10 +108,6 @@ namespace = federalise_scandinavia
         		name = norse_rebellion_modifier
         		duration = 1460
         	}
-			set_primary_culture_cleanup_effect = {
-				NEW_PRIMARY_CULTURE = norse
-				MAKE_OLD_CULTURE_INTEGRATED = yes
-			}
 			hidden_effect = {
 				every_character = {
 					limit = {
@@ -170,5 +166,9 @@ namespace = federalise_scandinavia
 					}
 				}	
 			}
+			set_primary_culture_cleanup_effect = {
+				NEW_PRIMARY_CULTURE = norse
+				MAKE_OLD_CULTURE_INTEGRATED = yes
+			}	
     	}
 	}	
